@@ -25,9 +25,9 @@ const Header = () => {
               <a className="button" href="#">
                 My Books
               </a>
-              <a className="button" href="#">
+              <Link className="button" to="/create">
                 Add Book
-              </a>
+              </Link>
               <a className="button" href="#">
                 Logout
               </a>
