@@ -1,4 +1,4 @@
-
+import {Link} from 'react-router-dom'
 import './Header.css'
 
 const Header = () => {
@@ -7,18 +7,18 @@ const Header = () => {
         {/* Navigation */}
         <nav className="navbar">
           <section className="navbar-dashboard">
-            <a href="#">Dashboard</a>
+            <Link to="/">Dashboard</Link>
             {/* Guest users */}
             <div id="guest">
-              <a className="button" href="#">
+              <Link className="button" to="/login">
                 Login
-              </a>
-              <a className="button" href="#">
+              </Link>
+              <Link className="button" to="/register">
                 Register
-              </a>
+              </Link>
             </div>
             {/* Logged-in users */}
-            {/* <div id="user">
+            <div id="user">
               <span>
                 Welcome, {"{"}email{"}"}
               </span>
@@ -31,7 +31,7 @@ const Header = () => {
               <a className="button" href="#">
                 Logout
               </a>
-            </div> */}
+            </div>
           </section>
         </nav>
       </header>
