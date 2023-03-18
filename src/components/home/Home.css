@@ -18,26 +18,18 @@
     padding: 2rem 0 1rem 0;
 }
 
-.dashboard .other-books-list {
+.dashboard .other-recipes-list {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.otherBooks {
-    border-radius: 10px;
-    text-align: center;
-    margin: 2rem;
-    position: relative;
-    width: 400px;
-    height: auto;
-    transition: all 0.3s cubic-bezier(.50, .80, .25, 1);
-    box-shadow: -8px -2px 28px -8px #000000;
-    align-items: center;
-}
 
-.no-books {
+
+.no-recipes{
     font-weight: bold;
     font-size: large;
     text-align: center;
 }
+
+
