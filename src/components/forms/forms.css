@@ -112,34 +112,3 @@ form textarea:focus {
 	border-color: #090;
 }
 
-.description {
-	width: 17rem;
-	height: 10vh;
-	padding: 2rem;
-	overflow: auto;
-}
-.book-description {
-	width: 30rem;
-	padding: 2rem;
-	overflow: auto;
-	text-align: justify;
-}
-
-.details {
-	display: flex;
-	justify-content: center;
-}
-
-.details .type {
-	margin: 5px;
-	font-size: 20px;
-}
-
-.details span.likes {
-	display: flex;
-    flex-direction: column;
-}
-
-.field .input:hover {
-	background: #c4c1c1;
-}

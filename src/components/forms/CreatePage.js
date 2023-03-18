@@ -4,7 +4,7 @@ const CreatePage=()=>{
         <section id="create-page" className="create">
         <form id="create-form" action="" method="">
           <fieldset>
-            <legend>Add new Book</legend>
+            <legend>Add new Recipe</legend>
             <p className="field">
               <label htmlFor="title">Title</label>
               <span className="input">
@@ -23,12 +23,34 @@ const CreatePage=()=>{
               </span>
             </p>
             <p className="field">
+              <label htmlFor="description">Ingredients</label>
+              <span className="input">
+                <textarea
+                  name="description"
+                  id="description"
+                  placeholder="Ingredients"
+                  defaultValue={""}
+                />
+              </span>
+            </p>
+            <p className="field">
               <label htmlFor="image">Image</label>
               <span className="input">
                 <input type="text" name="imageUrl" id="image" placeholder="Image" />
               </span>
             </p>
             <p className="field">
+              <label htmlFor="description">Method</label>
+              <span className="input">
+                <textarea
+                  name="description"
+                  id="description"
+                  placeholder="Method"
+                  defaultValue={""}
+                />
+              </span>
+            </p>
+            {/* <p className="field">
               <label htmlFor="type">Type</label>
               <span className="input">
                 <select id="type" name="type">
@@ -39,11 +61,11 @@ const CreatePage=()=>{
                   <option value="Other">Other</option>
                 </select>
               </span>
-            </p>
+            </p> */}
             <input
               className="button submit"
               type="submit"
-              defaultValue="Add Book"
+              defaultValue="Add Recipe"
             />
           </fieldset>
         </form>

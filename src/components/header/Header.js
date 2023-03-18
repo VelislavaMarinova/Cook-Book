@@ -23,10 +23,10 @@ const Header = () => {
                 Welcome, {"{"}email{"}"}
               </span>
               <a className="button" href="#">
-                My Books
+                My Recipes
               </a>
               <Link className="button" to="/create">
-                Add Book
+                Add Recipes
               </Link>
               <a className="button" href="#">
                 Logout
