@@ -3,7 +3,7 @@ import './Footer.css'
 const Footer = () => {
     return(
         <footer id="site-footer">
-        <p>@OnlineBooksLibrary</p>
+        <p>@OnlineRecipes</p>
       </footer>
     )
 }
