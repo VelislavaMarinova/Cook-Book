@@ -1,15 +1,19 @@
+import {Link} from 'react-router-dom'
+
 import './OtherRecipes.css'
-const OtherRecipes = () => {
+const OtherRecipes = ({
+    recipe,
+}) => {
     return (
         <li className="otherRecipes">
-            <h3>Christmas pie</h3>
-            <p>Description: Combine a few key Christmas flavours here to make a pie that both children and adults will adore</p>
+            <h3>{recipe.name}</h3>
+            <p>Description: {recipe.Description}</p>
             <div className="img">
-                <img src="https://images.immediate.co.uk/production/volatile/sites/30/2008/01/Christmas-pie-2ed9223.jpg?quality=90&webp=true&resize=300,272" />
+                <img src={recipe.url} />
             </div>
-            <a className="button" href="#">
+            <Link className="button" to={`/details/${recipe._id}`}>
                 Details
-            </a>
+            </Link>
         </li>
     )
 };
