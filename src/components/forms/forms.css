@@ -112,3 +112,9 @@ form textarea:focus {
 	border-color: #090;
 }
 
+.login-buttons,
+.register-bottons,
+.addRecipe-buttons{
+	display: flex;
+}
+

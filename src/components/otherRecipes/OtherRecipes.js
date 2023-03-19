@@ -9,7 +9,7 @@ const OtherRecipes = ({
             <h3>{recipe.Name}</h3>
             <p>Description: {recipe.Description}</p>
             <div className="img">
-                <img src={recipe.url} />
+                <img src={recipe.url} alt="food"/>
             </div>
             <Link className="button" to={`/details/${recipe._id}`}>
                 Details
