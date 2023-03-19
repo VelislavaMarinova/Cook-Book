@@ -1,5 +1,7 @@
 import "./forms.css"
-const Login=()=>{
+const Login=({
+  onClose,
+})=>{
     return(
         <section id="login-page" className="login">
         <form id="login-form" action="" method="">
@@ -22,7 +24,11 @@ const Login=()=>{
                 />
               </span>
             </p>
+            <div className="login-buttons">
             <input className="button submit" type="submit" defaultValue="Login" />
+            <button className="button close" onClick={onClose}>Close</button>
+
+            </div>
           </fieldset>
         </form>
       </section>

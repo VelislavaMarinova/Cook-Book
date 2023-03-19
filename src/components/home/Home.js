@@ -9,7 +9,7 @@ const Home = ({
         <h1>Latest Added Recipes</h1>
         {/* Display ul: with list-items for All books (If any) */}
         <ul className="other-recipes-list">
-            {latestThreeRecipes.map(x=> <OtherRecipes recipe={x}/>)}
+            {latestThreeRecipes.map(x=> <OtherRecipes key={x._id} recipe={x}/>)}
             
         </ul>
         {/* Display paragraph: If there are no books in the database */}
