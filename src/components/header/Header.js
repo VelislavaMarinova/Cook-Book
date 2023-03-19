@@ -22,9 +22,13 @@ const Header = () => {
               <span>
                 Welcome, {"{"}email{"}"}
               </span>
-              <a className="button" href="#">
-                My Recipes
+              <a className="button" href="/catalog">
+                All Recipes
               </a>
+              <Link className="button" to="#">
+                My Recipes
+              </Link>
+
               <Link className="button" to="/create">
                 Add Recipes
               </Link>
