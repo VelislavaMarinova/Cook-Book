@@ -6,7 +6,7 @@ const OtherRecipes = ({
 }) => {
     return (
         <li className="otherRecipes">
-            <h3>{recipe.name}</h3>
+            <h3>{recipe.Name}</h3>
             <p>Description: {recipe.Description}</p>
             <div className="img">
                 <img src={recipe.url} />

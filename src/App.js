@@ -10,6 +10,7 @@ import Login from './components/forms/Login';
 import Register from './components/forms/Register';
 import CreatePage from './components/forms/CreatePage';
 import { useEffect, useState } from 'react';
+import AllRecipes from './components/allRecipes/AllRecipes';
 
 const baseUrl='http://localhost:3030/data/recipes'
 // const urlLatestRecipes=`http://localhost:3030/data/recipes?sortBy=_createdOn%20desc&distinct=category`
@@ -35,6 +36,7 @@ function App() {
       <Main>
         <Routes>
           <Route path="/" element={<Home recipes={recipes}/>} />
+          <Route path="/catalog" element={<AllRecipes recipes={recipes} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>} /> 
           <Route path="/create" element={<CreatePage />} />
