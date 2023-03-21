@@ -48,6 +48,7 @@ function App() {
  
 
   const onFormClose = () => {
+    console.log('close');
     navigate('/')
   }
 
@@ -63,8 +64,10 @@ function App() {
 
 
 
-  const onLoginSubmit = async (data) => {
-    console.log(data);
+  const onLoginSubmit = async (e) => {
+    e.preventDefault();
+    console.log(Object.fromEntries((new FormData(e.target))));
+  
   }
 
   return (
@@ -77,9 +80,9 @@ function App() {
           <Main>
             <Routes>
               <Route path="/" element={<Home recipes={recipes} />} />
-              <Route path="/login" element={<Login onClose={onFormClose} />} />
-              <Route path="/register" element={<Register onClose={onFormClose} />} />
-              <Route path="/create" element={<CreatePage onClose={onFormClose} />} />
+              <Route path="/login" element={<Login onFormClose={onFormClose} />} />
+              <Route path="/register" element={<Register onFormClose={onFormClose} />} />
+              <Route path="/create" element={<CreatePage onFormClose={onFormClose} />} />
               <Route path="/catalog" element={<Catalog recipes={recipes} />} />
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
 

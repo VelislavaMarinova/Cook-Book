@@ -10,7 +10,7 @@ const DetailsPage = () => {
         <section id="details-page" className="details">
             <div className="recipe-information">
                 <h3>{selectedRecipe.Name}</h3>
-                <p className="type">Description:{selectedRecipe.Description}</p>
+                <p className="type">Description: {selectedRecipe.Description}</p>
                 <p className="img">
                     <img src={selectedRecipe.url} />
                 </p>
@@ -34,6 +34,12 @@ const DetailsPage = () => {
                     </div>
                     {/* Bonus */}
                 </div>
+            </div>
+            <div className="book-description">
+                <h3>Ingredients:</h3>
+                <p>
+                    {selectedRecipe.Ingredients}
+                </p>
             </div>
             <div className="book-description">
                 <h3>Method:</h3>
