@@ -1,5 +1,5 @@
-import OtherRecipes from '../otherRecipes/OtherRecipes';;
-const AllRecipes = ({
+import OtherRecipes from '../otherRecipes/OtherRecipes';
+const Catalog = ({
     recipes,
 }) => {
     
@@ -14,4 +14,4 @@ const AllRecipes = ({
         <p className="no-recipes">No Recipes in database!</p>
     </section>)
 };
-export default AllRecipes;
+export default Catalog;

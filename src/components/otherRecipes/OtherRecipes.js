@@ -4,6 +4,7 @@ import './OtherRecipes.css'
 const OtherRecipes = ({
     recipe,
 }) => {
+    console.log(recipe);
     return (
         <li className="otherRecipes">
             <h3>{recipe.Name}</h3>
@@ -11,7 +12,7 @@ const OtherRecipes = ({
             <div className="img">
                 <img src={recipe.url} alt="food"/>
             </div>
-            <Link className="button" to={`/details/${recipe._id}`}>
+            <Link className="button" to={`/catalog/${recipe._id}`}>
                 Details
             </Link>
         </li>
