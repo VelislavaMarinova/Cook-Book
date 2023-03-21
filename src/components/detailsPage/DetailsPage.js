@@ -1,16 +1,18 @@
-import {useparams} from "react-router-dom"
-const DetailsPage = ({
-    recipes
-}) => {
-    const{recipeId}=useparams()
-    const selectedRecipe=recipes.find(x=>x_id===recipeId)
+import {useParams} from "react-router-dom"
+import { useContext } from "react";
+import DataContext from "../../contexts/DataContext";
+const DetailsPage = () => {
+    const recipes = useContext(DataContext)
+    const{recipeId}=useParams()
+    const selectedRecipe=recipes.find(x=>x._id===recipeId)
+    console.log(selectedRecipe);
     return (
         <section id="details-page" className="details">
-            <div className="book-information">
-                <h3>A Court of Thorns and Roses</h3>
-                <p className="type">Type: Fiction</p>
+            <div className="recipe-information">
+                <h3>{selectedRecipe.Name}</h3>
+                <p className="type">Description:{selectedRecipe.Description}</p>
                 <p className="img">
-                    <img src="/images/book1.png" />
+                    <img src={selectedRecipe.url} />
                 </p>
                 <div className="actions">
                     {/* Edit/Delete buttons ( Only for creator of this book )  */}
@@ -34,13 +36,9 @@ const DetailsPage = ({
                 </div>
             </div>
             <div className="book-description">
-                <h3>Description:</h3>
+                <h3>Method:</h3>
                 <p>
-                    Feyre's survival rests upon her ability to hunt and kill – the forest
-                    where she lives is a cold, bleak place in the long winter months. So
-                    when she spots a deer in the forest being pursued by a wolf, she cannot
-                    resist fighting it for the flesh. But to do so, she must kill the
-                    predator and killing something so precious comes at a price ...
+                    {selectedRecipe.Method}
                 </p>
             </div>
         </section>
