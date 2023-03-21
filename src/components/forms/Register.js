@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import "./forms.css";
 
 const Register = ({
-  onClose
+  onFormClose
 }) => {
 
 
@@ -47,7 +47,7 @@ const Register = ({
               type="submit"
               defaultValue="Register"
             />
-            <button className="button close" onClick={onClose}>Close</button>
+            <button className="button close" onClick={onFormClose}>Close</button>
           </div>
         </fieldset>
       </form>

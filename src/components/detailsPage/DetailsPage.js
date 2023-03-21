@@ -1,4 +1,9 @@
-const DetailsPage = () => {
+import {useparams} from "react-router-dom"
+const DetailsPage = ({
+    recipes
+}) => {
+    const{recipeId}=useparams()
+    const selectedRecipe=recipes.find(x=>x_id===recipeId)
     return (
         <section id="details-page" className="details">
             <div className="book-information">
