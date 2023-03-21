@@ -1,6 +1,6 @@
 import "./forms.css"
 const CreatePage = ({
-  onClose,
+  onFormClose,
 }) => {
   return (
     <section id="create-page" className="create" >
@@ -70,7 +70,7 @@ const CreatePage = ({
               type="submit"
               defaultValue="Add Recipe"
             />
-            <button className="button close" onClick={onClose}>Close</button>
+            <button className="button close" onClick={onFormClose}>Close</button>
           </div>
         </fieldset>
       </form>

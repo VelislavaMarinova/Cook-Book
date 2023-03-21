@@ -1,7 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-import './App.css';
+import  AuthContext  from './contexts/AuthContext';
+import  DataContext  from './contexts/DataContext';
+
 import Home from './components/home/Home';
 
 import Header from './components/header/Header';
@@ -12,61 +14,83 @@ import Register from './components/forms/Register';
 import CreatePage from './components/forms/CreatePage';
 import { useEffect, useState } from 'react';
 import AllRecipes from './components/allRecipes/AllRecipes';
+import useFetchRecipes from './hooks/useFetchRecipes';
+// import {useFetchRecipes} from './hooks/useFetchRecipes'
 
 const baseUrl = 'http://localhost:3030/data/recipes'
 // const urlLatestRecipes=`http://localhost:3030/data/recipes?sortBy=_createdOn%20desc&distinct=category`
 
+// const useRecipes = () => {
+//   const [recipes, setRecipes] = useState([]);
+
+//   useEffect(() => {
+//     fetch(baseUrl)
+//       .then(res => res.json())
+//       .then(result => {
+//         // console.log(result);
+//         setRecipes(result)
+
+//       })
+//     console.log(recipes);
+//   }, []);
+//   return recipes;
+// }
+
 function App() {
+  const [auth, setAuth] = useState({})
+
+
   const navigate = useNavigate()
-  const [recipes, setRecipes] = useState([]);
 
-  useEffect(() => {
-    fetch(baseUrl)
-      .then(res => res.json())
-      .then(result => {
-        // console.log(result);
-        setRecipes(result)
+  const recipes = useFetchRecipes()
+ 
 
-      })
-    console.log(recipes);
-  }, [])
-
-  console.log(recipes);
-
-  const onClose = () => {
+  const onFormClose = () => {
     navigate('/')
   }
 
-  useEffect(() => {
-    document.addEventListener('keydown', detectKeyDown, true)
-  }, []);
-
   const detectKeyDown = (e) => {
     if (e.key === 'Escape') {
-      onClose()
+      onFormClose()
     }
   };
 
+  useEffect(() => {
+    document.addEventListener('keydown', detectKeyDown, true)
+  }, [detectKeyDown]);
+
+
+
+  const onLoginSubmit = async (data) => {
+    console.log(data);
+  }
+
   return (
-    <div id="container">
-      <Header />
+    <AuthContext.Provider value={{ onLoginSubmit }}>
+      <DataContext.Provider value={recipes}>
 
-      <Main>
-        <Routes>
-          <Route path="/" element={<Home recipes={recipes} />} />
-          <Route path="/catalog" element={<AllRecipes recipes={recipes} />} />
-          <Route path="/login" element={<Login onClose={onClose}/>} />
-          <Route path="/register" element={<Register onClose={onClose}/>} />
-          <Route path="/create" element={<CreatePage onClose={onClose} />} />
+        <div id="container">
+          <Header />
+
+          <Main>
+            <Routes>
+              <Route path="/" element={<Home recipes={recipes} />} />
+              <Route path="/catalog" element={<AllRecipes recipes={recipes} />} />
+              <Route path="/login" element={<Login onClose={onFormClose} />} />
+              <Route path="/register" element={<Register onClose={onFormClose} />} />
+              <Route path="/create" element={<CreatePage onClose={onFormClose} />} />
 
 
-          {/* Dashboard Page ( for Guests and Users ) */}
+              {/* Dashboard Page ( for Guests and Users ) */}
 
-        </Routes>
-      </Main>
+            </Routes>
+          </Main>
 
-      <Footer />
-    </div>
+          <Footer />
+        </div>
+      </DataContext.Provider>
+
+    </AuthContext.Provider>
 
   );
 }
