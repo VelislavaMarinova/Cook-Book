@@ -5,22 +5,27 @@ import useForm from "../../hooks/useForm";
 
 const LoginFormKeys = {
   Email: 'email',
-  Passwoord: 'password'
-}
+  Password: 'password'
+};
 
 const Login = ({
   onFormClose,
 }) => {
-  
+
   const { onLoginSubmit } = useContext(AuthContext)
-  const {formData,onChangeHandler } = useForm({
+
+
+  const { formValues, onChangeHandler, onSubmit } = useForm({
     [LoginFormKeys.Email]: '',
-    [LoginFormKeys.Passwoord]: '',
-  },onLoginSubmit)
+    [LoginFormKeys.Password]: '',
+    },
+    onLoginSubmit);
+
+
 
   return (
     <section id="login-page" className="login">
-      <form id="login-form" action="" method="" onSubmit={onLoginSubmit}>
+      <form id="login-form" method="POST" onSubmit={onSubmit}>
         <fieldset>
           <legend>Login Form</legend>
           <p className="field">
@@ -30,9 +35,9 @@ const Login = ({
                 type="text"
                 name={LoginFormKeys.Email}
                 id="email"
-                placeholder="Email" 
-                value={formData[LoginFormKeys.Email]}
-                onChange={onChangeHandler}/>
+                placeholder="Email"
+                value={formValues[LoginFormKeys.Email]}
+                onChange={onChangeHandler} />
             </span>
           </p>
           <p className="field">
@@ -40,10 +45,10 @@ const Login = ({
             <span className="input">
               <input
                 type="password"
-                name={LoginFormKeys.Passwoord}
+                name={LoginFormKeys.Password}
                 id="password"
                 placeholder="Password"
-                value={formData[LoginFormKeys.Passwoord]}
+                value={formValues[LoginFormKeys.Password]}
                 onChange={onChangeHandler}
               />
             </span>

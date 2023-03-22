@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-import  AuthContext  from './contexts/AuthContext';
-import  DataContext  from './contexts/DataContext';
+import AuthContext from './contexts/AuthContext';
+import DataContext from './contexts/DataContext';
+import { authServiceFactory } from './services/authService'
 
 import Home from './components/home/Home';
 
@@ -17,6 +18,7 @@ import { useEffect, useState } from 'react';
 import useFetchRecipes from './hooks/useFetchRecipes';
 import DetailsPage from './components/detailsPage/DetailsPage';
 import Catalog from './components/Catalog/Catalog';
+
 // import {useFetchRecipes} from './hooks/useFetchRecipes'
 
 const baseUrl = 'http://localhost:3030/data/recipes'
@@ -40,12 +42,14 @@ const baseUrl = 'http://localhost:3030/data/recipes'
 
 function App() {
   const [auth, setAuth] = useState({})
-
+  const authService = authServiceFactory(auth.accessToken)
 
   const navigate = useNavigate()
 
   const recipes = useFetchRecipes()
- 
+
+
+
 
   const onFormClose = () => {
     console.log('close');
@@ -63,15 +67,35 @@ function App() {
   }, [detectKeyDown]);
 
 
+  const onLoginSubmit = async (data) => {
 
-  const onLoginSubmit = async (e) => {
-    e.preventDefault();
-    console.log(Object.fromEntries((new FormData(e.target))));
-  
+    // console.log(data);
+    try {
+      const result = await authService.login(data);
+
+      setAuth(result);
+
+      navigate('/catalog');
+    } catch (error) {
+      alert('incorrect Email or Password')
+      // console.log('There is a problem');
+    }
+    // 1. Before useForm Hook,to try if it works
+    // e.preventDefault();
+    // console.log(Object.fromEntries((new FormData(e.target))));
+
+  }
+  const authContextData = {
+    onLoginSubmit,
+    userId: auth._id,
+    token: auth.accessToken,
+    userEmail: auth.email,
+    isAuthenticated: !!auth.accessToken
+
   }
 
   return (
-    <AuthContext.Provider value={{ onLoginSubmit }}>
+    <AuthContext.Provider value={authContextData }>
       <DataContext.Provider value={recipes}>
 
         <div id="container">
@@ -85,10 +109,6 @@ function App() {
               <Route path="/create" element={<CreatePage onFormClose={onFormClose} />} />
               <Route path="/catalog" element={<Catalog recipes={recipes} />} />
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
-
-
-              {/* Dashboard Page ( for Guests and Users ) */}
-
             </Routes>
           </Main>
 
