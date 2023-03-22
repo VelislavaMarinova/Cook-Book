@@ -69,7 +69,7 @@ function App() {
 
   const onLoginSubmit = async (data) => {
 
-    // console.log(data);
+    console.log(data);
     try {
       const result = await authService.login(data);
 
@@ -93,7 +93,7 @@ function App() {
     isAuthenticated: !!auth.accessToken
 
   }
-
+console.log(authContextData);
   return (
     <AuthContext.Provider value={authContextData }>
       <DataContext.Provider value={recipes}>

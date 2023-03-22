@@ -1,10 +1,14 @@
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useContext } from "react";
 import DataContext from "../../contexts/DataContext";
+import AuthContext from "../../contexts/AuthContext";
 const DetailsPage = () => {
-    const recipes = useContext(DataContext)
-    const{recipeId}=useParams()
-    const selectedRecipe=recipes.find(x=>x._id===recipeId)
+    const recipes = useContext(DataContext);
+    const { isAuthenticated, userId } = useContext(AuthContext)
+    const { recipeId } = useParams()
+    const selectedRecipe = recipes.find(x => x._id === recipeId)
+    const isOwner = userId === selectedRecipe._ownerId;
+    const loggedUserNotOwner = isAuthenticated && userId !==selectedRecipe._ownerId
     console.log(selectedRecipe);
     return (
         <section id="details-page" className="details">
@@ -16,22 +20,32 @@ const DetailsPage = () => {
                 </p>
                 <div className="actions">
                     {/* Edit/Delete buttons ( Only for creator of this book )  */}
-                    <a className="button" href="#">
-                        Edit
-                    </a>
-                    <a className="button" href="#">
-                        Delete
-                    </a>
+                    {isOwner && (<>
+                        <a className="button" href="#">
+                            Edit
+                        </a>
+                        <a className="button" href="#">
+                            Delete
+                        </a>
+                    </>
+                    )}
+
                     {/* Bonus */}
                     {/* Like button ( Only for logged-in users, which is not creators of the current book ) */}
+                    {loggedUserNotOwner && (
+
                     <a className="button" href="#">
                         Like
                     </a>
+                    )}
                     {/* ( for Guests and Users )  */}
+                    {!isAuthenticated && (
+
                     <div className="likes">
                         <img className="hearts" src="/images/heart.png" />
                         <span id="total-likes">Likes: 0</span>
                     </div>
+                    )}
                     {/* Bonus */}
                 </div>
             </div>
