@@ -17,7 +17,8 @@ import { useEffect, useState } from 'react';
 
 import useFetchRecipes from './hooks/useFetchRecipes';
 import DetailsPage from './components/detailsPage/DetailsPage';
-import Catalog from './components/Catalog/Catalog';
+import Catalog from './components/catalog/Catalog';
+import Logout from './components/forms/Logout';
 
 // import {useFetchRecipes} from './hooks/useFetchRecipes'
 
@@ -47,9 +48,6 @@ function App() {
   const navigate = useNavigate()
 
   const recipes = useFetchRecipes()
-
-
-
 
   const onFormClose = () => {
     console.log('close');
@@ -85,8 +83,31 @@ function App() {
     // console.log(Object.fromEntries((new FormData(e.target))));
 
   }
+  const onRegisterSubmit = async (data) => {
+    console.log(data);
+    const { confirmPass, ...registerData } = data;
+    if (confirmPass !== registerData.password) {
+      alert('Password and Repaet Password don\'t match!');
+      return;
+    }
+    try {
+      const result = await authService.register(registerData)
+      console.log(result);
+      setAuth(result);
+      navigate('/catalog');
+    } catch (error) {
+      alert('problem')
+    }
+  };
+
+  const onLogout = async () => {
+    // await authService.logout()
+    setAuth({})
+  }
   const authContextData = {
     onLoginSubmit,
+    onRegisterSubmit,
+    onLogout,
     userId: auth._id,
     token: auth.accessToken,
     userEmail: auth.email,
@@ -95,7 +116,7 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={authContextData }>
+    <AuthContext.Provider value={authContextData}>
       <DataContext.Provider value={recipes}>
 
         <div id="container">
@@ -105,6 +126,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home recipes={recipes} />} />
               <Route path="/login" element={<Login onFormClose={onFormClose} />} />
+              <Route path="/logout" element={<Logout onFormClose={onFormClose} />} />
               <Route path="/register" element={<Register onFormClose={onFormClose} />} />
               <Route path="/create" element={<CreatePage onFormClose={onFormClose} />} />
               <Route path="/catalog" element={<Catalog recipes={recipes} />} />
