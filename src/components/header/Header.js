@@ -40,9 +40,9 @@ const Header = () => {
                 <Link className="button" to="/create">
                   Add Recipes
                 </Link>
-                <a className="button" href="#">
+                <Link className="button" to="/logout">
                   Logout
-                </a>
+                </Link>
               </div>
             )}
 

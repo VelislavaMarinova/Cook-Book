@@ -1,4 +1,5 @@
 import "./forms.css"
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import useForm from "../../hooks/useForm";
@@ -58,6 +59,9 @@ const Login = ({
             <button className="button close" type="button" onClick={onFormClose}>Close</button>
 
           </div>
+          <p className="field">
+            <span>If you don't have profile click <Link to="/register">here</Link></span>
+          </p>
         </fieldset>
       </form>
     </section>
