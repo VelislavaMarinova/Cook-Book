@@ -4,21 +4,24 @@ import { useContext,useState,useEffect } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import { useService } from "../../hooks/useService";
 import { recipeServiceFactory } from "../../services/recipeService";
+import useSelectRecipe from "../../hooks/useSelectRecipe";
 
 const DetailsPage = () => {
     // const recipes = useContext(DataContext);
-    const [selectedRecipe, setSelectedRecipe] = useState({});
     const { isAuthenticated, userId } = useContext(AuthContext);
-    const recipeService = useService(recipeServiceFactory)
     const { recipeId } = useParams();
+    const selectedRecipe=useSelectRecipe(recipeId)
+
+    // const [selectedRecipe, setSelectedRecipe] = useState({});
+    // const recipeService = useService(recipeServiceFactory)
 
 
-    useEffect(() => {
-        recipeService.getOne(recipeId)
-            .then(result => {
-                setSelectedRecipe(result);
-            })
-    }, [recipeId]);
+    // useEffect(() => {
+    //     recipeService.getOne(recipeId)
+    //         .then(result => {
+    //             setSelectedRecipe(result);
+    //         })
+    // }, [recipeId]);
 
     //or getOne
     // const selectedRecipe = recipes.find(x => x._id === recipeId)
