@@ -21,32 +21,14 @@ import DetailsPage from './components/detailsPage/DetailsPage';
 import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
 
-// import {useFetchRecipes} from './hooks/useFetchRecipes'
 
-const baseUrl = 'http://localhost:3030/data/recipes'
-// const urlLatestRecipes=`http://localhost:3030/data/recipes?sortBy=_createdOn%20desc&distinct=category`
-
-// const useRecipes = () => {
-//   const [recipes, setRecipes] = useState([]);
-
-//   useEffect(() => {
-//     fetch(baseUrl)
-//       .then(res => res.json())
-//       .then(result => {
-//         // console.log(result);
-//         setRecipes(result)
-
-//       })
-//     console.log(recipes);
-//   }, []);
-//   return recipes;
-// }
 
 function App() {
-  const [auth, setAuth] = useState({})
-  const authService = authServiceFactory(auth.accessToken)    
+  const navigate = useNavigate()
   const [recipes, setRecipes] = useState([]);
+  const [auth, setAuth] = useState({})
   
+  const authService = authServiceFactory(auth.accessToken)    
   const recipeService = recipeServiceFactory(auth.accessToken);
   
 
@@ -57,7 +39,6 @@ function App() {
           })
   }, []);
 
-  const navigate = useNavigate()
 
   
 

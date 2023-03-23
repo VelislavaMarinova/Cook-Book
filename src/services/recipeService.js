@@ -1,7 +1,7 @@
 import { requestFactory } from './requester';
 
 const baseUrl = 'http://localhost:3030/data/recipes';
-const selection='?select=_id%2CName%2Curl%2CDescription'
+const selection='?select=_id%2CName%2Curl%2CDescription';
 
 export const recipeServiceFactory = (token) => {
     const request = requestFactory(token);

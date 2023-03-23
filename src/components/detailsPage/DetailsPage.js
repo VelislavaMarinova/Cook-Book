@@ -1,16 +1,28 @@
 import { useParams } from "react-router-dom"
-import { useContext } from "react";
-import DataContext from "../../contexts/DataContext";
+import { useContext,useState,useEffect } from "react";
+// import DataContext from "../../contexts/DataContext";
 import AuthContext from "../../contexts/AuthContext";
+import { useService } from "../../hooks/useService";
+import { recipeServiceFactory } from "../../services/recipeService";
 
 const DetailsPage = () => {
-    const recipes = useContext(DataContext);
-    const { isAuthenticated, userId } = useContext(AuthContext)
-    const { recipeId } = useParams()
+    // const recipes = useContext(DataContext);
+    const [selectedRecipe, setSelectedRecipe] = useState({});
+    const { isAuthenticated, userId } = useContext(AuthContext);
+    const recipeService = useService(recipeServiceFactory)
+    const { recipeId } = useParams();
+
+
+    useEffect(() => {
+        recipeService.getOne(recipeId)
+            .then(result => {
+                setSelectedRecipe(result);
+            })
+    }, [recipeId]);
 
     //or getOne
-    const selectedRecipe = recipes.find(x => x._id === recipeId)
-    console.log(selectedRecipe);
+    // const selectedRecipe = recipes.find(x => x._id === recipeId)
+    // console.log(selectedRecipe);
 
 
     if (selectedRecipe) {
