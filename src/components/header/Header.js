@@ -30,14 +30,14 @@ const Header = () => {
                 <span>
                   Welcome, {userEmail}
                 </span>
-                <a className="button" href="/catalog">
+                <Link className="button" to="/catalog">
                   All Recipes
-                </a>
+                </Link>
                 <Link className="button" to="#">
                   My Recipes
                 </Link>
 
-                <Link className="button" to="/create">
+                <Link className="button" to="/create-recipe">
                   Add Recipes
                 </Link>
                 <Link className="button" to="/logout">

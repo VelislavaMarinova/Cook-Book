@@ -15,12 +15,12 @@ const RegisterFormKeys = {
 const Register = ({
   onFormClose
 }) => {
-const {onRegisterSubmit}=useContext(AuthContext)
-const {formValues,onChangeHandler, onSubmit}=useForm({
-[RegisterFormKeys.Email]:'',
-[RegisterFormKeys.Password]:'',
-[RegisterFormKeys.RepeatPassword]:'',
-},onRegisterSubmit)
+  const { onRegisterSubmit } = useContext(AuthContext)
+  const { formValues, onChangeHandler, onSubmit } = useForm({
+    [RegisterFormKeys.Email]: '',
+    [RegisterFormKeys.Password]: '',
+    [RegisterFormKeys.RepeatPassword]: '',
+  }, onRegisterSubmit)
 
   return (
     <section id="register-page" className="register">
@@ -30,14 +30,14 @@ const {formValues,onChangeHandler, onSubmit}=useForm({
           <p className="field">
             <label htmlFor="email">Email</label>
             <span className="input">
-              <input 
-              type="text" 
-              id="email" 
-              placeholder="Email"
-              name={RegisterFormKeys.Email}
-              value={formValues[RegisterFormKeys.Email]}
-              onChange={onChangeHandler}
-               />
+              <input
+                type="text"
+                id="email"
+                placeholder="Email"
+                name={RegisterFormKeys.Email}
+                value={formValues[RegisterFormKeys.Email]}
+                onChange={onChangeHandler}
+              />
             </span>
           </p>
           <p className="field">
@@ -50,7 +50,7 @@ const {formValues,onChangeHandler, onSubmit}=useForm({
                 name={RegisterFormKeys.Password}
                 value={formValues[RegisterFormKeys.Password]}
                 onChange={onChangeHandler}
-                />
+              />
             </span>
           </p>
           <p className="field">
