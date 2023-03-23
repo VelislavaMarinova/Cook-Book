@@ -7,6 +7,8 @@ const DetailsPage = () => {
     const recipes = useContext(DataContext);
     const { isAuthenticated, userId } = useContext(AuthContext)
     const { recipeId } = useParams()
+
+    //or getOne
     const selectedRecipe = recipes.find(x => x._id === recipeId)
     console.log(selectedRecipe);
 

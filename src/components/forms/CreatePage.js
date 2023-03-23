@@ -1,54 +1,95 @@
-import "./forms.css"
+import "./forms.css";
+import useForm from "../../hooks/useForm";
+import { useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
+
+const CreateFormKeys = {
+  Title: 'title',
+  Description: 'description',
+  Ingredients: 'ingredients',
+  Image: 'imageUrl',
+  Method: 'method',
+}; 
+
 const CreatePage = ({
   onFormClose,
+  onCreateSubmit,
 }) => {
+// return
+// const{onCreateSubmit}=useContext(AuthContext)
+
+  const { formValues, onChangeHandler, onSubmit } = useForm({
+    [CreateFormKeys.Title]: '',
+    [CreateFormKeys.Description]: '',
+    [CreateFormKeys.Ingredients]: '',
+    [CreateFormKeys.Image]: '',
+    [CreateFormKeys.Method]: '',
+},onCreateSubmit)
+
   return (
     <section id="create-page" className="create" >
-      <form id="create-form" action="" method="">
+      <form id="create-form" method="POST" onSubmit={onSubmit} >
         <fieldset>
           <legend>Add new Recipe</legend>
           <p className="field">
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Title:</label>
             <span className="input">
-              <input type="text" name="title" id="title" placeholder="Title" />
+              <input
+                type="text"
+                id="title"
+                placeholder="Title"
+                name={CreateFormKeys.Title}
+                value={formValues[CreateFormKeys.Title]}
+                onChange={onChangeHandler}
+              />
             </span>
           </p>
           <p className="field">
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">Description:</label>
             <span className="input">
               <textarea
-                name="description"
                 id="description"
                 placeholder="Description"
-                defaultValue={""}
+                name={CreateFormKeys.Description}
+                value={formValues[CreateFormKeys.Description]}
+                onChange={onChangeHandler}
               />
             </span>
           </p>
           <p className="field">
-            <label htmlFor="description">Ingredients</label>
+            <label htmlFor="description">Ingredients:</label>
             <span className="input">
               <textarea
-                name="description"
                 id="description"
                 placeholder="Ingredients"
-                defaultValue={""}
+                name={CreateFormKeys.Ingredients}
+                value={formValues[CreateFormKeys.Ingredients]}
+                onChange={onChangeHandler}
               />
             </span>
           </p>
           <p className="field">
-            <label htmlFor="image">Image</label>
+            <label htmlFor="image">Image:</label>
             <span className="input">
-              <input type="text" name="imageUrl" id="image" placeholder="Image" />
+              <input
+                type="text"
+                id="image"
+                placeholder="Image"
+                name={CreateFormKeys.Image}
+                value={formValues[CreateFormKeys.Image]}
+                onChange={onChangeHandler}
+              />
             </span>
           </p>
           <p className="field">
-            <label htmlFor="description">Method</label>
+            <label htmlFor="description">Method:</label>
             <span className="input">
               <textarea
-                name="description"
-                id="description"
+                id="method"
                 placeholder="Method"
-                defaultValue={""}
+                name={CreateFormKeys.Method}
+                value={formValues[CreateFormKeys.Method]}
+                onChange={onChangeHandler}
               />
             </span>
           </p>
