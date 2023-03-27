@@ -1,5 +1,7 @@
 import "./forms.css";
 import useForm from "../../hooks/useForm";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 
 const CreateFormKeys = {
@@ -14,6 +16,7 @@ const CreatePage = ({
   onFormClose,
   onCreateSubmit,
 }) => {
+  const{firstName,lastName}=useContext(AuthContext);
   // return
   // const{onCreateSubmit}=useContext(AuthContext)
 
@@ -38,9 +41,22 @@ const CreatePage = ({
               <input
                 type="text"
                 id="title"
-                placeholder="Title"
+                placeholder="Title:"
                 name={CreateFormKeys.Title}
                 value={formValues[CreateFormKeys.Title]}
+                onChange={onChangeHandler}
+              />
+            </span>
+          </p>
+          <p className="field">
+            <label htmlFor="title">Created By:</label>
+            <span className="input">
+              <input
+                type="text"
+                id="title"
+                placeholder="Created By:"
+                name={CreateFormKeys.Title}
+                value={`${firstName} ${lastName}`}
                 onChange={onChangeHandler}
               />
             </span>
@@ -50,7 +66,7 @@ const CreatePage = ({
             <span className="input">
               <textarea
                 id="description"
-                placeholder="Description"
+                placeholder="Description:"
                 name={CreateFormKeys.Description}
                 value={formValues[CreateFormKeys.Description]}
                 onChange={onChangeHandler}
@@ -62,7 +78,7 @@ const CreatePage = ({
             <span className="input">
               <textarea
                 id="description"
-                placeholder="Ingredients"
+                placeholder="Ingredients:"
                 name={CreateFormKeys.Ingredients}
                 value={formValues[CreateFormKeys.Ingredients]}
                 onChange={onChangeHandler}
@@ -75,7 +91,7 @@ const CreatePage = ({
               <input
                 type="text"
                 id="image"
-                placeholder="Image"
+                placeholder="Image:"
                 name={CreateFormKeys.Image}
                 value={formValues[CreateFormKeys.Image]}
                 onChange={onChangeHandler}
@@ -87,7 +103,7 @@ const CreatePage = ({
             <span className="input">
               <textarea
                 id="method"
-                placeholder="Method"
+                placeholder="Method:"
                 name={CreateFormKeys.Method}
                 value={formValues[CreateFormKeys.Method]}
                 onChange={onChangeHandler}

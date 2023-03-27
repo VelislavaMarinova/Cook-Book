@@ -4,7 +4,7 @@ import './OtherRecipes.css'
 const OtherRecipes = ({
     recipe,
 }) => {
-    console.log(recipe);
+    // console.log(recipe);
     return (
         <li className="otherRecipes">
             <h3>{recipe.name}</h3>
