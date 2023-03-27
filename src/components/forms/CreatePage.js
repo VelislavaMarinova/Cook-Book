@@ -3,27 +3,29 @@ import useForm from "../../hooks/useForm";
 
 
 const CreateFormKeys = {
-  Title: 'title',
+  Title: 'name',
   Description: 'description',
   Ingredients: 'ingredients',
   Image: 'imageUrl',
   Method: 'method',
-}; 
+};
 
 const CreatePage = ({
   onFormClose,
   onCreateSubmit,
 }) => {
-// return
-// const{onCreateSubmit}=useContext(AuthContext)
+  // return
+  // const{onCreateSubmit}=useContext(AuthContext)
 
-  const { formValues, onChangeHandler, onSubmit } = useForm({
-    [CreateFormKeys.Title]: '',
-    [CreateFormKeys.Description]: '',
-    [CreateFormKeys.Ingredients]: '',
-    [CreateFormKeys.Image]: '',
-    [CreateFormKeys.Method]: '',
-},onCreateSubmit)
+  const { formValues, onChangeHandler, onSubmit } = useForm(
+    {
+      [CreateFormKeys.Title]: '',
+      [CreateFormKeys.Description]: '',
+      [CreateFormKeys.Ingredients]: '',
+      [CreateFormKeys.Image]: '',
+      [CreateFormKeys.Method]: '',
+    },
+    onCreateSubmit)
 
   return (
     <section id="create-page" className="create" >

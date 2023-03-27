@@ -38,9 +38,9 @@ const DetailsPage = () => {
             <section id="details-page" className="details">
                 <div className="recipe-information">
                     <h3>{selectedRecipe.Name}</h3>
-                    <p className="type">Description: {selectedRecipe.Description}</p>
+                    <p className="type">Description: {selectedRecipe.description}</p>
                     <p className="img">
-                        <img src={selectedRecipe.url} />
+                        <img src={selectedRecipe.imageUrl} />
                     </p>
 
                     <div className="actions">
@@ -77,13 +77,13 @@ const DetailsPage = () => {
                 <div className="book-description">
                     <h3>Ingredients:</h3>
                     <p>
-                        {selectedRecipe.Ingredients}
+                        {selectedRecipe.ingredients}
                     </p>
                 </div>
                 <div className="book-description">
                     <h3>Method:</h3>
                     <p>
-                        {selectedRecipe.Method}
+                        {selectedRecipe.method}
                     </p>
                 </div>
                 <div>

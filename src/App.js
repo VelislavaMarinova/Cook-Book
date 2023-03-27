@@ -23,8 +23,15 @@ function App() {
   const navigate = useNavigate()
   const [recipes, setRecipes] = useState([]);
 
-  const recipeService = recipeServiceFactory();//auth.accessToken
+  const localData=JSON.parse(localStorage.getItem('auth'));
+  let token=''
+  if(localData){
+  token= localData.accessToken
+  
+  // console.log(token);
 
+}
+const recipeService = recipeServiceFactory(token);//auth.accessToken
 
   useEffect(() => {
     recipeService.getAll()
@@ -44,9 +51,12 @@ function App() {
 
 
   const onCreateSubmit = async (data) => {
+    // console.log(data);
     const newRecipe = await recipeService.create(data);
+    // console.log(newRecipe);
 
-    setRecipes(state => [...state, newRecipe]);
+    setRecipes(state => [newRecipe,...state, ]);
+  console.log(recipes);  
 
     navigate('/catalog');
   }
