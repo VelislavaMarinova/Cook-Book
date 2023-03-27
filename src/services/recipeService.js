@@ -1,13 +1,13 @@
 import { requestFactory } from './requester';
-
-const baseUrl = 'http://localhost:3030/data/recipes?sortBy=_createdOn%20desc';
+const baseUrl='http://localhost:3030/data/recipes'
+const sort = '?sortBy=_createdOn%20desc';
 const selection='?select=_id%2Cname%2CimageUrl%2Cdescription';
 
 export const recipeServiceFactory = (token) => {
     const request = requestFactory(token);
 
     const getAll = async () => {
-        const result = await request.get(`${baseUrl}${selection}`);
+        const result = await request.get(`${baseUrl}${sort}${selection}`);
         const recipes = Object.values(result);
     
         return recipes;

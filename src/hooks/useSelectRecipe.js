@@ -13,10 +13,11 @@ const useSelectRecipe=(recipeId)=>{
     useEffect(() => {
         recipeService.getOne(recipeId)
             .then(result => {
+                // console.log(`result ${result}`);
                 setSelectedRecipe(result);
             })
     }, [recipeId]);
-    
+
     return selectedRecipe
 }
 export default useSelectRecipe;

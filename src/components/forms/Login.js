@@ -38,32 +38,32 @@ const Login = ({
         <fieldset>
           <legend>Login Form</legend>
           <p className="field">
-            <label htmlFor="email">Email</label>
+            {/* <label htmlFor="email">Email</label> */}
             <span className="input">
               <input
                 type="text"
                 name={LoginFormKeys.Email}
                 id="email"
-                placeholder="Email"
+                placeholder="Email:"
                 value={formValues[LoginFormKeys.Email]}
                 onChange={onChangeHandler} />
             </span>
           </p>
           <p className="field">
-            <label htmlFor="password">Password</label>
+            {/* <label htmlFor="password">Password</label> */}
             <span className="input">
               <input
                 type="password"
                 name={LoginFormKeys.Password}
                 id="password"
-                placeholder="Password"
+                placeholder="Password:"
                 value={formValues[LoginFormKeys.Password]}
                 onChange={onChangeHandler}
               />
             </span>
           </p>
           <div className="login-buttons">
-            <input className="button submit" type="submit" defaultValue="Login" />
+            <input className="button submit" type="submit" value="Sign in" />
             <button className="button close" type="button" onClick={onFormClose}>Close</button>
 
           </div>

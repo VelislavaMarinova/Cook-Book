@@ -11,7 +11,9 @@ const DetailsPage = () => {
     // const recipes = useContext(DataContext);
     const { isAuthenticated, userId } = useContext(AuthContext);
     const { recipeId } = useParams();
-    const selectedRecipe = useSelectRecipe(recipeId)
+    // console.log(recipeId);
+    const selectedRecipe = useSelectRecipe(recipeId);
+    // console.log(selectedRecipe);
 
     // const [selectedRecipe, setSelectedRecipe] = useState({});
     // const recipeService = useService(recipeServiceFactory)
@@ -30,6 +32,7 @@ const DetailsPage = () => {
 
 
     if (selectedRecipe) {
+        // console.log(selectedRecipe);
         const isOwner = userId === selectedRecipe._ownerId;
         const loggedUserNotOwner = isAuthenticated && !isOwner
         // console.log(isOwner)
@@ -37,7 +40,7 @@ const DetailsPage = () => {
         return (
             <section id="details-page" className="details">
                 <div className="recipe-information">
-                    <h3>{selectedRecipe.Name}</h3>
+                    <h3>{selectedRecipe.name}</h3>
                     <p className="type">Description: {selectedRecipe.description}</p>
                     <p className="img">
                         <img src={selectedRecipe.imageUrl} />
