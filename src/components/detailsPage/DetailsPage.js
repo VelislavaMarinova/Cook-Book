@@ -1,7 +1,8 @@
+import './comments.css'
 import { useParams } from "react-router-dom"
-import { useContext,useState,useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 // import DataContext from "../../contexts/DataContext";
-import AuthContext from "../../contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import { useService } from "../../hooks/useService";
 import { recipeServiceFactory } from "../../services/recipeService";
 import useSelectRecipe from "../../hooks/useSelectRecipe";
@@ -10,7 +11,7 @@ const DetailsPage = () => {
     // const recipes = useContext(DataContext);
     const { isAuthenticated, userId } = useContext(AuthContext);
     const { recipeId } = useParams();
-    const selectedRecipe=useSelectRecipe(recipeId)
+    const selectedRecipe = useSelectRecipe(recipeId)
 
     // const [selectedRecipe, setSelectedRecipe] = useState({});
     // const recipeService = useService(recipeServiceFactory)
@@ -31,8 +32,8 @@ const DetailsPage = () => {
     if (selectedRecipe) {
         const isOwner = userId === selectedRecipe._ownerId;
         const loggedUserNotOwner = isAuthenticated && !isOwner
-        console.log(isOwner)
-        console.log(loggedUserNotOwner);
+        // console.log(isOwner)
+        // console.log(loggedUserNotOwner);
         return (
             <section id="details-page" className="details">
                 <div className="recipe-information">
@@ -41,6 +42,7 @@ const DetailsPage = () => {
                     <p className="img">
                         <img src={selectedRecipe.url} />
                     </p>
+
                     <div className="actions">
                         {/* Edit/Delete buttons ( Only for creator of this book )  */}
                         {isOwner && (<>
@@ -84,6 +86,32 @@ const DetailsPage = () => {
                         {selectedRecipe.Method}
                     </p>
                 </div>
+                <div>
+                    <h2>Comments:</h2>
+                    <ul>
+                        {/* {game.comments && Object.values(game.comments).map(x => (
+                                <li key={x._id} className="comment">
+                                    <p>{x.username}: {x.comment}</p>
+                                </li>
+                            ))} */}
+                    </ul>
+
+                    {/* {!Object.values(game.comments).length && (
+                        <p className="no-comment">No comments.</p>
+                    )} */}
+                </div>
+                <article className="create-comment">
+                <label>Add new comment:</label>
+                {/* onSubmit={onCommentSubmit} */}
+                <form className="form" >
+                {/* value={username} onChange={(e) => setUsername(e.target.value)} */}
+                    <input type="text" name="username" placeholder='Пешо'  />
+                    {/* value={comment} onChange={(e) => setComment(e.target.value)} */}
+                    <textarea name="comment" placeholder="Comment......"></textarea>
+                    <input className="btn submit" type="submit" value="Add Comment" />
+                </form>
+            </article>
+
             </section>
         )
     };

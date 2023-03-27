@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import useForm from "../../hooks/useForm";
-import AuthContext from "../../contexts/AuthContext";
+import {AuthContext} from "../../contexts/AuthContext";
 
 import "./forms.css";
 

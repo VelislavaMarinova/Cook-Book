@@ -1,7 +1,7 @@
 import "./forms.css"
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import AuthContext from "../../contexts/AuthContext";
+import { useContext,useEffect } from "react";
+import {AuthContext} from "../../contexts/AuthContext";
 import useForm from "../../hooks/useForm";
 
 const LoginFormKeys = {
@@ -22,7 +22,15 @@ const Login = ({
     },
     onLoginSubmit);
 
-
+    // const detectKeyDown = (e) => {
+    //   if (e.key === 'Escape') {
+    //     onFormClose()
+    //   }
+    // };
+  
+    // useEffect(() => {
+    //   document.addEventListener('keydown', detectKeyDown, true)
+    // }, [detectKeyDown]);
 
   return (
     <section id="login-page" className="login">
