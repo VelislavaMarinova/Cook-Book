@@ -15,7 +15,7 @@ const useSelectRecipe=(recipeId)=>{
             .then(result => {
                 setSelectedRecipe(result);
             })
-    }, [recipeId]);
+    }, [recipeId,recipeService]);
     return selectedRecipe
 }
 export default useSelectRecipe;

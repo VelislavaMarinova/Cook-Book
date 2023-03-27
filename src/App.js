@@ -1,22 +1,18 @@
-import { Routes, Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-import AuthContext from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext'
 import DataContext from './contexts/DataContext';
-import { authServiceFactory } from './services/authService'
 import { recipeServiceFactory } from './services/recipeService';
 
-import Home from './components/home/Home';
 
+import Home from './components/home/Home';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Main from './components/main/Main';
 import Login from './components/forms/Login';
 import Register from './components/forms/Register';
 import CreatePage from './components/forms/CreatePage';
-import { useEffect, useState } from 'react';
-
-import useFetchRecipes from './hooks/useFetchRecipes';
 import DetailsPage from './components/detailsPage/DetailsPage';
 import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
@@ -26,99 +22,37 @@ import Logout from './components/forms/Logout';
 function App() {
   const navigate = useNavigate()
   const [recipes, setRecipes] = useState([]);
-  const [auth, setAuth] = useState({})
-  
-  const authService = authServiceFactory(auth.accessToken)    
-  const recipeService = recipeServiceFactory(auth.accessToken);
-  
+
+  const recipeService = recipeServiceFactory();//auth.accessToken
+
 
   useEffect(() => {
-      recipeService.getAll()
-          .then(result => {
-              setRecipes(result)
-          })
+    recipeService.getAll()
+      .then(result => {
+        setRecipes(result)
+      })
   }, []);
 
 
-  
+
 
   const onFormClose = () => {
     console.log('close');
     navigate('/')
   }
 
-  const detectKeyDown = (e) => {
-    if (e.key === 'Escape') {
-      onFormClose()
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('keydown', detectKeyDown, true)
-  }, [detectKeyDown]);
 
 
-  const onLoginSubmit = async (data) => {
-
-    // console.log(data);
-    try {
-      const result = await authService.login(data);
-
-      setAuth(result);
-
-      navigate('/catalog');
-    } catch (error) {
-      alert('incorrect Email or Password')
-      // console.log('There is a problem');
-    }
-    // 1. Before useForm Hook,to try if it works
-    // e.preventDefault();
-    // console.log(Object.fromEntries((new FormData(e.target))));
-
-  }
-  const onRegisterSubmit = async (data) => {
-    console.log(data);
-    const { confirmPass, ...registerData } = data;
-    if (confirmPass !== registerData.password) {
-      alert('Password and Repaet Password don\'t match!');
-      return;
-    }
-    try {
-      const result = await authService.register(registerData)
-      console.log(result);
-      setAuth(result);
-      navigate('/catalog');
-    } catch (error) {
-      alert('problem')
-    }
-  };
-
-  const onLogout = async () => {
-    await authService.logout()
-    setAuth({})
-  };
-
-  const onCreateSubmit=async(data)=>{
+  const onCreateSubmit = async (data) => {
     const newRecipe = await recipeService.create(data);
 
     setRecipes(state => [...state, newRecipe]);
 
     navigate('/catalog');
   }
-  const authContextData = {
-    onLoginSubmit,
-    onRegisterSubmit,
-    onLogout,
-    onCreateSubmit,
-    userId: auth._id,
-    token: auth.accessToken,
-    userEmail: auth.email,
-    isAuthenticated: !!auth.accessToken
-
-  }
 
   return (
-    <AuthContext.Provider value={authContextData}>
+    <AuthProvider>
       <DataContext.Provider value={recipes}>
 
         <div id="container">
@@ -141,9 +75,13 @@ function App() {
         </div>
       </DataContext.Provider>
 
-    </AuthContext.Provider>
+    </AuthProvider>
 
   );
 }
 
 export default App;
+
+
+
+
