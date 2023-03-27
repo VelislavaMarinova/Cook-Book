@@ -1,7 +1,7 @@
 import { requestFactory } from './requester';
 
-const baseUrl = 'http://localhost:3030/data/recipes';
-const selection='?select=_id%2CName%2Curl%2CDescription';
+const baseUrl = 'http://localhost:3030/data/recipes?sortBy=_createdOn%20desc';
+const selection='?select=_id%2Cname%2CimageUrl%2Cdescription';
 
 export const recipeServiceFactory = (token) => {
     const request = requestFactory(token);
@@ -22,7 +22,7 @@ export const recipeServiceFactory = (token) => {
     const create = async (recipeData) => {
         const result = await request.post(baseUrl, recipeData);
     
-        console.log(result);
+        // console.log(result);
     
         return result;
     };

@@ -49,7 +49,7 @@ const useForm = (initialValues, onSubmitHandler) => {
         formValues,
         onChangeHandler,
         onSubmit,
-        changeValues
+        changeValues,
     };
 };
 export default useForm;
