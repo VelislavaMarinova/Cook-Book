@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 
 const Header = ({ }) => {
-  const { isAuthenticated, userEmail, isFormActive } = useContext(AuthContext)
+  const { isAuthenticated, firstName,lastName } = useContext(AuthContext)
 
   return (
     <header id="site-header">
@@ -31,7 +31,7 @@ const Header = ({ }) => {
             (
               <div id="user">
                 <span>
-                  Welcome, {userEmail}
+                  Welcome, {firstName} {lastName}
                 </span>
                 <Link className="button" to="/catalog">
                   All Recipes
@@ -41,7 +41,7 @@ const Header = ({ }) => {
                 </Link>
 
                 <Link className="button" to="/create-recipe">
-                  Add Recipes
+                  Add New Recipe
                 </Link>
                 <Link className="button" to="/logout">
                   Logout

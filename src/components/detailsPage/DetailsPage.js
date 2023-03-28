@@ -1,5 +1,5 @@
 import './comments.css'
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useContext, useState, useEffect } from "react";
 // import DataContext from "../../contexts/DataContext";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -13,7 +13,7 @@ const DetailsPage = () => {
     const { recipeId } = useParams();
     // console.log(recipeId);
     const selectedRecipe = useSelectRecipe(recipeId);
-    // console.log(selectedRecipe);
+    console.log(selectedRecipe);
 
     // const [selectedRecipe, setSelectedRecipe] = useState({});
     // const recipeService = useService(recipeServiceFactory)
@@ -41,6 +41,7 @@ const DetailsPage = () => {
             <section id="details-page" className="details">
                 <div className="recipe-information">
                     <h3>{selectedRecipe.name}</h3>
+                    <p>Created by: {selectedRecipe.author}</p>
                     <p className="type">Description: {selectedRecipe.description}</p>
                     <p className="img">
                         <img src={selectedRecipe.imageUrl} />
@@ -49,9 +50,9 @@ const DetailsPage = () => {
                     <div className="actions">
                         {/* Edit/Delete buttons ( Only for creator of this book )  */}
                         {isOwner && (<>
-                            <a className="button" href="#">
+                            <Link className="button" to={`/recipes/${recipeId}/edit`}>
                                 Edit
-                            </a>
+                            </Link>
                             <a className="button" href="#">
                                 Delete
                             </a>
