@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 const CreateFormKeys = {
   Title: 'name',
+  Author: 'author',
   Description: 'description',
   Ingredients: 'ingredients',
   Image: 'imageUrl',
@@ -23,6 +24,7 @@ const CreatePage = ({
   const { formValues, onChangeHandler, onSubmit } = useForm(
     {
       [CreateFormKeys.Title]: '',
+      [CreateFormKeys.Author]:`${firstName} ${lastName}`,
       [CreateFormKeys.Description]: '',
       [CreateFormKeys.Ingredients]: '',
       [CreateFormKeys.Image]: '',
@@ -36,12 +38,12 @@ const CreatePage = ({
         <fieldset>
           <legend>Add new Recipe</legend>
           <p className="field">
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="title">Recipe title:</label>
             <span className="input">
               <input
                 type="text"
                 id="title"
-                placeholder="Title:"
+                placeholder="Recipe title:"
                 name={CreateFormKeys.Title}
                 value={formValues[CreateFormKeys.Title]}
                 onChange={onChangeHandler}
@@ -53,11 +55,11 @@ const CreatePage = ({
             <span className="input">
               <input
                 type="text"
-                id="title"
+                id="createdBy"
                 placeholder="Created By:"
-                name={CreateFormKeys.Title}
-                value={`${firstName} ${lastName}`}
-                onChange={onChangeHandler}
+                name={CreateFormKeys.Author}
+                defaultValue={`${firstName} ${lastName}`}
+                // onChange={onChangeHandler}
               />
             </span>
           </p>
