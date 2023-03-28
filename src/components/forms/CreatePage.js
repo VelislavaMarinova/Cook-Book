@@ -58,8 +58,8 @@ const CreatePage = ({
                 id="createdBy"
                 placeholder="Created By:"
                 name={CreateFormKeys.Author}
-                defaultValue={`${firstName} ${lastName}`}
-                // onChange={onChangeHandler}
+                value={`${firstName} ${lastName}`}
+                onChange={onChangeHandler}
               />
             </span>
           </p>
