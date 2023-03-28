@@ -65,7 +65,7 @@ const Register = ({
               <input
                 type="text"
                 id="lastName"
-                placeholder="Last Name"
+                placeholder="Last Name:"
                 name={RegisterFormKeys.LastName}
                 value={formValues[RegisterFormKeys.LastName]}
                 onChange={onChangeHandler}

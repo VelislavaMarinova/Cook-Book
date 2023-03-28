@@ -21,18 +21,8 @@ import Logout from './components/forms/Logout';
 
 
 function App() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [recipes, setRecipes] = useState([]);
-
-  const localData = JSON.parse(localStorage.getItem('auth'));
-  let token = ''
-  if (localData) {
-    token = localData.accessToken
-
-    // console.log(token);
-
-  }
-  const recipeService = recipeServiceFactory(token);//auth.accessToken
 
   useEffect(() => {
     recipeService.getAll()
@@ -41,18 +31,19 @@ function App() {
       })
   }, []);
 
-
-
+  const localData = JSON.parse(localStorage.getItem('auth'));
+  let token = ''
+  if (localData) {
+    token = localData.accessToken;
+  }
+  const recipeService = recipeServiceFactory(token);//auth.accessToken
 
   const onFormClose = () => {
-    console.log('close');
-    navigate('/')
+    navigate('/');
   }
 
-
-
   const onCreateSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     const newRecipe = await recipeService.create(data);
     // console.log(newRecipe);
 
@@ -62,24 +53,13 @@ function App() {
     navigate('/catalog');
   };
 
-  // const onEditSubmit = async (recipeId, data) => {
-  //   // console.log(data);
-  //   const editedRecipe = await recipeService.edit(recipeId, data);
-  //   // console.log(newRecipe);
-
-  //   setRecipes(state => state.map(x => x._id === recipeId ? data : x));
-  //   console.log(recipes);
-
-  //   navigate('/catalog');
-  // }
-
   const onEditSubmit = async (values) => {
     const result = await recipeService.edit(values._id, values);
 
-    setRecipes(state => state.map(x => x._id === values._id ? result : x))
+    setRecipes(state => state.map(x => x._id === values._id ? result : x));
 
     navigate(`/catalog/${values._id}`);
-}
+  }
 
   return (
     <AuthProvider>
