@@ -35,13 +35,13 @@ h4 { font-size: 1.6rem; }
 h5 { font-size: 1.4rem; }
 h6 { font-size: 1.2rem; }
 
-ul, ol {
+/* ul, ol {
 	padding-bottom: 1.5em;
-}
+} */
 
-ul, ol {
+/* ul, ol {
 	padding-left: 2em;
-}
+} */
 
 li {
 	list-style-position: inside;

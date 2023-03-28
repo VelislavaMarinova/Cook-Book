@@ -6,48 +6,65 @@ import { useContext } from 'react';
 
 
 const Header = ({ }) => {
-  const { isAuthenticated, firstName,lastName } = useContext(AuthContext)
+  const { isAuthenticated, firstName, lastName } = useContext(AuthContext)
 
   return (
-    <header id="site-header">
+    <header className="header">
       {/* Navigation */}
       <nav className="navbar">
         <section className="navbar-dashboard">
-          <Link to="/">Dashboard</Link>
-          {/* Guest users */}
-          {!isAuthenticated && (
+          <div className='header__logo'>
+            <Link to="/"><img src="./images/tasy.jpg" alt="tastyImg" /></Link>
+          </div>
+          <ul role='list' className="nav__elements">
 
-            <div id="guest">
-              <Link className="button" to="/login">
-                Login
-              </Link>
-              <Link className="button" to="/register">
-                Register
-              </Link>
-            </div>
-          )}
-          {/* Logged-in users */}
-          {isAuthenticated &&
-            (
-              <div id="user">
-                <span>
-                  Welcome, {firstName} {lastName}
-                </span>
-                <Link className="button" to="/catalog">
-                  All Recipes
-                </Link>
-                <Link className="button" to="#">
-                  My Recipes
-                </Link>
-
-                <Link className="button" to="/create-recipe">
-                  Add New Recipe
-                </Link>
-                <Link className="button" to="/logout">
-                  Logout
-                </Link>
-              </div>
+            {/* Guest users */}
+            {!isAuthenticated && (
+              <>
+                <li>
+                  <Link  to="/login">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link  to="/register">
+                    Register
+                  </Link>
+                </li>
+              </>
             )}
+            {/* Logged-in users */}
+            {isAuthenticated && (
+              <>
+                <li>
+                  Welcome, {firstName} {lastName}
+                </li>
+
+                <li>
+                  <Link to="/catalog">
+                    All Recipes
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#">
+                    My Recipes
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/create-recipe">
+                    Add New Recipe
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/logout">
+                    Logout
+                  </Link>
+                </li>
+              </>
+
+
+            )}
+          </ul>
 
         </section>
       </nav>
