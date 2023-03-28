@@ -1,12 +1,14 @@
 
+.dashboard{
+    background-color: antiquewhite;
+}
+
 .dashboard>nav>ul {
     display: flex;
-
 }
 
 .dashboard>nav>ul li:not(:last-child) {
     padding-right: 1rem;
-
 }
 
 .dashboard .navbar {

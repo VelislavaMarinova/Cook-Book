@@ -1,0 +1,42 @@
+.recipeCard {
+    border-radius: 10px;
+    padding: 2rem 3rem;
+    background-color: white;
+    text-align: center;
+    margin: 2rem;
+    position: relative;
+    width: 400px;
+    height: 800px;
+    transition: all 0.3s cubic-bezier(.50, .80, .25, 1);
+    box-shadow: -8px -2px 28px -8px #000000;
+    align-items: center;
+}
+/* .recipeCard a{
+    margin-bottom: 30px;
+} */
+.recipeCard__info{
+  height: 30%;
+}
+.recipeCard__img{
+    height: 50%;
+    width: 100%;
+    margin-bottom: 3rem;
+    /* margin-top: 1.5rem; */
+}
+
+.recipeCard img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    
+}
+.recipeCard p{
+
+    vertical-align: middle;
+    
+}
+.recipeCard__desc{
+    font-weight: 600;
+    font-size: 1.2rem;
+}

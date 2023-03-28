@@ -1,5 +1,5 @@
 body {
-    background-image: url("../images/background.png");
+    background-color: antiquewhite;
     padding: 0px;
     margin: 0px;
     height: 100%;
@@ -42,14 +42,19 @@ body {
     border-radius: 1rem;
     text-decoration: none;
     font-weight: bold;
-    background: lightcoral;
+    background: #3f2212;
     color: rgb(255, 255, 255);
-    border: none;
+    border: 1px solid  transparent;
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
     margin-bottom: 10px;
     margin: 5px;
+}
+.button:hover{
+    background-color: antiquewhite;
+    color: #3f2212;
+    border: 1px solid  #3f2212;
 }
 a {
     text-decoration: none;
@@ -71,7 +76,7 @@ li {
     padding: 0rem;
 }
 
-img {
+/* img {
     display: block;
     position: absolute;
     left: 0;
@@ -79,7 +84,7 @@ img {
     width: 100%;
     height: auto;
     object-fit: cover;
-}
+} */
 
 .img::after {
     display: block;
@@ -90,4 +95,4 @@ img {
 h3 {
     margin-bottom: 0;
     text-align: auto;
-}
+} 
