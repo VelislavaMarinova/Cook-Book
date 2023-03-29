@@ -8,6 +8,7 @@ export const recipeServiceFactory = (token) => {
 
     const getAll = async () => {
         const result = await request.get(`${baseUrl}${sort}${selection}`);
+        console.log(result);
         const recipes = Object.values(result);
     
         return recipes;

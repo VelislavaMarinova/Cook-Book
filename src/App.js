@@ -17,19 +17,21 @@ import EditPage from './components/editPage/EditPage';
 import DetailsPage from './components/detailsPage/DetailsPage';
 import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
+import useFetchRecipes from './hooks/useFetchRecipes';
 
 
 
 function App() {
   const navigate = useNavigate();
-  const [recipes, setRecipes] = useState([]);
+  const [recipes,setRecipes]=useFetchRecipes();
+  // const [recipes, setRecipes] = useState([]);
 
-  useEffect(() => {
-    recipeService.getAll()
-      .then(result => {
-        setRecipes(result)
-      })
-  }, []);
+  // useEffect(() => {
+  //   recipeService.getAll()
+  //     .then(result => {
+  //       setRecipes(result)
+  //     })
+  // }, []);
 
   const localData = JSON.parse(localStorage.getItem('auth'));
   let token = ''

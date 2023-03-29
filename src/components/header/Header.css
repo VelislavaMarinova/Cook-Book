@@ -13,6 +13,9 @@
      margin-top: 20px;
      background-color: white;
  }
+ .header li {
+    list-style-type: none;
+}
 
  nav.navbar img {
      margin-top: 24px;
