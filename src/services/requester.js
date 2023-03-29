@@ -37,10 +37,10 @@ const request = async (method, token, url, data) => {
 
 export const requestFactory = (token) => {
     return {
-        get: request.bind(null, 'GET', token),
-        post: request.bind(null, 'POST', token),
-        put: request.bind(null, 'PUT', token),
-        patch: request.bind(null, 'PATCH', token),
-        delete: request.bind(null, 'DELETE', token),
+        get: (url,data)=>request('GET',token,url,data),
+        post: (url,data)=>request('POST',token,url,data),
+        put: (url,data)=>request('PUT',token,url,data),
+        patch: (url,data)=>request('PATCH',token,url,data),
+        delete: (url,data)=>request('DELETE',token,url,data),
     }
 };

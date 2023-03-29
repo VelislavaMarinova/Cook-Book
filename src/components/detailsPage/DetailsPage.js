@@ -11,9 +11,10 @@ const DetailsPage = () => {
     // const recipes = useContext(DataContext);
     const { isAuthenticated, userId } = useContext(AuthContext);
     const { recipeId } = useParams();
-    // console.log(recipeId);
+    console.log(recipeId);
     const selectedRecipe = useSelectRecipe(recipeId);
-    console.log(selectedRecipe);
+    // console.log(`und: ${selectedRecipe.ingredients}`);
+    // console.log(selectedRecipe);
 
     // const [selectedRecipe, setSelectedRecipe] = useState({});
     // const recipeService = useService(recipeServiceFactory)
@@ -21,20 +22,32 @@ const DetailsPage = () => {
 
     // useEffect(() => {
     //     recipeService.getOne(recipeId)
-    //         .then(result => {
-    //             setSelectedRecipe(result);
-    //         })
+    //     .then(result => {
+    //         setSelectedRecipe(result);
+    //     })
     // }, [recipeId]);
 
+    if (selectedRecipe === undefined) {
+        console.log('und');
+    } else (
+        selectedRecipe.ingredients?.map(x => console.log(x))
+        // console.log('ok')
+
+    )
     //or getOne
     // const selectedRecipe = recipes.find(x => x._id === recipeId)
     // console.log(selectedRecipe);
 
-
-    if (selectedRecipe) {
+    if (selectedRecipe._id) {
+        const step=0;
+        console.log('selected');
         // console.log(selectedRecipe);
         const isOwner = userId === selectedRecipe._ownerId;
         const loggedUserNotOwner = isAuthenticated && !isOwner
+        //    const split= selectedRecipe.ingredients.split(', ')
+        console.log(`selected: ${selectedRecipe}`);
+        // let ingredientsArr = JSON.parse(selectedRecipe.ingredients);
+        // console.log(ingredientsArr)
         // console.log(isOwner)
         // console.log(loggedUserNotOwner);
         return (
@@ -81,14 +94,14 @@ const DetailsPage = () => {
                 <div className="book-description">
                     <h3>Ingredients:</h3>
                     <p>
-                        {selectedRecipe.ingredients}
+                        {selectedRecipe.ingredients?.map(x => <li key={x}>{x}</li>)}
                     </p>
                 </div>
                 <div className="book-description">
-                    <h3>Method:</h3>
-                    <p>
-                        {selectedRecipe.method}
-                    </p>
+                    <h3>Method steps:</h3>
+                    <ol>
+                        {selectedRecipe.method.map(x=><li key={x}>{x}</li>)}
+                    </ol>
                 </div>
                 <div>
                     <h2>Comments:</h2>
@@ -105,16 +118,16 @@ const DetailsPage = () => {
                     )} */}
                 </div>
                 <article className="create-comment">
-                <label>Add new comment:</label>
-                {/* onSubmit={onCommentSubmit} */}
-                <form className="form" >
-                {/* value={username} onChange={(e) => setUsername(e.target.value)} */}
-                    <input type="text" name="username" placeholder='Пешо'  />
-                    {/* value={comment} onChange={(e) => setComment(e.target.value)} */}
-                    <textarea name="comment" placeholder="Comment......"></textarea>
-                    <input className="btn submit" type="submit" value="Add Comment" />
-                </form>
-            </article>
+                    <label>Add new comment:</label>
+                    {/* onSubmit={onCommentSubmit} */}
+                    <form className="form" >
+                        {/* value={username} onChange={(e) => setUsername(e.target.value)} */}
+                        <input type="text" name="username" placeholder='Пешо' />
+                        {/* value={comment} onChange={(e) => setComment(e.target.value)} */}
+                        <textarea name="comment" placeholder="Comment......"></textarea>
+                        <input className="btn submit" type="submit" value="Add Comment" />
+                    </form>
+                </article>
 
             </section>
         )
