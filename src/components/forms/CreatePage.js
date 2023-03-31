@@ -6,15 +6,15 @@ import DataContext from "../../contexts/DataContext";
 
 
 const CreateFormKeys = {
-  Title: 'name',
+  Title: 'title',
   Author: 'author',
   Description: 'description',
   Ingredients: 'ingredients',
   Image: 'imageUrl',
   Method: 'method',
-  PrepareTime:'prepare-time',
-  CookTime:'cook-time',
-  Type: 'type',
+  PrepareTime:'prepare',
+  CookTime:'cook',
+  Category: 'category',
   Dificulty:'dificulty',
   Serves: 'serves',
 };
@@ -38,7 +38,7 @@ const CreatePage = () => {
       [CreateFormKeys.PrepareTime]: '',
       [CreateFormKeys.CookTime]:'',
       [CreateFormKeys.Dificulty]: '',
-      [CreateFormKeys.Type]:'',
+      [CreateFormKeys.Category]:'',
       [CreateFormKeys.Serves]:'',
 
     },
@@ -76,22 +76,25 @@ const CreatePage = () => {
             </span>
           </p>
           <p className="field">
-            <label htmlFor="type">Type</label>
+            <label htmlFor="category">Category: </label>
             <span className="input">
-              <select id="type" name="type" value={formValues.type} onChange={onChangeHandler}>
+              <select id="category" name={CreateFormKeys.Category} value={formValues.category} onChange={onChangeHandler}>
+                <option value="choose-category">Choose category:</option>
                 <option value="main-dishes">Main Dishes</option>
                 <option value="salads">Salads</option>
                 <option value="soups">Soups</option>
                 <option value="soups">Drinks</option>
+                <option value="dessert">Desstert</option>
                 <option value="quick">Quiqk Recipes</option>
                 <option value="healthy">Healthy Recipes</option>
               </select>
             </span>
           </p>
           <p className="field">
-            <label htmlFor="type">Dificulty Level:</label>
+            <label htmlFor="dificulty">Dificulty Level:</label>
             <span className="input">
-              <select id="dificulty" name="dificulty"  value={formValues.dificulty} onChange={onChangeHandler}>
+              <select id="dificulty" name={CreateFormKeys.Dificulty}  value={formValues.dificulty} onChange={onChangeHandler}>
+              <option value="choose-dificulty">Choose dificulty level:</option>
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
@@ -99,11 +102,11 @@ const CreatePage = () => {
             </span>
           </p>
           <p className="field">
-            <label htmlFor="prepare-time">Prepare time:</label>
+            <label htmlFor="prepare">Prepare time:</label>
             <span className="input">
               <input
                 type="text"
-                id="prepare-time"
+                id="prepare"
                 placeholder="Prepare time:"
                 name={CreateFormKeys.PrepareTime}
                 value={formValues[CreateFormKeys.PrepareTime]}
@@ -112,11 +115,11 @@ const CreatePage = () => {
             </span>
           </p>
           <p className="field">
-            <label htmlFor="cook-time">Cook time:</label>
+            <label htmlFor="cook">Cook time:</label>
             <span className="input">
               <input
                 type="text"
-                id="cook-time"
+                id="cook"
                 placeholder="Cook time:"
                 name={CreateFormKeys.CookTime}
                 value={formValues[CreateFormKeys.CookTime]}
@@ -154,7 +157,7 @@ const CreatePage = () => {
             <span className="input">
               <textarea
                 id="description"
-                placeholder="Example: 200g dark muscovado sugar||175g butter, chopped||700g luxury mixed dried fruit"
+                placeholder="Example:sugar||butter||fruits||..."
                 name={CreateFormKeys.Ingredients}
                 value={formValues[CreateFormKeys.Ingredients]}
                 onChange={onChangeHandler}
@@ -179,7 +182,7 @@ const CreatePage = () => {
             <span className="input">
               <textarea
                 id="method"
-                placeholder="Method:"
+                placeholder="Example: Step 1||Step 2||Step 3||..."
                 name={CreateFormKeys.Method}
                 value={formValues[CreateFormKeys.Method]}
                 onChange={onChangeHandler}
