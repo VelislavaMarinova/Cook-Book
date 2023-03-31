@@ -38,12 +38,18 @@ export const DataProvider = ({
         navigate('/catalog');
     };
 
-    const onEditSubmit = async (values) => {
-        const result = await recipeService.edit(values._id, values);
+    const onEditSubmit = async (data) => {
+        console.log(data);
+        const dataIngredints = data.ingredients.split("||")
+        const dataMethods = data.method.split("||")
+        data.ingredients=dataIngredints;
+        data.method=dataMethods
+        // console.log(`editet ${data}`);
+        const result = await recipeService.edit(data._id, data);
 
-        setRecipes(state => state.map(x => x._id === values._id ? result : x));
+        // setRecipes(state => state.map(x => x._id === data._id ? result : x));
 
-        navigate(`/catalog/${values._id}`);
+        navigate(`/catalog/${data._id}`);
     };
     const contextValues = {
         recipes,

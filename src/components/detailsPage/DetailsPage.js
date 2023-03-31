@@ -29,7 +29,8 @@ const DetailsPage = () => {
     if (selectedRecipe === undefined) {
         console.log('und');
     } else (
-        selectedRecipe.ingredients?.map(x => console.log(x))
+        console.log(`ingr ${selectedRecipe.ingredients}`)
+        // selectedRecipe.ingredients?.map(x => console.log(x))
         // console.log('ok')
 
     )
@@ -52,7 +53,7 @@ const DetailsPage = () => {
         return (
             <section id="details-page" className="details">
                 <div className="recipe-information">
-                    <h3>{selectedRecipe.name}</h3>
+                    <h3>{selectedRecipe.title}</h3>
                     <p className="catgory">Category: {selectedRecipe.category}</p>
                     <p>Created by: {selectedRecipe.author}</p>
                     <p className="description">Description: {selectedRecipe.description}</p>
