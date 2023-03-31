@@ -18,6 +18,7 @@ import EditPage from './components/editPage/EditPage';
 import DetailsPage from './components/detailsPage/DetailsPage';
 import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
+import RouteProtected from './components/common/RouteProtected';
 import useFetchRecipes from './hooks/useFetchRecipes';
 import { authServiceFactory } from './services/authService';
 import { useService } from './hooks/useService';
@@ -26,7 +27,7 @@ import { recipeServiceFactory } from './services/recipeService';
 
 
 function App() {
-  
+
   // const recipeserviseAuth = useService(recipeServiceFactory)
   // const [recipes, setRecipes] = useState([]);
 
@@ -44,7 +45,7 @@ function App() {
   // }
   // const recipeService = recipeServiceFactory(token);//auth.accessToken
 
-  
+
   return (
     <AuthProvider>
       <DataProvider>
@@ -57,11 +58,20 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/logout" element={<Logout />} />
-              <Route path="/register" element={<Register  />} />
-              <Route path='/create' element={<CreatePage />} />
-              <Route path="/recipes/:recipeId/edit" element={<EditPage />} />
+              <Route path="/register" element={<Register />} />
+
+              <Route path='/create' element={
+                <RouteProtected>
+                  <CreatePage />
+                </RouteProtected>} />
+              <Route path="/recipes/:recipeId/edit" element={
+                <RouteProtected>
+                  <EditPage />
+                </RouteProtected>} />
+
+
               {/* <Route path="/create" element={<CreatePage onFormClose={onFormClose} />} /> */}
-              <Route path="/catalog" element={<Catalog/>} />
+              <Route path="/catalog" element={<Catalog />} />
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
             </Routes>
           </Main>
