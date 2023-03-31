@@ -37,8 +37,8 @@ const CreatePage = () => {
       [CreateFormKeys.Method]: '',
       [CreateFormKeys.PrepareTime]: '',
       [CreateFormKeys.CookTime]:'',
-      // [CreateFormKeys.Dificulty]: '',
-      // [CreateFormKeys.Type]:'',
+      [CreateFormKeys.Dificulty]: '',
+      [CreateFormKeys.Type]:'',
       [CreateFormKeys.Serves]:'',
 
     },
@@ -75,10 +75,10 @@ const CreatePage = () => {
               />
             </span>
           </p>
-          {/* <p className="field">
+          <p className="field">
             <label htmlFor="type">Type</label>
             <span className="input">
-              <select id="type" name="type">
+              <select id="type" name="type" value={formValues.type} onChange={onChangeHandler}>
                 <option value="main-dishes">Main Dishes</option>
                 <option value="salads">Salads</option>
                 <option value="soups">Soups</option>
@@ -91,13 +91,13 @@ const CreatePage = () => {
           <p className="field">
             <label htmlFor="type">Dificulty Level:</label>
             <span className="input">
-              <select id="dificulty" name="dificulty">
-                <option value="main-dishes">Easy</option>
-                <option value="salads">Medium</option>
-                <option value="soups">Hard</option>
+              <select id="dificulty" name="dificulty"  value={formValues.dificulty} onChange={onChangeHandler}>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
               </select>
             </span>
-          </p> */}
+          </p>
           <p className="field">
             <label htmlFor="prepare-time">Prepare time:</label>
             <span className="input">

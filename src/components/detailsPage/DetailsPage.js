@@ -53,8 +53,13 @@ const DetailsPage = () => {
             <section id="details-page" className="details">
                 <div className="recipe-information">
                     <h3>{selectedRecipe.name}</h3>
+                    <p className="catgory">Category: {selectedRecipe.category}</p>
                     <p>Created by: {selectedRecipe.author}</p>
-                    <p className="type">Description: {selectedRecipe.description}</p>
+                    <p className="description">Description: {selectedRecipe.description}</p>
+                    <p className="dificulty">Dificulty level: {selectedRecipe.dificulty} </p>
+                    <p className="prepare">Prepare time: {selectedRecipe.prepare} </p>
+                    <p className="cook">Cook: {selectedRecipe.cook} </p>
+                    <p className="cook">Serves: {selectedRecipe.serves} </p>
                     <p className="img">
                         <img src={selectedRecipe.imageUrl} />
                     </p>
@@ -116,6 +121,7 @@ const DetailsPage = () => {
                         <p className="no-comment">No comments.</p>
                     )} */}
                 </div>
+                {isAuthenticated &&(
                 <article className="create-comment">
                     <label>Add new comment:</label>
                     {/* onSubmit={onCommentSubmit} */}
@@ -127,6 +133,8 @@ const DetailsPage = () => {
                         <input className="btn submit" type="submit" value="Add Comment" />
                     </form>
                 </article>
+
+                )}
 
             </section>
         )
