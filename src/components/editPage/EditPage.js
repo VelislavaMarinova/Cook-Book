@@ -3,7 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import { useService } from "../../hooks/useService";
 import { AuthContext } from "../../contexts/AuthContext";
-import { recipeServiceFactory } from '../../services/recipeService'
+import { recipeServiceFactory } from "../../services/recipeService";
+import { getOne } from '../../services/recipeService'
+import DataContext from "../../contexts/DataContext";
 
 const EditFormKeys = {
     Id: '_id',
@@ -15,13 +17,12 @@ const EditFormKeys = {
     Method: 'method',
 };
 
-const EditPage = ({
-    onFormClose,
-    onEditSubmit,
-}) => {
-    const { firstName, lastName } = useContext(AuthContext);
+const EditPage = () => {
+    const { firstName, lastName, onFormClose } = useContext(AuthContext);
+    const { onEditSubmit } = useContext(DataContext)
     const { recipeId } = useParams();
     const recipeService = useService(recipeServiceFactory);
+    
     const { formValues, onChangeHandler, onSubmit, changeValues } = useForm({
         [EditFormKeys.Id]: '',
         [EditFormKeys.Title]: '',

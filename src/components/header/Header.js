@@ -51,7 +51,7 @@ const Header = ({ }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/create-recipe">
+                  <Link to="/create">
                     Add New Recipe
                   </Link>
                 </li>
