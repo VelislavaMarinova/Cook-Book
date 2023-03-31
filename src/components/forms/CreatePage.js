@@ -2,6 +2,7 @@ import "./forms.css";
 import useForm from "../../hooks/useForm";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import DataContext from "../../contexts/DataContext";
 
 
 const CreateFormKeys = {
@@ -11,24 +12,35 @@ const CreateFormKeys = {
   Ingredients: 'ingredients',
   Image: 'imageUrl',
   Method: 'method',
+  PrepareTime:'prepare-time',
+  CookTime:'cook-time',
+  Type: 'type',
+  Dificulty:'dificulty',
+  Serves: 'serves',
 };
 
-const CreatePage = ({
-  onFormClose,
-  onCreateSubmit,
-}) => {
-  const{firstName,lastName}=useContext(AuthContext);
+const CreatePage = () => {
+
+  const { onCreateSubmit } = useContext(DataContext)
+  const { firstName, lastName, onFormClose } = useContext(AuthContext);
+  // console.log(firstName, lastName);
   // return
   // const{onCreateSubmit}=useContext(AuthContext)
 
   const { formValues, onChangeHandler, onSubmit } = useForm(
     {
       [CreateFormKeys.Title]: '',
-      [CreateFormKeys.Author]:`${firstName} ${lastName}`,
+      [CreateFormKeys.Author]: `${firstName} ${lastName}`,
       [CreateFormKeys.Description]: '',
       [CreateFormKeys.Ingredients]: '',
       [CreateFormKeys.Image]: '',
       [CreateFormKeys.Method]: '',
+      [CreateFormKeys.PrepareTime]: '',
+      [CreateFormKeys.CookTime]:'',
+      // [CreateFormKeys.Dificulty]: '',
+      // [CreateFormKeys.Type]:'',
+      [CreateFormKeys.Serves]:'',
+
     },
     onCreateSubmit)
 
@@ -63,6 +75,68 @@ const CreatePage = ({
               />
             </span>
           </p>
+          {/* <p className="field">
+            <label htmlFor="type">Type</label>
+            <span className="input">
+              <select id="type" name="type">
+                <option value="main-dishes">Main Dishes</option>
+                <option value="salads">Salads</option>
+                <option value="soups">Soups</option>
+                <option value="soups">Drinks</option>
+                <option value="quick">Quiqk Recipes</option>
+                <option value="healthy">Healthy Recipes</option>
+              </select>
+            </span>
+          </p>
+          <p className="field">
+            <label htmlFor="type">Dificulty Level:</label>
+            <span className="input">
+              <select id="dificulty" name="dificulty">
+                <option value="main-dishes">Easy</option>
+                <option value="salads">Medium</option>
+                <option value="soups">Hard</option>
+              </select>
+            </span>
+          </p> */}
+          <p className="field">
+            <label htmlFor="prepare-time">Prepare time:</label>
+            <span className="input">
+              <input
+                type="text"
+                id="prepare-time"
+                placeholder="Prepare time:"
+                name={CreateFormKeys.PrepareTime}
+                value={formValues[CreateFormKeys.PrepareTime]}
+                onChange={onChangeHandler}
+              />
+            </span>
+          </p>
+          <p className="field">
+            <label htmlFor="cook-time">Cook time:</label>
+            <span className="input">
+              <input
+                type="text"
+                id="cook-time"
+                placeholder="Cook time:"
+                name={CreateFormKeys.CookTime}
+                value={formValues[CreateFormKeys.CookTime]}
+                onChange={onChangeHandler}
+              />
+            </span>
+          </p>
+          <p className="field">
+            <label htmlFor="serves">Serves:</label>
+            <span className="input">
+              <input
+                type="text"
+                id="serves"
+                placeholder="Serves:"
+                name={CreateFormKeys.Serves}
+                value={formValues[CreateFormKeys.Serves]}
+                onChange={onChangeHandler}
+              />
+            </span>
+          </p>
           <p className="field">
             <label htmlFor="description">Description:</label>
             <span className="input">
@@ -76,11 +150,11 @@ const CreatePage = ({
             </span>
           </p>
           <p className="field">
-            <label htmlFor="description">Ingredients:</label>
+            <label htmlFor="description">Ingredients: use <span>"||"</span> to separate ingredients!</label>
             <span className="input">
               <textarea
                 id="description"
-                placeholder="Ingredients:"
+                placeholder="Example: 200g dark muscovado sugar||175g butter, chopped||700g luxury mixed dried fruit"
                 name={CreateFormKeys.Ingredients}
                 value={formValues[CreateFormKeys.Ingredients]}
                 onChange={onChangeHandler}
@@ -101,7 +175,7 @@ const CreatePage = ({
             </span>
           </p>
           <p className="field">
-            <label htmlFor="description">Method:</label>
+            <label htmlFor="description">Method: use <span>"||"</span> to separate each method step!</label>
             <span className="input">
               <textarea
                 id="method"

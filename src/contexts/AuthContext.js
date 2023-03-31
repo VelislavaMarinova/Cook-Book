@@ -1,10 +1,12 @@
 import { createContext } from 'react';
-import { authServiceFactory } from '../services/authService';
+import { login,logout,register } from '../services/authService';
 import { useState, } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../hooks/useLocalStorage';
+import { useService } from '../hooks/useService';
+import { authServiceFactory } from '../services/authService';
 
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 
 // const AuthContext = createContext();
 
@@ -12,14 +14,15 @@ export const AuthProvider = ({
     children
 }) => {
     const [auth, setAuth] = useLocalStorage('auth', {})
-    const authService = authServiceFactory(auth.accessToken);
+    // const authService = authServiceFactory(auth.accessToken);
+    const authService = authServiceFactory(auth.accessToken)
     const navigate = useNavigate()
 
     const onLoginSubmit = async (data) => {
 
-        // console.log(data);
+        //  console.log(data.email);
         try {
-            const result = await authService.login(data);
+            const result = await authService.login(data.email,data.password);
 
             setAuth(result);
 
@@ -34,16 +37,18 @@ export const AuthProvider = ({
 
     }
     const onRegisterSubmit = async (data) => {
-        // console.log(data);
+    //   console.log(data);
         const { confirmPass, ...registerData } = data;
         if (confirmPass !== registerData.password) {
             alert('Password and Repaet Password don\'t match!');
             return;
         }
         try {
-            const result = await authService.register(registerData)
+            // console.log(data);
+            const result = await authService.register(data.email,data.password,data.firstName,data.lastName)
             // console.log(result);
             setAuth(result);
+            // console.log(auth);
             navigate('/catalog');
         } catch (error) {
             alert('problem')
@@ -51,15 +56,18 @@ export const AuthProvider = ({
     };
 
     const onLogout = async () => {
-        await authService.logout()
+        await authService.logout(auth.accessToken)
         setAuth({})
     };
-
+    const onFormClose = () => {
+        navigate('/');
+    };
 
     let authContextData = {
         onLoginSubmit,
         onRegisterSubmit,
         onLogout,
+        onFormClose,
         userId: auth._id,
         firstName:auth.firstName,
         lastName:auth.lastName,

@@ -14,10 +14,8 @@ const RegisterFormKeys = {
   RepeatPassword: 'confirmPass'
 };
 
-const Register = ({
-  onFormClose
-}) => {
-  const { onRegisterSubmit } = useContext(AuthContext)
+const Register = () => {
+  const { onRegisterSubmit,onFormClose } = useContext(AuthContext)
   const { formValues, onChangeHandler, onSubmit } = useForm({
     [RegisterFormKeys.Email]: '',
     [RegisterFormKeys.FirstName]:'',

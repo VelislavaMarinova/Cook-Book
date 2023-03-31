@@ -1,17 +1,16 @@
 import './comments.css'
 import { Link, useParams } from "react-router-dom"
 import { useContext, useState, useEffect } from "react";
-// import DataContext from "../../contexts/DataContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useService } from "../../hooks/useService";
 import { recipeServiceFactory } from "../../services/recipeService";
 import useSelectRecipe from "../../hooks/useSelectRecipe";
 
 const DetailsPage = () => {
-    // const recipes = useContext(DataContext);
+    ;
     const { isAuthenticated, userId } = useContext(AuthContext);
     const { recipeId } = useParams();
-    console.log(recipeId);
+    // console.log(recipeId);
     const selectedRecipe = useSelectRecipe(recipeId);
     // console.log(`und: ${selectedRecipe.ingredients}`);
     // console.log(selectedRecipe);
@@ -40,12 +39,12 @@ const DetailsPage = () => {
 
     if (selectedRecipe._id) {
         const step=0;
-        console.log('selected');
+        // console.log('selected');
         // console.log(selectedRecipe);
         const isOwner = userId === selectedRecipe._ownerId;
         const loggedUserNotOwner = isAuthenticated && !isOwner
         //    const split= selectedRecipe.ingredients.split(', ')
-        console.log(`selected: ${selectedRecipe}`);
+        // console.log(`selected: ${selectedRecipe}`);
         // let ingredientsArr = JSON.parse(selectedRecipe.ingredients);
         // console.log(ingredientsArr)
         // console.log(isOwner)

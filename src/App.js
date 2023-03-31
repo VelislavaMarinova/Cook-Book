@@ -2,8 +2,9 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { AuthProvider } from './contexts/AuthContext'
+import { DataProvider } from './contexts/DataContext';
 import DataContext from './contexts/DataContext';
-import { recipeServiceFactory } from './services/recipeService';
+// import {create,edit } from './services/recipeService';
 
 
 import Home from './components/home/Home';
@@ -18,12 +19,15 @@ import DetailsPage from './components/detailsPage/DetailsPage';
 import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
 import useFetchRecipes from './hooks/useFetchRecipes';
+import { authServiceFactory } from './services/authService';
+import { useService } from './hooks/useService';
+import { recipeServiceFactory } from './services/recipeService';
 
 
 
 function App() {
-  const navigate = useNavigate();
-  const [recipes,setRecipes]=useFetchRecipes();
+  
+  // const recipeserviseAuth = useService(recipeServiceFactory)
   // const [recipes, setRecipes] = useState([]);
 
   // useEffect(() => {
@@ -33,60 +37,38 @@ function App() {
   //     })
   // }, []);
 
-  const localData = JSON.parse(localStorage.getItem('auth'));
-  let token = ''
-  if (localData) {
-    token = localData.accessToken;
-  }
-  const recipeService = recipeServiceFactory(token);//auth.accessToken
+  // const localData = JSON.parse(localStorage.getItem('auth'));
+  // let token = ''
+  // if (localData) {
+  //   token = localData.accessToken;
+  // }
+  // const recipeService = recipeServiceFactory(token);//auth.accessToken
 
-  const onFormClose = () => {
-    navigate('/');
-  }
-
-  const onCreateSubmit = async (data) => {
-    // console.log(data);
-    const newRecipe = await recipeService.create(data);
-    // console.log(newRecipe);
-
-    setRecipes(state => [newRecipe, ...state,]);
-    console.log(recipes);
-
-    navigate('/catalog');
-  };
-
-  const onEditSubmit = async (values) => {
-    const result = await recipeService.edit(values._id, values);
-
-    setRecipes(state => state.map(x => x._id === values._id ? result : x));
-
-    navigate(`/catalog/${values._id}`);
-  }
-
+  
   return (
     <AuthProvider>
-      <DataContext.Provider value={recipes}>
+      <DataProvider>
 
         <div id="container">
           <Header />
 
           <Main>
             <Routes>
-              <Route path="/" element={<Home recipes={recipes} />} />
-              <Route path="/login" element={<Login onFormClose={onFormClose} />} />
-              <Route path="/logout" element={<Logout onFormClose={onFormClose} />} />
-              <Route path="/register" element={<Register onFormClose={onFormClose} />} />
-              <Route path='/create-recipe' element={<CreatePage onFormClose={onFormClose} onCreateSubmit={onCreateSubmit} />} />
-              <Route path="/recipes/:recipeId/edit" element={<EditPage onFormClose={onFormClose} onEditSubmit={onEditSubmit} />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/register" element={<Register  />} />
+              <Route path='/create' element={<CreatePage />} />
+              <Route path="/recipes/:recipeId/edit" element={<EditPage />} />
               {/* <Route path="/create" element={<CreatePage onFormClose={onFormClose} />} /> */}
-              <Route path="/catalog" element={<Catalog recipes={recipes} />} />
+              <Route path="/catalog" element={<Catalog/>} />
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
             </Routes>
           </Main>
 
           <Footer />
         </div>
-      </DataContext.Provider>
+      </DataProvider>
 
     </AuthProvider>
 

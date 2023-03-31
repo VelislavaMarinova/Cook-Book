@@ -24,11 +24,11 @@
 import { useState} from "react";
 
 const useForm = (initialValues, onSubmitHandler) => {
-    console.log(initialValues.name);
+    // console.log(initialValues.name);
     
     const [formValues, setFormValues] = useState(initialValues);
-    // setFormValues(initialValues)
-     console.log(formValues);
+    //  setFormValues(initialValues)
+    //  console.log(formValues);
 
     const onChangeHandler = (e) => {
         setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
@@ -38,6 +38,7 @@ const useForm = (initialValues, onSubmitHandler) => {
         e.preventDefault();
 
         if (onSubmitHandler) {
+            // console.log(formValues);
             onSubmitHandler(formValues);
         }
     };

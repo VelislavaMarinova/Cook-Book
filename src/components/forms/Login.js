@@ -9,11 +9,9 @@ const LoginFormKeys = {
   Password: 'password'
 };
 
-const Login = ({
-  onFormClose,
-}) => {
+const Login = () => {
 
-  const { onLoginSubmit } = useContext(AuthContext)
+  const { onLoginSubmit, onFormClose} = useContext(AuthContext)
 
 
   const { formValues, onChangeHandler, onSubmit } = useForm({

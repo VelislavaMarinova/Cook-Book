@@ -1,8 +1,8 @@
+import { useContext } from 'react';
+import DataContext from '../../contexts/DataContext';
 import RecipeCartd from '../RecipeCard/RecipeCard';
-const Catalog = ({
-    recipes,
-}) => {
-    
+const Catalog = () => {
+    const {recipes}=useContext(DataContext)
     return (<section id="dashboard-page" className="dashboard">
         <h1>All Recipes</h1>
         {/* Display ul: with list-items for All books (If any) */}

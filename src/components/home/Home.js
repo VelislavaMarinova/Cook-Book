@@ -1,9 +1,10 @@
 
 import './Home.css'
 import RecipeCartd from '../RecipeCard/RecipeCard';
-const Home = ({
-    recipes,
-}) => {
+import { useContext } from 'react';
+import DataContext from '../../contexts/DataContext';
+const Home = () => {
+    const {recipes}=useContext(DataContext)
     const latestThreeRecipes = recipes.slice(0,3)
     return (
         
