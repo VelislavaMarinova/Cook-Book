@@ -50,12 +50,11 @@
 //     };
 // }
 
-import { useService } from "../hooks/useService";
 import { requestFactory } from "./requester";
 
 export const recipeServiceFactory = (token) => {
   
-    // console.log(`recipeServiceFactory  ${token}`);
+    console.log(`recipeServiceFactory  ${token}`);
   
     // console.log(`havetoken ${haveToken}`);
 
@@ -77,12 +76,14 @@ export const recipeServiceFactory = (token) => {
     
         const create = (recipeData) => request.post(baseUrl, recipeData,token);
         const edit = (recipeId, data) => request.put(`${baseUrl}/${recipeId}`, data,token);
+        const deleteRecipe = (recipeId) => request.del(`${baseUrl}/${recipeId}`,token);
     
         return {
             getAll,
             getOne,
             create,
             edit,
+            deleteRecipe,
             // addComment,
     
         };

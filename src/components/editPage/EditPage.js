@@ -1,11 +1,10 @@
 import { useContext, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import { useService } from "../../hooks/useService";
 import { AuthContext } from "../../contexts/AuthContext";
 import { recipeServiceFactory } from "../../services/recipeService";
-import { getOne } from '../../services/recipeService'
-import DataContext from "../../contexts/DataContext";
+import  { useDataContext } from "../../contexts/DataContext";
 
 const EditFormKeys = {
     Id: '_id',
@@ -25,7 +24,7 @@ const EditFormKeys = {
 
 const EditPage = () => {
     const { firstName, lastName, onFormClose } = useContext(AuthContext);
-    const { onEditSubmit } = useContext(DataContext)
+    const { onEditSubmit } = useDataContext();
     const { recipeId } = useParams();
     const recipeService = useService(recipeServiceFactory);
 
@@ -75,15 +74,15 @@ const EditPage = () => {
                         </span>
                     </p>
                     <p className="field">
-                        <label htmlFor="title">Created By:</label>
+                        <label htmlFor="author">Created By:</label>
                         <span className="input">
                             <input
                                 type="text"
-                                id="createdBy"
+                                id="author"
                                 placeholder="Created By:"
                                 name={EditFormKeys.Author}
                                 value={`${firstName} ${lastName}`}
-                                onChange={onChangeHandler}
+                                // onChange={onChangeHandler}
                             />
                         </span>
                     </p>

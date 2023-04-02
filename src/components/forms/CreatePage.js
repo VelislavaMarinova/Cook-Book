@@ -2,7 +2,7 @@ import "./forms.css";
 import useForm from "../../hooks/useForm";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import DataContext from "../../contexts/DataContext";
+import { useDataContext } from "../../contexts/DataContext";
 
 
 const CreateFormKeys = {
@@ -21,7 +21,7 @@ const CreateFormKeys = {
 
 const CreatePage = () => {
 
-  const { onCreateSubmit } = useContext(DataContext)
+  const { onCreateSubmit } = useDataContext();
   const { firstName, lastName, onFormClose } = useContext(AuthContext);
   // console.log(firstName, lastName);
   // return
@@ -63,15 +63,15 @@ const CreatePage = () => {
             </span>
           </p>
           <p className="field">
-            <label htmlFor="title">Created By:</label>
+            <label htmlFor="author">Created By:</label>
             <span className="input">
               <input
                 type="text"
-                id="createdBy"
+                id="author"
                 placeholder="Created By:"
                 name={CreateFormKeys.Author}
                 value={`${firstName} ${lastName}`}
-                onChange={onChangeHandler}
+                // onChange={onChangeHandler}
               />
             </span>
           </p>

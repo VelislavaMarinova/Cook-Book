@@ -47,8 +47,6 @@
 
 
 // import{clearUserData,getUserData}from '../util.js';
-import { useContext} from "react";
-import { AuthContext } from "../contexts/AuthContext";
 
 
 const host = 'http://localhost:3030';
@@ -59,8 +57,8 @@ async function request(url, options) {
     try {
         const response = await fetch(host + url, options);
 
-        if (response.ok != true) {
-            if (response.status == 403) {
+        if (response.ok !== true) {
+            if (response.status === 403) {
             //    clearUserData("userData")
             };
 
@@ -68,7 +66,7 @@ async function request(url, options) {
             throw new Error(error.message);
         };
 
-        if (response.status == 204) {
+        if (response.status === 204) {
             return response;
         } else {
           
@@ -81,14 +79,16 @@ async function request(url, options) {
     };
 }
 
-function createOptions(method = 'get', data,token) {
+function createOptions(method = 'get', data, token) {
+    console.log({token});
     console.log(`createOptions  ${token}`);
+    console.log();
     const options = {
         method,
         headers: {}
     };
 
-    if (data != undefined) {
+    if (data !== undefined) {
         options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(data);
     };
@@ -121,7 +121,8 @@ function createOptions(method = 'get', data,token) {
 };
 
 async function del(url,token) {
-    return await request(url, createOptions('delete',token));
+    console.log(`del ${token}`);
+    return await request(url, createOptions('delete',"",token));
 };
 
 
@@ -137,6 +138,6 @@ export const requestFactory = (token) => {
         post:post,
         put:put,
         // patch: (url,data)=>patch(token,url,data),
-        delete: del
+        del: del
     }
 };

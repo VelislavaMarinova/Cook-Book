@@ -14,7 +14,7 @@ export const DataProvider = ({
 }) => {
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
-    console.log(`DataContext: ${token}`);
+    // console.log(`DataContext: ${token}`);
     const [recipes, setRecipes] = useFetchRecipes();
     const recipeService = recipeServiceFactory(token);
 
@@ -23,12 +23,12 @@ export const DataProvider = ({
     };
 
     const onCreateSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         const dataIngredints = data.ingredients.split("||")
         const dataMethods = data.method.split("||")
         data.ingredients=dataIngredints;
         data.method=dataMethods
-        console.log(data);
+        // console.log(data);
         const newRecipe = await recipeService.create(data);
         // console.log(newRecipe);
 
@@ -39,7 +39,7 @@ export const DataProvider = ({
     };
 
     const onEditSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         const dataIngredints = data.ingredients.split("||")
         const dataMethods = data.method.split("||")
         data.ingredients=dataIngredints;
@@ -51,11 +51,17 @@ export const DataProvider = ({
 
         navigate(`/catalog/${data._id}`);
     };
+    const deleteRecipeFromState = (recipeId) => {
+        setRecipes(state => state.filter(x => x._id !== recipeId));
+    };
+
+ 
     const contextValues = {
         recipes,
         onCreateSubmit,
         onEditSubmit,
         onFormClose,
+        deleteRecipeFromState,
         // getGame,
     };
 
