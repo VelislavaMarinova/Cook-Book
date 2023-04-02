@@ -26,14 +26,14 @@ const DetailsPage = () => {
     //     })
     // }, [recipeId]);
 
-    if (selectedRecipe === undefined) {
-        console.log('und');
-    } else (
-        console.log(`ingr ${selectedRecipe.ingredients}`)
-        // selectedRecipe.ingredients?.map(x => console.log(x))
-        // console.log('ok')
+    // if (selectedRecipe === undefined) {
+    //     // console.log('und');
+    // } else (
+    //     // console.log(`ingr ${selectedRecipe.ingredients}`)
+    //     // selectedRecipe.ingredients?.map(x => console.log(x))
+    //     // console.log('ok')
 
-    )
+    // )
     //or getOne
     // const selectedRecipe = recipes.find(x => x._id === recipeId)
     // console.log(selectedRecipe);
@@ -71,9 +71,9 @@ const DetailsPage = () => {
                             <Link className="button" to={`/recipes/${recipeId}/edit`}>
                                 Edit
                             </Link>
-                            <a className="button" href="#">
+                            <Link className="button" to={`/recipes/${recipeId}/delete`}>
                                 Delete
-                            </a>
+                            </Link>
                         </>
                         )}
 

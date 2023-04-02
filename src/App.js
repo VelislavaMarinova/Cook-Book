@@ -15,6 +15,7 @@ import Login from './components/forms/Login';
 import Register from './components/forms/Register';
 import CreatePage from './components/forms/CreatePage';
 import EditPage from './components/editPage/EditPage';
+import DeleteRecipe from './components/deleteRecipe/DeleteRecipe';
 import DetailsPage from './components/detailsPage/DetailsPage';
 import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
@@ -68,6 +69,7 @@ function App() {
                 <RouteProtected>
                   <EditPage />
                 </RouteProtected>} />
+                <Route path="/recipes/:recipeId/delete" element={<DeleteRecipe />} />
 
 
               {/* <Route path="/create" element={<CreatePage onFormClose={onFormClose} />} /> */}

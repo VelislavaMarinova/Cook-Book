@@ -8,7 +8,7 @@ const RecipeCartd = ({
     return (
         <li className="recipeCard">
             <div className="recipeCard__info">
-                <h3>{recipe.name}</h3>
+                <h3>{recipe.title}</h3>
                 <p><span className="recipeCard__desc" >Description:</span> {recipe.description}</p>
             </div>
             <div className="recipeCard__img">
