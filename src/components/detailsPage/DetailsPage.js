@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom"
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useService } from "../../hooks/useService";
-import { recipeServiceFactory } from "../../services/recipeService";
 import useSelectRecipe from "../../hooks/useSelectRecipe";
 
 const DetailsPage = () => {
