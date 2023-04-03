@@ -52,7 +52,7 @@
 
 import { requestFactory } from "./requester";
 
-export const recipeServiceFactory = (token) => {
+export const recipeServiceFactory = (token,category) => {
   
     console.log(`recipeServiceFactory  ${token}`);
   
@@ -66,9 +66,14 @@ export const recipeServiceFactory = (token) => {
         // const request=useService(requestFactory)
     
         // const baseUrl = 'http://localhost:3030/data/games';
-        const baseUrl = '/data/recipes'
+        const urlGetByCategory = `/data/recipes?where=category%3D%22${category}%22`
+        const baseUrl = '/data/recipes';
         const sort = '?sortBy=_createdOn%20desc';
         const selection = '?select=_id%2Cname%2CimageUrl%2Cdescription';
+        const urlGetThree = '/data/recipes?sortBy=_createdOn%20desc&pageSize=3'
+        const getThree = () => request.get(urlGetThree);
+
+        const getByCategory = ()=>request.get(urlGetByCategory);
     
         const getAll = () => request.get(`${baseUrl}${sort}${selection}`);
     
@@ -84,6 +89,8 @@ export const recipeServiceFactory = (token) => {
             create,
             edit,
             deleteRecipe,
+            getThree,
+            getByCategory
             // addComment,
     
         };

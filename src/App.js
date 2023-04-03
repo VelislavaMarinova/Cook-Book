@@ -15,15 +15,12 @@ import Login from './components/forms/Login';
 import Register from './components/forms/Register';
 import CreatePage from './components/forms/CreatePage';
 import EditPage from './components/editPage/EditPage';
-import DeleteRecipe from './components/deleteRecipe/DeleteRecipe';
+import DeleteRecipe from './components/delete/DeleteRecipe';
 import DetailsPage from './components/detailsPage/DetailsPage';
 import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
 import RouteProtected from './components/common/RouteProtected';
-import useFetchRecipes from './hooks/useFetchRecipes';
-import { authServiceFactory } from './services/authService';
-import { useService } from './hooks/useService';
-import { recipeServiceFactory } from './services/recipeService';
+import RecypesByCategory from './components/Categories/RecypesByCategory';
 
 
 
@@ -74,6 +71,13 @@ function App() {
 
               {/* <Route path="/create" element={<CreatePage onFormClose={onFormClose} />} /> */}
               <Route path="/catalog" element={<Catalog />} />
+              <Route path="/catalog/main-dishes" element={<RecypesByCategory />} />
+              <Route path="/catalog/desserts" element={<RecypesByCategory category='desserts'/>} />
+              <Route path="/catalog/drinks" element={<RecypesByCategory />} />
+              <Route path="/catalog/salads" element={<RecypesByCategory category='salads' />} />
+              <Route path="/catalog/healthy-recipes" element={<RecypesByCategory />} />
+              <Route path="/catalog/quick-recipes" element={<RecypesByCategory />} />
+              
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
             </Routes>
           </Main>

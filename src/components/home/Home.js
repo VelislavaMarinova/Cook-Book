@@ -3,9 +3,11 @@ import './Home.css'
 import RecipeCartd from '../RecipeCard/RecipeCard';
 import { useContext } from 'react';
 import { useDataContext } from '../../contexts/DataContext';
+import useGetThreeRecipes from '../../hooks/useGetThreeRecipes';
 const Home = () => {
-    const {recipes}=useDataContext();
-    const latestThreeRecipes = recipes.slice(0,3)
+    const latestThreeRecipes=useGetThreeRecipes()
+    // const {recipes}=useDataContext();
+    // const latestThreeRecipes = recipes.slice(0,3)
     return (
         
   
