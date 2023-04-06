@@ -93,8 +93,8 @@ const EditPage = () => {
                                 <option value="main-dishes">Main Dishes</option>
                                 <option value="salads">Salads</option>
                                 <option value="soups">Soups</option>
-                                <option value="soups">Drinks</option>
-                                <option value="dessert">Desstert</option>
+                                <option value="drinks">Drinks</option>
+                                <option value="desserts">Dessterts</option>
                                 <option value="quick">Quiqk Recipes</option>
                                 <option value="healthy">Healthy Recipes</option>
                             </select>

@@ -6,62 +6,69 @@ const Catalog = () => {
     const categoriesSet = new Set()
     const { recipes } = useDataContext();
     recipes.map(x => categoriesSet.add(x.category));
-    const categories=[]
+    const categories = []
     // console.log(categories);
     for (const item of categoriesSet) {
-        if(item==="desserts"){
+        console.log(item);
+        if (item === "desserts") {
             categories.push({
-                title:'Desserts',
+                title: 'Desserts',
                 category: item,
-                 img:'https://images.pexels.com/photos/1448721/pexels-photo-1448721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-                })
+                img: 'https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg?auto=compress&cs=tinysrgb&w=1600'
+            })
         }
-        else if(item === 'salads'){
+        else if (item === 'salads') {
             categories.push({
-                title:'Salads',
+                title: 'Salads',
                 category: item,
-                 img:'https://images.pexels.com/photos/3872370/pexels-photo-3872370.jpeg?auto=compress&cs=tinysrgb&w=1600'
-                })
+                img: 'https://images.pexels.com/photos/3872370/pexels-photo-3872370.jpeg?auto=compress&cs=tinysrgb&w=1600'
+            })
         }
-        else if(item === 'main-dishes'){
+        else if (item === 'main-dishes') {
             categories.push({
-                title:'Main-dishes',
+                title: 'Main-dishes',
                 category: item,
-                 img:'https://static1.therecipeimages.com/wordpress/wp-content/uploads/2022/03/fresh-salad-recipes.jpg'
-                })
-        }else if(item=== 'quick-recipes'){
+                img: 'https://images.pexels.com/photos/5718028/pexels-photo-5718028.jpeg?auto=compress&cs=tinysrgb&w=1600'
+            })
+        } else if (item === 'quick-recipes') {
             categories.push({
-                title:'Quick Recipes',
+                title: 'Quick Recipes',
                 category: item,
-                 img:'https://www.sixsistersstuff.com/wp-content/uploads/2021/01/25-of-the-Best-30-Minute-Dinners.jpg'
-                })
-        }else if(item==='healthy-recipes'){
+                img: 'https://images.pexels.com/photos/6294354/pexels-photo-6294354.jpeg?auto=compress&cs=tinysrgb&w=1600'
+            })
+        } else if (item === 'healthy-recipes') {
             categories.push({
-                title:'Healthy Recipes',
+                title: 'Healthy Recipes',
                 category: item,
-                 img:'https://oursaltykitchen.com/wp-content/uploads/2021/07/healthy-dinner-ideas-featured-image.png'
-                })
-        }else if(item==='drinks'){
+                img: 'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?auto=compress&cs=tinysrgb&w=1600'
+            })
+        } else if (item === 'drinks') {
             categories.push({
-                title:'Drinks',
+                title: 'Drinks',
                 category: item,
-                 img:'https://hips.hearstapps.com/hmg-prod/images/20191031-mojitos-three-ways-delish-ehg-2887-1584029660.jpg?crop=1.00xw:0.752xh;0.00160xw,0.0673xh&resize=1200:*'
-                })
+                img: 'https://images.pexels.com/photos/1200348/pexels-photo-1200348.jpeg?auto=compress&cs=tinysrgb&w=1600'
+            })
+        } else if (item === 'soups') {
+            categories.push({
+                title: 'Soups',
+                category: item,
+                img: 'https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=1600'
+            })
         }
-       
+
     }
     console.log(categories);
 
     return (
-    <section id="dashboard-page" className="dashboard">
-        <h1>Cookbook Categories</h1>
-        {/* Display ul: with list-items for All books (If any) */}
-        <ul className="other-recipes-list">
-            {categories.map(x => <CategoryCard key={x.title} category={x} />)}
+        <section id="dashboard-page" className="dashboard">
+            <h1>Cookbook Categories</h1>
+            {/* Display ul: with list-items for All books (If any) */}
+            <ul className="other-recipes-list">
+                {categories.map(x => <CategoryCard key={x.title} category={x} />)}
 
-        </ul>
-        {/* Display paragraph: If there are no books in the database */}
-        {/* <p className="no-recipes">No Recipes in database!</p> */}
-    </section>)
+            </ul>
+            {/* Display paragraph: If there are no books in the database */}
+            {/* <p className="no-recipes">No Recipes in database!</p> */}
+        </section>)
 };
 export default Catalog;

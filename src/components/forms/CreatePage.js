@@ -83,10 +83,10 @@ const CreatePage = () => {
                 <option value="main-dishes">Main Dishes</option>
                 <option value="salads">Salads</option>
                 <option value="soups">Soups</option>
-                <option value="soups">Drinks</option>
-                <option value="dessert">Desstert</option>
-                <option value="quick">Quiqk Recipes</option>
-                <option value="healthy">Healthy Recipes</option>
+                <option value="drinks">Drinks</option>
+                <option value="desserts">Dessterts</option>
+                <option value="quick-recipes">Quiqk Recipes</option>
+                <option value="healthy-recipes">Healthy Recipes</option>
               </select>
             </span>
           </p>
