@@ -13,7 +13,7 @@ const DeleteRecipe = () => {
     const selectedRecipe = useSelectRecipe(recipeId);
     const {token}=useContext(AuthContext);
     console.log(`DeleteRecipe ${token}`);
-    const recipeService = recipeServiceFactory(token, "");
+    const recipeService = recipeServiceFactory(token, "","");
     const {deleteRecipeFromState}=useDataContext()
     const navigate=useNavigate()
 

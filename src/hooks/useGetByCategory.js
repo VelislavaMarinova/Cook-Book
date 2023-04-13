@@ -19,7 +19,7 @@ export const useGetByCategory = (category) => {
     
 
     // const{token}=useContext(AuthContext)
-const recipeService = recipeServiceFactory('',category)
+const recipeService = recipeServiceFactory('',category,"")
 // console.log(`recipeServiceFactory No token`);
 
     useEffect(() => {

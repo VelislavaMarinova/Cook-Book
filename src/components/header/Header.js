@@ -46,7 +46,7 @@ const Header = ({ }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="#">
+                  <Link to="/myRecipes">
                     My Recipes
                   </Link>
                 </li>

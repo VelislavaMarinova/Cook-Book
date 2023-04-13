@@ -1,0 +1,15 @@
+
+.myRecipes{
+text-align: center;
+}
+
+
+.myRecipes__list{
+ list-style: none;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-around;
+ gap: 30px;
+
+
+}

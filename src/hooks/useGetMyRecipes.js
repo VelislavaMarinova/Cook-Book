@@ -7,18 +7,18 @@ const sort = '?sortBy=_createdOn%20desc';
 const selection = '?select=_id%2Cname%2CimageUrl%2Cdescription';
 
 
-const useGetThreeRecipes = (category) => {
+const useGetMyRecipes = (userId) => {
 
-    const [threeRecipes, setThreeRecipes] = useState([]);
-    const recipeService = recipeServiceFactory()
+    const [myRecipes, setMyRecipes] = useState([]);
+    const recipeService = recipeServiceFactory("","",userId)
 
     useEffect(() => {
-        recipeService.getThree()
+        recipeService.getMyRecipes()
             .then(res => {
-                setThreeRecipes(res)
+                setMyRecipes(res)
             })
     }, []);
 
-    return threeRecipes;
+    return myRecipes;
 }
-export default useGetThreeRecipes;
+export default useGetMyRecipes;
