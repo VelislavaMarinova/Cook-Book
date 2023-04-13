@@ -31,13 +31,8 @@ const Register = () => {
           <label className="register__label" htmlFor="email">Email:</label>
           <span className="input">
             <input
-              type="text"
-              id="email"
               placeholder="Email: email@email.com"
-              name="email"
               {...register("email")}
-            // value={formValues[RegisterFormKeys.Email]}
-            // onChange={onChangeHandler}
             />
           </span>
           {errors.email && <p className="register__errors">{errors.email.message}</p>}
@@ -47,13 +42,8 @@ const Register = () => {
           <label className="register__label" htmlFor="firstName">First Name:</label>
           <span className="input">
             <input
-              type="text"
-              id="firstName"
               placeholder="First Name:"
-              name="firstName"
               {...register("firstName")}
-            // value={formValues[RegisterFormKeys.FirstName]}
-            // onChange={onChangeHandler}
             />
           </span>
           {errors.firstName && <p className="register__errors">{errors.firstName.message}</p>}
@@ -62,13 +52,8 @@ const Register = () => {
           <label className="register__label" htmlFor="lastName">Last Name:</label>
           <span className="input">
             <input
-              type="text"
-              id="lastName"
               placeholder="Last Name:"
-              name="lastName"
               {...register("lastName")}
-            // value={formValues[RegisterFormKeys.LastName]}
-            // onChange={onChangeHandler}
             />
           </span>
           {errors.lastName && <p className="register__errors">{errors.lastName.message}</p>}
@@ -78,12 +63,8 @@ const Register = () => {
           <span className="input">
             <input
               type="password"
-              id="password"
               placeholder="Password:"
-              name="password"
               {...register("password")}
-            // value={formValues[RegisterFormKeys.Password]}
-            // onChange={onChangeHandler}
             />
           </span>
           {errors.password && <p className="register__errors">{errors.password.message}</p>}
@@ -93,19 +74,14 @@ const Register = () => {
           <span className="input">
             <input
               type="password"
-              id="confirmPass"
               placeholder="Repeat Password:"
-              name="confirmPass"
               {...register("confirmPass")}
-            // value={formValues[RegisterFormKeys.RepeatPassword]}
-            // onChange={onChangeHandler}
             />
           </span>
           {errors.confirmPass && <p className="register__errors">{errors.confirmPass.message}</p>}
           </div>
           {error? <p className="register__errors">{error.message}</p> : null}
           <div className="register-bottons">
-
             <input className="button submit" type="submit" value="Register" />
             <button className="button close" onClick={onFormClose}>Close</button>
           </div>
