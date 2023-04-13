@@ -8,11 +8,11 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 
 
-const DeleteRecipe = () => {
+const DeletePage = () => {
     const { recipeId } = useParams();
     const selectedRecipe = useSelectRecipe(recipeId);
     const {token}=useContext(AuthContext);
-    console.log(`DeleteRecipe ${token}`);
+    // console.log(`DeleteRecipe ${token}`);
     const recipeService = recipeServiceFactory(token);
     const {deleteRecipeFromState}=useDataContext()
     const navigate=useNavigate()
@@ -36,7 +36,7 @@ const DeleteRecipe = () => {
     return (
         <section id="delete" className="deleteRecipe">
             <fieldset>
-                <legend>Delete Recipe</legend>
+                <legend className="deleteRecipe__legend">Delete Recipe</legend>
                 <p>Are you shure that you want to delete {selectedRecipe.title} recipe?</p>
 
                 <div className="login-buttons">
@@ -51,4 +51,4 @@ const DeleteRecipe = () => {
     )
 };
 
-export default DeleteRecipe
+export default DeletePage
