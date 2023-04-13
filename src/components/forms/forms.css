@@ -1,19 +1,26 @@
 .login__form,
 .register__form,
 .create__form,
-.edit__form {
+.edit__form,
+.deleteRecipe {
 	max-width: 30rem;
+}
+.deleteRecipe fieldset{
+	background-color: white;
+	top: 100px;
+	left: 100px;
 }
 
 .login__legend,
 .register__legend,
 .create__legend,
-.edit__legend {
+.edit__legend,
+.deleteRecipe__legend {
 	border: 2px solid black;
 	font-size: 1.3rem;
 	background-color: #3f2212;
 	color: white;
-	border-radius:0.8rem;
+	border-radius: 0.8rem;
 	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
 
 }
@@ -23,6 +30,7 @@
 .create__form,
 .edit__form,
 .edit__legend,
+.deleteRecipe fieldset,
 form fieldset,
 form legend,
 form label,
@@ -40,14 +48,16 @@ form textarea {
 	background: transparent;
 }
 
-form fieldset {
+form fieldset,
+.deleteRecipe fieldset {
 	border: 2px solid #666;
 	border-radius: 1rem;
 	box-shadow: 0 0 1rem 2rem rgba(0, 0, 0, 0.1);
 }
 
 
-form fieldset {
+form fieldset,
+.deleteRecipe fieldset {
 	padding: 1em 2em 2em 2em;
 	position: relative;
 }
@@ -55,7 +65,8 @@ form fieldset {
 .login__legend,
 .register__legend,
 .create__legend,
-.edit__legend{
+.edit__legend,
+.deleteRecipe__legend {
 	width: 30%;
 	padding: 0.5rem 1rem;
 	left: 5px;
@@ -76,8 +87,7 @@ form fieldset {
 .create__field .input,
 .edit__field .input,
 .edit__select,
-.create__select,
-#type {
+.create__select {
 	display: flex;
 	position: relative;
 	align-items: center;
@@ -91,8 +101,7 @@ form fieldset {
 .create__field .input:after,
 .edit__field .input:after,
 .edit__select:after,
-.create__select:after
- {
+.create__select:after {
 	display: block;
 	content: '';
 }
@@ -163,21 +172,24 @@ form fieldset {
 	margin-top: 2rem;
 	display: flex;
 }
+
 .login__dontHaveProfile,
-.register__alredyHaveProfile{
+.register__alredyHaveProfile {
 	margin-top: 20px;
 	margin-left: 10px;
 }
+
 .login__dontHaveProfile a,
-.register__alredyHaveProfile a{
+.register__alredyHaveProfile a {
 	border-bottom: 1px solid transparent;
-	}
+}
+
 .login__dontHaveProfile a:hover,
-.register__alredyHaveProfile a:hover{
-border-bottom: 1px solid #3f2212;
+.register__alredyHaveProfile a:hover {
+	border-bottom: 1px solid #3f2212;
 }
 
 .login__errors,
-.register__errors{
+.register__errors {
 	color: red;
 }

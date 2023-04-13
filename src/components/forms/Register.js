@@ -1,4 +1,5 @@
 
+import "./forms.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -6,7 +7,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import registerSchema from "../validations/registerValidation";
-import "./forms.css";
 
 const Register = () => {
   const { onRegisterSubmit, onFormClose, error } = useContext(AuthContext)
