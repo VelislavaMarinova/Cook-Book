@@ -1,4 +1,4 @@
-import './comments.css'
+import './DetailsPage.css'
 import { Link, useParams } from "react-router-dom"
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -38,7 +38,7 @@ const DetailsPage = () => {
     // console.log(selectedRecipe);
 
     if (selectedRecipe._id) {
-        const step=0;
+        const step = 0;
         // console.log('selected');
         // console.log(selectedRecipe);
         const isOwner = userId === selectedRecipe._ownerId;
@@ -51,95 +51,77 @@ const DetailsPage = () => {
         // console.log(loggedUserNotOwner);
         return (
             <section id="details-page" className="details">
-                <div className="recipe-information">
-                    <h3>{selectedRecipe.title}</h3>
-                    <p className="catgory">Category: {selectedRecipe.category}</p>
-                    <p>Created by: {selectedRecipe.author}</p>
-                    <p className="description">Description: {selectedRecipe.description}</p>
-                    <p className="dificulty">Dificulty level: {selectedRecipe.dificulty} </p>
-                    <p className="prepare">Prepare time: {selectedRecipe.prepare} </p>
-                    <p className="cook">Cook: {selectedRecipe.cook} </p>
-                    <p className="cook">Serves: {selectedRecipe.serves} </p>
-                    <p className="img">
-                        <img src={selectedRecipe.imageUrl} />
-                    </p>
+                <h3 className='details__title'>{selectedRecipe.title}</h3>
+                <p className="recipe__description"><span className='recipe__description__bold'>Description:</span> {selectedRecipe.description}</p>
+                <div className='details__content'>
 
-                    <div className="actions">
-                        {/* Edit/Delete buttons ( Only for creator of this book )  */}
-                        {isOwner && (<>
-                            <Link className="button" to={`/recipes/${recipeId}/edit`}>
-                                Edit
-                            </Link>
-                            <Link className="button" to={`/recipes/${recipeId}/delete`}>
-                                Delete
-                            </Link>
-                        </>
-                        )}
+                    <div className="recipe__info">
+                        <div className="recipe__img">
+                            <img src={selectedRecipe.imageUrl} />
+                        </div>
+                        <ul className='recipe__fetures'>
+                            <li><i class="fa-solid fa-heart"></i> Likes: 0</li>
+                            <li><i class="fa-solid fa-user"></i> Created by: {selectedRecipe.author}</li>
+                            <li><i class="fa-sharp fa-solid fa-bowl-food"></i> Category: {selectedRecipe.category}</li>
+                            <li><i class="fa-sharp fa-solid fa-kitchen-set"></i> Dificulty level: {selectedRecipe.dificulty}</li>
+                            <li><i class="fa-solid fa-clock"></i> Prepare time: {selectedRecipe.prepare}</li>
+                            <li><i class="fa-solid fa-clock"></i> Cook: {selectedRecipe.cook}</li>
+                            <li><i class="fa-solid fa-utensils"></i> Serves: {selectedRecipe.serves}</li>
+                        </ul>
+                        
 
-                        {/* Bonus */}
-                        {/* Like button ( Only for logged-in users, which is not creators of the current book ) */}
-                        {loggedUserNotOwner && (
+                        <div className="actions">
+                            {/* Edit/Delete buttons ( Only for creator of this book )  */}
+                            {isOwner && (<>
+                                <Link className="button" to={`/recipes/${recipeId}/edit`}>
+                                    Edit
+                                </Link>
+                                <Link className="button" to={`/recipes/${recipeId}/delete`}>
+                                    Delete
+                                </Link>
+                            </>
+                            )}
 
-                            <a className="button" href="#">
-                                Like
-                            </a>
-                        )}
-                        {/* ( for Guests and Users )  */}
-                        {!isAuthenticated && (
+                            {/* Bonus */}
+                            {/* Like button ( Only for logged-in users, which is not creators of the current book ) */}
+                            {loggedUserNotOwner && (
 
-                            <div className="likes">
-                                <img className="hearts" src="/images/heart.png" />
-                                <span id="total-likes">Likes: 0</span>
-                            </div>
-                        )}
-                        {/* Bonus */}
+                                <a className="button" href="#">
+                                    Like
+                                </a>
+                            )}
+                            {/* ( for Guests and Users )  */}
+                          
+
+                                {/* <div className="likes">
+                                    <img className="hearts" src="/images/heart.png" />
+                                    <span id="total-likes">Likes: 0</span>
+                                </div> */}
+                           
+                            {/* Bonus */}
+                        </div>
                     </div>
-                </div>
-                <div className="book-description">
-                    <h3>Ingredients:</h3>
-                    <p>
-                        {selectedRecipe.ingredients?.map(x => <li key={x}>{x}</li>)}
-                    </p>
-                </div>
-                <div className="book-description">
-                    <h3>Method steps:</h3>
-                    <ol>
-                        {selectedRecipe.method.map(x=><li key={x}>{x}</li>)}
-                    </ol>
-                </div>
-                <div>
-                    <h2>Comments:</h2>
-                    <ul>
-                        {/* {game.comments && Object.values(game.comments).map(x => (
-                                <li key={x._id} className="comment">
-                                    <p>{x.username}: {x.comment}</p>
-                                </li>
-                            ))} */}
-                    </ul>
+                    <div className="recipe__allIngredients">
+                        <h3>Ingredients:</h3>
+                        <ul className='recipe__ingredients'>
+                            {selectedRecipe.ingredients?.map(x => <li key={x}>{x}</li>)}
+                        </ul>
+                    </div>
+                    <div className="recipe__method">
+                        <h3>Method steps:</h3>
+                        <ol className='recipe__steps'>
+                            {selectedRecipe.method.map(x => <li key={x}>{x}</li>)}
+                        </ol>
+                    </div>
 
-                    {/* {!Object.values(game.comments).length && (
-                        <p className="no-comment">No comments.</p>
-                    )} */}
                 </div>
-                {isAuthenticated &&(
-                <article className="create-comment">
-                    <label>Add new comment:</label>
-                    {/* onSubmit={onCommentSubmit} */}
-                    <form className="form" >
-                        {/* value={username} onChange={(e) => setUsername(e.target.value)} */}
-                        <input type="text" name="username" placeholder='Пешо' />
-                        {/* value={comment} onChange={(e) => setComment(e.target.value)} */}
-                        <textarea name="comment" placeholder="Comment......"></textarea>
-                        <input className="btn submit" type="submit" value="Add Comment" />
-                    </form>
-                </article>
-
-                )}
 
             </section>
         )
+
     };
 }
 
 
 export default DetailsPage;
+

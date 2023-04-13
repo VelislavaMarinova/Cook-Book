@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import './catalog.css'
+
 import { useDataContext } from '../../contexts/DataContext';
 import RecipeCartd from '../RecipeCard/RecipeCard';
 import CategoryCard from './CategoryCard';
@@ -26,7 +27,7 @@ const Catalog = () => {
         }
         else if (item === 'main-dishes') {
             categories.push({
-                title: 'Main-dishes',
+                title: 'Main Dishes',
                 category: item,
                 img: 'https://images.pexels.com/photos/5718028/pexels-photo-5718028.jpeg?auto=compress&cs=tinysrgb&w=1600'
             })
@@ -40,7 +41,7 @@ const Catalog = () => {
             categories.push({
                 title: 'Healthy Recipes',
                 category: item,
-                img: 'https://images.pexels.com/photos/936611/pexels-photo-936611.jpeg?auto=compress&cs=tinysrgb&w=1600'
+                img: 'https://images.pexels.com/photos/3872367/pexels-photo-3872367.jpeg?auto=compress&cs=tinysrgb&w=1600'
             })
         } else if (item === 'drinks') {
             categories.push({
@@ -60,10 +61,10 @@ const Catalog = () => {
     console.log(categories);
 
     return (
-        <section id="dashboard-page" className="dashboard">
+        <section id="catalog-page" className="catalog">
             <h1>Cookbook Categories</h1>
             {/* Display ul: with list-items for All books (If any) */}
-            <ul className="other-recipes-list">
+            <ul className="catalog__categories">
                 {categories.map(x => <CategoryCard key={x.title} category={x} />)}
 
             </ul>

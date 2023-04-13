@@ -57,11 +57,11 @@ const EditPage = () => {
 
     return (
         <section id="edit-page" className="edit">
-            <form id="edit-form" action="#" method="" onSubmit={onSubmit}>
+            <form id="edit-form" className="edit__form" onSubmit={onSubmit}>
                 <fieldset>
-                    <legend>Edit Recipe</legend>
-                    <p className="field">
-                        <label htmlFor="title">Recipe title:</label>
+                    <legend className="edit__legend">Edit Recipe</legend>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="title">Recipe title:</label>
                         <span className="input">
                             <input
                                 type="text"
@@ -72,9 +72,9 @@ const EditPage = () => {
                                 onChange={onChangeHandler}
                             />
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="author">Created By:</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="author">Created By:</label>
                         <span className="input">
                             <input
                                 type="text"
@@ -85,11 +85,11 @@ const EditPage = () => {
                                 // onChange={onChangeHandler}
                             />
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="type">Category</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="type">Category</label>
                         <span className="input">
-                            <select id="type" name={EditFormKeys.Category} value={formValues.category} onChange={onChangeHandler}>
+                            <select className="edit__select" id="type" name={EditFormKeys.Category} value={formValues.category} onChange={onChangeHandler}>
                                 <option value="main-dishes">Main Dishes</option>
                                 <option value="salads">Salads</option>
                                 <option value="soups">Soups</option>
@@ -99,19 +99,19 @@ const EditPage = () => {
                                 <option value="healthy">Healthy Recipes</option>
                             </select>
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="dificulty">Dificulty Level:</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="dificulty">Dificulty Level:</label>
                         <span className="input">
-                            <select id="dificulty" name={EditFormKeys.Dificulty} value={formValues.dificulty} onChange={onChangeHandler}>
+                            <select className="edit__select" id="dificulty" name={EditFormKeys.Dificulty} value={formValues.dificulty} onChange={onChangeHandler}>
                                 <option value="easy">Easy</option>
                                 <option value="medium">Medium</option>
                                 <option value="hard">Hard</option>
                             </select>
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="prepare">Prepare time:</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="prepare">Prepare time:</label>
                         <span className="input">
                             <input
                                 type="text"
@@ -122,9 +122,9 @@ const EditPage = () => {
                                 onChange={onChangeHandler}
                             />
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="cook">Cook time:</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="cook">Cook time:</label>
                         <span className="input">
                             <input
                                 type="text"
@@ -135,9 +135,9 @@ const EditPage = () => {
                                 onChange={onChangeHandler}
                             />
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="serves">Serves:</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="serves">Serves:</label>
                         <span className="input">
                             <input
                                 type="text"
@@ -148,9 +148,9 @@ const EditPage = () => {
                                 onChange={onChangeHandler}
                             />
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="description">Description:</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="description">Description:</label>
                         <span className="input">
                             <textarea
                                 id="description"
@@ -160,9 +160,9 @@ const EditPage = () => {
                                 onChange={onChangeHandler}
                             />
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="description">Ingredients: use <span>"||"</span> to separate ingredients!</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="description">Ingredients: use <span>"||"</span> to separate ingredients!</label>
                         <span className="input">
                             <textarea
                                 id="description"
@@ -172,9 +172,9 @@ const EditPage = () => {
                                 onChange={onChangeHandler}
                             />
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="image">Image:</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="image">Image:</label>
                         <span className="input">
                             <input
                                 type="text"
@@ -185,9 +185,9 @@ const EditPage = () => {
                                 onChange={onChangeHandler}
                             />
                         </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="description">Method: use <span>"||"</span> to separate each method step!</label>
+                    </div>
+                    <div className="edit__field">
+                        <label className="edit__label" htmlFor="description">Method: use <span>"||"</span> to separate each method step!</label>
                         <span className="input">
                             <textarea
                                 id="method"
@@ -197,7 +197,7 @@ const EditPage = () => {
                                 onChange={onChangeHandler}
                             />
                         </span>
-                    </p>
+                    </div>
                     <div className="addRecipe-buttons">
                         <input
                             className="button submit"

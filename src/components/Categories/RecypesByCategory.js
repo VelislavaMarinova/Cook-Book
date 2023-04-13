@@ -1,5 +1,4 @@
-import { useDataContext } from "../../contexts/DataContext";
-import useFetchRecipes from "../../hooks/useFetchRecipes";
+import './recypesByCategory.css'
 import {useGetByCategory} from "../../hooks/useGetByCategory";
 import RecipeCard from "../RecipeCard/RecipeCard";
 // import {useGetByCategory} from "../../hooks/useGetByCategory";
@@ -13,10 +12,10 @@ const RecypesByCategory = ({
     // const recipes=useFetchRecipes(category)
     // const { recipes } = useDataContext();
     return (
-        <section id="dashboard-page" className="dashboard">
-            <h1>All {category}</h1>
+        <section id="category" className="category">
+            <h1 className='category__title'>All {category}</h1>
             {/* Display ul: with list-items for All books (If any) */}
-            <ul className="recipes-list">
+            <ul className="category__cards">
                 {recypesByCategory.map(x => <RecipeCard key={x._id} recipe={x} />)}
 
             </ul>
