@@ -1,13 +1,34 @@
-/* body {
-	background: #FFF;
-	padding: 1rem;
-} */
-
-form {
+.login__form,
+.register__form,
+.create__form,
+.edit__form {
 	max-width: 30rem;
 }
 
-form, form fieldset, form legend, form label, form input, form textarea, form select {
+.login__legend,
+.register__legend,
+.create__legend,
+.edit__legend {
+	border: 2px solid black;
+	font-size: 1.3rem;
+	background-color: #3f2212;
+	color: white;
+	border-radius:0.8rem;
+	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
+
+}
+
+.login__form,
+.register__form,
+.create__form,
+.edit__form,
+.edit__legend,
+form fieldset,
+form legend,
+form label,
+form input,
+form textarea,
+form select {
 	display: block;
 	width: 100%;
 	border: none;
@@ -24,46 +45,65 @@ form fieldset {
 	border-radius: 1rem;
 	box-shadow: 0 0 1rem 2rem rgba(0, 0, 0, 0.1);
 }
-form legend {
-	border: 2px solid #666;
-	background-color: #234465;
-	color: white;
-	border-radius: 1rem;
-	box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
-}
+
 
 form fieldset {
 	padding: 1em 2em 2em 2em;
 	position: relative;
 }
 
-form legend {
+.login__legend,
+.register__legend,
+.create__legend,
+.edit__legend{
 	width: 30%;
 	padding: 0.5rem 1rem;
-	left: -1px;
-	top: -1.4rem;
+	left: 5px;
+	top: -2rem;
 	position: absolute;
 }
 
-form label {
+.login__label,
+.register__label,
+.create__label,
+.edit__label {
+
 	font-weight: bold;
 }
 
-
-.field .input, #type{
+.login__field .input,
+.register__field .input,
+.create__field .input,
+.edit__field .input,
+.edit__select,
+.create__select,
+#type {
 	display: flex;
 	position: relative;
 	align-items: center;
 	border: 1px solid;
-	border-radius: 5px;
+	border-radius: 4px;
+	background-color: white;
 }
 
-.field .input:after {
+.login__field .input:after,
+.register__field .input:after,
+.create__field .input:after,
+.edit__field .input:after,
+.edit__select:after,
+.create__select:after
+ {
 	display: block;
 	content: '';
 }
 
-.field .input input, #type {
+.login__field .input input,
+.register__field .input input,
+.create__field .input input,
+.edit__field .input input,
+.edit__select,
+.create__select,
+#type {
 	border: none;
 	flex: 1 1 auto;
 	padding: 0.4rem;
@@ -73,15 +113,20 @@ form label {
 	order: 2;
 }
 
-.field .input .fas {
+/* .login__field .input .fas,
+.register__field .input .fas,
+.register__field .input .fas {
 	z-index: 2;
 	position: relative;
 	padding: 0 0 0 0.8rem;
 	font-size: 0.9em;
 	order: 1;
-}
+} */
 
-.field .input input+.actions {
+
+/* 
+.login__field .input input+.actions,
+.register__field .input input+.actions {
 	display: block;
 	background: #FFF;
 	border: 1px solid #CCC;
@@ -92,29 +137,47 @@ form label {
 	right: 0;
 	bottom: 0;
 	z-index: 1;
-}
+} */
 
-.field .input input:focus {
+/* .field .input input:focus {
 	border-color: #090;
-}
+} */
 
-.field .input input:focus+.fas {
+/* .field .input input:focus+.fas {
 	color: #090;
-}
+} */
 
-form textarea {
+/* form textarea {
 	border-radius: 0.5rem;
 	padding: 0.8rem;
-}
+} */
 
-form textarea:focus {
+/* form textarea:focus {
 	outline: none;
 	border-color: #090;
-}
+} */
 
 .login-buttons,
 .register-bottons,
-.addRecipe-buttons{
+.addRecipe-buttons {
+	margin-top: 2rem;
 	display: flex;
 }
+.login__dontHaveProfile,
+.register__alredyHaveProfile{
+	margin-top: 20px;
+	margin-left: 10px;
+}
+.login__dontHaveProfile a,
+.register__alredyHaveProfile a{
+	border-bottom: 1px solid transparent;
+	}
+.login__dontHaveProfile a:hover,
+.register__alredyHaveProfile a:hover{
+border-bottom: 1px solid #3f2212;
+}
 
+.login__errors,
+.register__errors{
+	color: red;
+}

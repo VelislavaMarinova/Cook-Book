@@ -46,11 +46,11 @@ const CreatePage = () => {
 
   return (
     <section id="create-page" className="create" >
-      <form id="create-form" method="POST" onSubmit={onSubmit} >
+      <form id="create-form" className="create__form" onSubmit={onSubmit} >
         <fieldset>
-          <legend>Add new Recipe</legend>
-          <p className="field">
-            <label htmlFor="title">Recipe title:</label>
+          <legend className="create__legend">Add new Recipe</legend>
+          <div className="create__field">
+            <label className="create__label" htmlFor="title">Recipe title:</label>
             <span className="input">
               <input
                 type="text"
@@ -61,9 +61,9 @@ const CreatePage = () => {
                 onChange={onChangeHandler}
               />
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="author">Created By:</label>
+          </div>
+          <div className="create__field">
+            <label className="create__label" htmlFor="author">Created By:</label>
             <span className="input">
               <input
                 type="text"
@@ -71,38 +71,38 @@ const CreatePage = () => {
                 placeholder="Created By:"
                 name={CreateFormKeys.Author}
                 value={`${firstName} ${lastName}`}
-                // onChange={onChangeHandler}
+                 onChange={onChangeHandler}
               />
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="category">Category: </label>
+          </div>
+          <div className="create__field">
+            <label className="create__label" htmlFor="category">Category: </label>
             <span className="input">
-              <select id="category" name={CreateFormKeys.Category} value={formValues.category} onChange={onChangeHandler}>
+              <select className="create__select" id="category" name={CreateFormKeys.Category} value={formValues.category} onChange={onChangeHandler}>
                 <option value="choose-category">Choose category:</option>
                 <option value="main-dishes">Main Dishes</option>
                 <option value="salads">Salads</option>
                 <option value="soups">Soups</option>
-                <option value="soups">Drinks</option>
-                <option value="dessert">Desstert</option>
-                <option value="quick">Quiqk Recipes</option>
-                <option value="healthy">Healthy Recipes</option>
+                <option value="drinks">Drinks</option>
+                <option value="desserts">Dessterts</option>
+                <option value="quick-recipes">Quiqk Recipes</option>
+                <option value="healthy-recipes">Healthy Recipes</option>
               </select>
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="dificulty">Dificulty Level:</label>
+          </div>
+          <div className="create__field">
+            <label className="create__label"  htmlFor="dificulty">Dificulty Level:</label>
             <span className="input">
-              <select id="dificulty" name={CreateFormKeys.Dificulty}  value={formValues.dificulty} onChange={onChangeHandler}>
+              <select className="create__select" id="dificulty" name={CreateFormKeys.Dificulty}  value={formValues.dificulty} onChange={onChangeHandler}>
               <option value="choose-dificulty">Choose dificulty level:</option>
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
               </select>
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="prepare">Prepare time:</label>
+          </div>
+          <div className="create__field">
+            <label className="create__label" htmlFor="prepare">Prepare time:</label>
             <span className="input">
               <input
                 type="text"
@@ -113,9 +113,9 @@ const CreatePage = () => {
                 onChange={onChangeHandler}
               />
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="cook">Cook time:</label>
+          </div>
+          <div className="create__field">
+            <label className="create__label"  htmlFor="cook">Cook time:</label>
             <span className="input">
               <input
                 type="text"
@@ -126,9 +126,9 @@ const CreatePage = () => {
                 onChange={onChangeHandler}
               />
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="serves">Serves:</label>
+          </div>
+          <div className="create__field">
+            <label className="create__label" htmlFor="serves">Serves:</label>
             <span className="input">
               <input
                 type="text"
@@ -139,9 +139,9 @@ const CreatePage = () => {
                 onChange={onChangeHandler}
               />
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="description">Description:</label>
+          </div>
+          <div className="create__field">
+            <label className="create__label" htmlFor="description">Description:</label>
             <span className="input">
               <textarea
                 id="description"
@@ -151,9 +151,9 @@ const CreatePage = () => {
                 onChange={onChangeHandler}
               />
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="description">Ingredients: use <span>"||"</span> to separate ingredients!</label>
+          </div>
+          <div className="create__field">
+            <label className="create__label" htmlFor="description">Ingredients: use <span>"||"</span> to separate ingredients!</label>
             <span className="input">
               <textarea
                 id="description"
@@ -163,9 +163,9 @@ const CreatePage = () => {
                 onChange={onChangeHandler}
               />
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="image">Image:</label>
+          </div>
+          <div className="create__field">
+            <label className="create__label" htmlFor="image">Image:</label>
             <span className="input">
               <input
                 type="text"
@@ -176,9 +176,9 @@ const CreatePage = () => {
                 onChange={onChangeHandler}
               />
             </span>
-          </p>
-          <p className="field">
-            <label htmlFor="description">Method: use <span>"||"</span> to separate each method step!</label>
+          </div>
+          <div className="create__field">
+            <label className="create__label" htmlFor="description">Method: use <span>"||"</span> to separate each method step!</label>
             <span className="input">
               <textarea
                 id="method"
@@ -188,7 +188,7 @@ const CreatePage = () => {
                 onChange={onChangeHandler}
               />
             </span>
-          </p>
+          </div>
           {/* <p className="field">
               <label htmlFor="type">Type</label>
               <span className="input">

@@ -45,9 +45,10 @@
 
  .nav__elements a {
      text-decoration: none;
-     color: black;
+     color: #3f2212;
      transition: all .1s ease-in-out;
      border-bottom: 4px solid transparent;
+     transition:  all .3s ease-in-out;
  }
 
  .nav__elements a:hover {

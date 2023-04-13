@@ -6,6 +6,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    color:#3f2212
 }
 
 .basic {
@@ -39,7 +40,7 @@ body {
 .button {
     display: inline-block;
     padding: 0.3rem 1rem;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
     text-decoration: none;
     font-weight: bold;
     background: #3f2212;
@@ -50,6 +51,7 @@ body {
     text-align: center;
     margin-bottom: 10px;
     margin: 5px;
+    transition:  all .3s ease-in-out;
 }
 .button:hover{
     background-color: antiquewhite;
@@ -59,6 +61,7 @@ body {
 a {
     text-decoration: none;
     display: inline-block;
+    color: #3f2212
 }
 
 /* li {
@@ -96,3 +99,18 @@ h3 {
     margin-bottom: 0;
     text-align: auto;
 } 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid green;
+  border-radius: 4px;
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0px 1000px #faebd7 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

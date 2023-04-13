@@ -1,73 +1,71 @@
 import "./forms.css"
 import { Link } from "react-router-dom";
-import { useContext,useEffect } from "react";
-import {AuthContext} from "../../contexts/AuthContext";
-import useForm from "../../hooks/useForm";
-
-const LoginFormKeys = {
-  Email: 'email',
-  Password: 'password'
-};
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import loginSchema from "../validations/loginValidation";
 
 const Login = () => {
 
-  const { onLoginSubmit, onFormClose} = useContext(AuthContext)
+  const { onLoginSubmit, onFormClose, error } = useContext(AuthContext)
 
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(loginSchema)
+  });
 
-  const { formValues, onChangeHandler, onSubmit } = useForm({
-    [LoginFormKeys.Email]: '',
-    [LoginFormKeys.Password]: '',
-    },
-    onLoginSubmit);
+  const submitForm = (data) => {
+    console.log(data);
+    onLoginSubmit(data)
 
-    // const detectKeyDown = (e) => {
-    //   if (e.key === 'Escape') {
-    //     onFormClose()
-    //   }
-    // };
-  
-    // useEffect(() => {
-    //   document.addEventListener('keydown', detectKeyDown, true)
-    // }, [detectKeyDown]);
+  }
 
   return (
     <section id="login-page" className="login">
-      <form id="login-form" method="POST" onSubmit={onSubmit}>
+      <form id="login-form" className="login__form" onSubmit={handleSubmit(submitForm)}>
         <fieldset>
-          <legend>Login Form</legend>
-          <p className="field">
-            {/* <label htmlFor="email">Email</label> */}
+          <legend className="login__legend">Login Form</legend>
+          <div className="login__field">
+            <label className="login__label" htmlFor="email">Email</label>
             <span className="input">
               <input
                 type="text"
-                name={LoginFormKeys.Email}
+                name="email"
                 id="email"
                 placeholder="Email:"
-                value={formValues[LoginFormKeys.Email]}
-                onChange={onChangeHandler} />
+                {...register("email")}
+              // value={formValues[LoginFormKeys.Email]}
+              // onChange={onChangeHandler}
+              />
             </span>
-          </p>
-          <p className="field">
-            {/* <label htmlFor="password">Password</label> */}
+            {errors.email && <p className="login__errors">{errors.email.message}</p>}
+          </div>
+          <div className="login__field">
+            <label className="login__label" htmlFor="password">Password</label>
             <span className="input">
               <input
                 type="password"
-                name={LoginFormKeys.Password}
+                name="password"
                 id="password"
                 placeholder="Password:"
-                value={formValues[LoginFormKeys.Password]}
-                onChange={onChangeHandler}
+                {...register("password")}
+              // value={formValues[LoginFormKeys.Password]}
+              // onChange={onChangeHandler}
               />
             </span>
-          </p>
+            {errors.password && <p className="login__errors">{errors.password.message}</p>}
+            {/* <p>{errors.password?.message}</p> */}
+          </div>
+          {error ? <p className="login__errors">{error.message}</p> : null}
           <div className="login-buttons">
             <input className="button submit" type="submit" value="Sign in" />
             <button className="button close" type="button" onClick={onFormClose}>Close</button>
 
           </div>
-          <p className="field">
-            <span>If you don't have profile click <Link to="/register">here</Link></span>
-          </p>
+          <div className="login__dontHaveProfile">
+            <span>If you don't have profile <Link to="/register">click here</Link></span>
+          </div>
+          
         </fieldset>
       </form>
     </section>

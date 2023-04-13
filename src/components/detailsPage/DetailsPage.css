@@ -1,31 +1,47 @@
-/* .description {
-	width: 17rem;
-	height: 10vh;
-	padding: 2rem;
-	overflow: auto;
-} */
-.book-description {
-	width: 30rem;
-	padding: 2rem;
-	overflow: auto;
-	text-align: justify;
-}
-
 .details {
 	display: flex;
+	gap: 20px;
+	
+	flex-direction: column;
+	align-items: center;
+}
+
+.details__content{
+	margin:2rem 3rem;
+	display: flex;
+	gap: 10px;
+	
 	justify-content: center;
 }
-
-.details .type {
-	margin: 5px;
-	font-size: 20px;
+.recipe__description{
+	font-size: 1.3rem;
 }
 
-.details span.likes {
+.recipe__description__bold{
+	font-weight: bold;
+	font-size: 1.3rem;
+}
+
+.recipe__info,
+.recipe__allIngredients,
+.recipe__method{
+	width: 20%;
+	padding: 1rem;
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	align-items: center;
+
 }
 
-.field .input:hover {
-	background: #c4c1c1;
+.recipe__img img{
+	width: 100%;
+	border-radius: 16px;
+	border: 1px solid #3f2212;
 }
+.recipe__fetures{
+	list-style-type: none;
+}
+/* .recipe__ingredients,
+.recipe__steps{
+	list-style-type: circle;
+} */
