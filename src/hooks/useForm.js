@@ -21,11 +21,11 @@
 // };
 // export default useForm;
 
-import { useState} from "react";
+import { useCallback, useState } from "react";
 
 const useForm = (initialValues, onSubmitHandler) => {
     // console.log(initialValues.name);
-    
+
     const [formValues, setFormValues] = useState(initialValues);
     //  setFormValues(initialValues)
     //  console.log(formValues);
@@ -43,12 +43,12 @@ const useForm = (initialValues, onSubmitHandler) => {
         }
     };
 
-    
-    const changeValues = (newValues) => {
+
+    const changeValues = useCallback((newValues) => {
         // TODO: Validate newValues shape (like initialValues)
-        
+
         setFormValues(newValues);
-    };
+    }, []);
 
     return {
         formValues,

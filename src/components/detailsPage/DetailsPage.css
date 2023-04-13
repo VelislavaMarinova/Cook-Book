@@ -4,6 +4,7 @@
 	
 	flex-direction: column;
 	align-items: center;
+	padding: 2rem 3rem;
 }
 
 .details__content{

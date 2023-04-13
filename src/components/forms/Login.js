@@ -13,7 +13,7 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(loginSchema)
   });
-
+console.log(register("aaa"));
   const submitForm = (data) => {
     console.log(data);
     onLoginSubmit(data)
@@ -29,10 +29,9 @@ const Login = () => {
             <label className="login__label" htmlFor="email">Email</label>
             <span className="input">
               <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="Email:"
+               
+                
+                         placeholder="Email:"
                 {...register("email")}
               // value={formValues[LoginFormKeys.Email]}
               // onChange={onChangeHandler}
