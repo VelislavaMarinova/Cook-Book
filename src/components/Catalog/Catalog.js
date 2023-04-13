@@ -4,72 +4,69 @@ import { useDataContext } from '../../contexts/DataContext';
 import RecipeCartd from '../RecipeCard/RecipeCard';
 import CategoryCard from './CategoryCard';
 const Catalog = () => {
-    const categoriesSet = new Set()
     const { recipes } = useDataContext();
-    recipes.map(x => categoriesSet.add(x.category));
-    const categories = []
-    // console.log(categories);
-    for (const item of categoriesSet) {
-        console.log(item);
-        if (item === "desserts") {
-            categories.push({
+    const categoriesSet = new Set(recipes.map(x => x.category))
+    const categories = [...categoriesSet].map(cat => {
+        if (cat === "desserts") {
+            return {
                 title: 'Desserts',
-                category: item,
+                category: cat,
                 img: 'https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg?auto=compress&cs=tinysrgb&w=1600'
-            })
-        }
-        else if (item === 'salads') {
-            categories.push({
+            }
+        } else if (cat === 'salads') {
+            return {
                 title: 'Salads',
-                category: item,
+                category: cat,
                 img: 'https://images.pexels.com/photos/3872370/pexels-photo-3872370.jpeg?auto=compress&cs=tinysrgb&w=1600'
-            })
+            }
         }
-        else if (item === 'main-dishes') {
-            categories.push({
+        else if (cat === 'main-dishes') {
+            return {
                 title: 'Main Dishes',
-                category: item,
+                category: cat,
                 img: 'https://images.pexels.com/photos/5718028/pexels-photo-5718028.jpeg?auto=compress&cs=tinysrgb&w=1600'
-            })
-        } else if (item === 'quick-recipes') {
-            categories.push({
+            }
+        } else if (cat === 'quick-recipes') {
+            return {
                 title: 'Quick Recipes',
-                category: item,
+                category: cat,
                 img: 'https://images.pexels.com/photos/6294354/pexels-photo-6294354.jpeg?auto=compress&cs=tinysrgb&w=1600'
-            })
-        } else if (item === 'healthy-recipes') {
-            categories.push({
+            }
+        } else if (cat === 'healthy-recipes') {
+            return {
                 title: 'Healthy Recipes',
-                category: item,
+                category: cat,
                 img: 'https://images.pexels.com/photos/3872367/pexels-photo-3872367.jpeg?auto=compress&cs=tinysrgb&w=1600'
-            })
-        } else if (item === 'drinks') {
-            categories.push({
+            }
+        } else if (cat === 'drinks') {
+            return {
                 title: 'Drinks',
-                category: item,
+                category: cat,
                 img: 'https://images.pexels.com/photos/1200348/pexels-photo-1200348.jpeg?auto=compress&cs=tinysrgb&w=1600'
-            })
-        } else if (item === 'soups') {
-            categories.push({
+            }
+        } else if (cat === 'soups') {
+            return {
                 title: 'Soups',
-                category: item,
+                category: cat,
                 img: 'https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=1600'
-            })
+            }
+        }else{
+            return{}
         }
+    });
 
-    }
-    console.log(categories);
+console.log(categories);
 
-    return (
-        <section id="catalog-page" className="catalog">
-            <h1>Cookbook Categories</h1>
-            {/* Display ul: with list-items for All books (If any) */}
-            <ul className="catalog__categories">
-                {categories.map(x => <CategoryCard key={x.title} category={x} />)}
+return (
+    <section id="catalog-page" className="catalog">
+        <h1>Cookbook Categories</h1>
+        {/* Display ul: with list-items for All books (If any) */}
+        <ul className="catalog__categories">
+            {categories.map(x => <CategoryCard key={x.title} category={x} />)}
 
-            </ul>
-            {/* Display paragraph: If there are no books in the database */}
-            {/* <p className="no-recipes">No Recipes in database!</p> */}
-        </section>)
+        </ul>
+        {/* Display paragraph: If there are no books in the database */}
+        {/* <p className="no-recipes">No Recipes in database!</p> */}
+    </section>)
 };
 export default Catalog;

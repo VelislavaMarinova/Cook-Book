@@ -53,7 +53,7 @@ const EditPage = () => {
                 console.log(result);
                 changeValues(result);
             });
-    }, [recipeId]);
+    }, [changeValues, recipeId, recipeService]);
 
     return (
         <section id="edit-page" className="edit">

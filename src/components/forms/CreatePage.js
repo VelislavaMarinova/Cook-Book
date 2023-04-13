@@ -12,10 +12,10 @@ const CreateFormKeys = {
   Ingredients: 'ingredients',
   Image: 'imageUrl',
   Method: 'method',
-  PrepareTime:'prepare',
-  CookTime:'cook',
+  PrepareTime: 'prepare',
+  CookTime: 'cook',
   Category: 'category',
-  Dificulty:'dificulty',
+  Dificulty: 'dificulty',
   Serves: 'serves',
 };
 
@@ -36,10 +36,10 @@ const CreatePage = () => {
       [CreateFormKeys.Image]: '',
       [CreateFormKeys.Method]: '',
       [CreateFormKeys.PrepareTime]: '',
-      [CreateFormKeys.CookTime]:'',
+      [CreateFormKeys.CookTime]: '',
       [CreateFormKeys.Dificulty]: '',
-      [CreateFormKeys.Category]:'',
-      [CreateFormKeys.Serves]:'',
+      [CreateFormKeys.Category]: '',
+      [CreateFormKeys.Serves]: '',
 
     },
     onCreateSubmit)
@@ -70,8 +70,9 @@ const CreatePage = () => {
                 id="author"
                 placeholder="Created By:"
                 name={CreateFormKeys.Author}
-                value={`${firstName} ${lastName}`}
-                 onChange={onChangeHandler}
+                defaultValue={`${firstName} ${lastName}`}
+                // onChange={onChangeHandler}
+                readOnly
               />
             </span>
           </div>
@@ -91,10 +92,10 @@ const CreatePage = () => {
             </span>
           </div>
           <div className="create__field">
-            <label className="create__label"  htmlFor="dificulty">Dificulty Level:</label>
+            <label className="create__label" htmlFor="dificulty">Dificulty Level:</label>
             <span className="input">
-              <select className="create__select" id="dificulty" name={CreateFormKeys.Dificulty}  value={formValues.dificulty} onChange={onChangeHandler}>
-              <option value="choose-dificulty">Choose dificulty level:</option>
+              <select className="create__select" id="dificulty" name={CreateFormKeys.Dificulty} value={formValues.dificulty} onChange={onChangeHandler}>
+                <option value="choose-dificulty">Choose dificulty level:</option>
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
@@ -115,7 +116,7 @@ const CreatePage = () => {
             </span>
           </div>
           <div className="create__field">
-            <label className="create__label"  htmlFor="cook">Cook time:</label>
+            <label className="create__label" htmlFor="cook">Cook time:</label>
             <span className="input">
               <input
                 type="text"

@@ -2,8 +2,7 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
-
-
+import logoImg from './tasy.jpg';
 
 const Header = ({ }) => {
   const { isAuthenticated, firstName, lastName } = useContext(AuthContext)
@@ -14,7 +13,7 @@ const Header = ({ }) => {
       <nav className="navbar">
         <section className="navbar-dashboard">
           <div className='header__logo'>
-            <Link to="/"><img src="./images/tasy.jpg" alt="tastyImg" /></Link>
+            <Link to="/"><img src={logoImg} alt="tastyImg" /></Link>
           </div>
           <ul role='list' className="nav__elements">
 
@@ -22,12 +21,12 @@ const Header = ({ }) => {
             {!isAuthenticated && (
               <>
                 <li>
-                  <Link  to="/login">
+                  <Link to="/login">
                     Login
                   </Link>
                 </li>
                 <li>
-                  <Link  to="/register">
+                  <Link to="/register">
                     Register
                   </Link>
                 </li>
