@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import useFetchRecipes from '../hooks/useFetchRecipes';
+import useGetAllRecipes from '../hooks/useGetAllRecipes';
 import { recipeServiceFactory } from '../services/recipeService';
 import { useService } from '../hooks/useService';
 import { AuthContext } from './AuthContext';
@@ -15,7 +15,7 @@ export const DataProvider = ({
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
     // console.log(`DataContext: ${token}`);
-    const [recipes, setRecipes] = useFetchRecipes();
+    const [recipes, setRecipes] = useGetAllRecipes();
     const recipeService = recipeServiceFactory(token);
 
     const onFormClose = () => {

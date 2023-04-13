@@ -14,10 +14,13 @@ import CreatePage from './components/forms/CreatePage';
 import EditPage from './components/editPage/EditPage';
 import DeleteRecipe from './components/delete/DeleteRecipe';
 import DetailsPage from './components/detailsPage/DetailsPage';
-import Catalog from './components/catalog/Catalog'
+import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
 import RouteProtected from './components/common/RouteProtected';
 import RecypesByCategory from './components/categories/RecypesByCategory';
+import MyRecipes from './components/myRecipes/MyRecipes';
+
+
 
 
 
@@ -76,6 +79,7 @@ function App() {
               <Route path="/catalog/quick-recipes" element={<RecypesByCategory category='quick-recipes'/>} />
               
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
+              <Route path="/myRecipes" element={<MyRecipes />} />
             </Routes>
           </Main>
 
