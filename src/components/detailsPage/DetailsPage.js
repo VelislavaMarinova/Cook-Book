@@ -38,7 +38,6 @@ const DetailsPage = () => {
     // console.log(selectedRecipe);
 
     if (selectedRecipe._id) {
-        const step = 0;
         // console.log('selected');
         // console.log(selectedRecipe);
         const isOwner = userId === selectedRecipe._ownerId;
@@ -52,12 +51,15 @@ const DetailsPage = () => {
         return (
             <section id="details-page" className="details">
                 <h3 className='details__title'>{selectedRecipe.title}</h3>
-                <p className="recipe__description"><span className='recipe__description__bold'>Description:</span> {selectedRecipe.description}</p>
+                <p className="recipe__description">
+                    <span className='recipe__description__bold'>Description:</span>
+                    {selectedRecipe.description}
+                </p>
                 <div className='details__content'>
 
                     <div className="recipe__info">
                         <div className="recipe__img">
-                            <img src={selectedRecipe.imageUrl} />
+                            <img src={selectedRecipe.imageUrl} alt="food_img" />
                         </div>
                         <ul className='recipe__fetures'>
                             <li><i class="fa-solid fa-heart"></i> Likes: 0</li>
@@ -68,7 +70,7 @@ const DetailsPage = () => {
                             <li><i class="fa-solid fa-clock"></i> Cook: {selectedRecipe.cook}</li>
                             <li><i class="fa-solid fa-utensils"></i> Serves: {selectedRecipe.serves}</li>
                         </ul>
-                        
+
 
                         <div className="actions">
                             {/* Edit/Delete buttons ( Only for creator of this book )  */}
@@ -91,13 +93,13 @@ const DetailsPage = () => {
                                 </a>
                             )}
                             {/* ( for Guests and Users )  */}
-                          
 
-                                {/* <div className="likes">
+
+                            {/* <div className="likes">
                                     <img className="hearts" src="/images/heart.png" />
                                     <span id="total-likes">Likes: 0</span>
                                 </div> */}
-                           
+
                             {/* Bonus */}
                         </div>
                     </div>
