@@ -1,25 +1,29 @@
 import { useState, useEffect, useMemo } from "react";
 import { recipeServiceFactory } from "../services/recipeService";
 
-const useGetThreeRecipes = (category) => {
+const useGetThreeRecipes = () => {
 
-    const [threeRecipes, setThreeRecipes] = useState();
+    const [latestThreeRecipes, setLatestThreeRecipes] = useState();
     const [loading, setLoading] = useState(true);
     //const recipeService = recipeServiceFactory()
 
     const recipeService = useMemo(() => recipeServiceFactory(), [])
 
     useEffect(() => {
-        setLoading(true)
-        recipeService.getThree()
-            .then(res => {
-                setLoading(false)
-                setThreeRecipes(res)
-            })
+        setLoading(true);
+        try {
+            recipeService.getThree()
+                .then(res => {
+                    setLoading(false)
+                    setLatestThreeRecipes(res)
+                })
+            
+        } catch (error) {
+            throw new Error(error);
+        }
     }, [recipeService]);
 
-    console.log('home', threeRecipes);
+    return { latestThreeRecipes, loading };
+};
 
-    return { data: threeRecipes, loading };
-}
 export default useGetThreeRecipes;
