@@ -127,17 +127,12 @@ async function del(url,token) {
 
 
 export const requestFactory = (token) => {
-// if (token !== undefined){
-//     return{
 
-//     }
-// }
     console.log(`requestFactory  ${token}`);
     return {
         get: get,
         post:post,
         put:put,
-        // patch: (url,data)=>patch(token,url,data),
         del: del
     }
 };

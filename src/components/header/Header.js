@@ -1,11 +1,10 @@
 import './Header.css';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
-import { useContext } from 'react';
+import { useAuthContext } from '../../contexts/AuthContext';
 import logoImg from './tasy.jpg';
 
-const Header = ({ }) => {
-  const { isAuthenticated, firstName, lastName } = useContext(AuthContext)
+const Header = () => {
+  const { isAuthenticated, firstName, lastName } = useAuthContext();
 
   return (
     <header className="header">
@@ -15,7 +14,7 @@ const Header = ({ }) => {
           <div className='header__logo'>
             <Link to="/"><img src={logoImg} alt="tastyImg" /></Link>
           </div>
-          <ul role='list' className="nav__elements">
+          <ul className="nav__elements">
 
             {/* Guest users */}
             {!isAuthenticated && (
@@ -60,8 +59,6 @@ const Header = ({ }) => {
                   </Link>
                 </li>
               </>
-
-
             )}
           </ul>
 

@@ -8,6 +8,7 @@
 }
 
 .details__content{
+	width: 100%;
 	margin:2rem 3rem;
 	display: flex;
 	gap: 10px;
@@ -42,7 +43,6 @@
 .recipe__fetures{
 	list-style-type: none;
 }
-/* .recipe__ingredients,
-.recipe__steps{
-	list-style-type: circle;
-} */
+.recipe__step{
+	margin-bottom: 0.5rem;
+}

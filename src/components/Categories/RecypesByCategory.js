@@ -5,7 +5,7 @@ import RecipeCard from "../RecipeCard/RecipeCard";
 const RecypesByCategory = ({
     category
 }) => {
-    
+    console.log('category',category);
    const recypesByCategory= useGetByCategory(category)
     return (
         <section id="category" className="category">

@@ -1,10 +1,14 @@
 import './catalog.css'
 
 import { useDataContext } from '../../contexts/DataContext';
-import RecipeCartd from '../RecipeCard/RecipeCard';
 import CategoryCard from './CategoryCard';
+import Loading from '../loading/Loading';
+
 const Catalog = () => {
-    const { recipes } = useDataContext();
+    const { recipes,loading } = useDataContext();
+    if(loading){
+        return <Loading />
+    }
     const categoriesSet = new Set(recipes.map(x => x.category))
     const categories = [...categoriesSet].map(cat => {
         if (cat === "desserts") {
@@ -55,18 +59,16 @@ const Catalog = () => {
         }
     });
 
-console.log(categories);
+// console.log(categories);
 
 return (
     <section id="catalog-page" className="catalog">
         <h1>Cookbook Categories</h1>
-        {/* Display ul: with list-items for All books (If any) */}
-        <ul className="catalog__categories">
+        {categories.length?  <ul className="catalog__categories">
             {categories.map(x => <CategoryCard key={x.title} category={x} />)}
-
-        </ul>
-        {/* Display paragraph: If there are no books in the database */}
-        {/* <p className="no-recipes">No Recipes in database!</p> */}
+        </ul>: 
+        <p className="no-recipes">No categories in database!</p>
+        }
     </section>)
 };
 export default Catalog;

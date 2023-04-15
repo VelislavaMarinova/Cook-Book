@@ -1,15 +1,14 @@
 
 import "./forms.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import {  useAuthContext } from "../../contexts/AuthContext";
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import registerSchema from "../validations/registerValidation";
 
 const Register = () => {
-  const { onRegisterSubmit, onFormClose, error } = useContext(AuthContext)
+  const { onRegisterSubmit, onFormClose, error } = useAuthContext();
 
   const { register, handleSubmit, formState: { errors }} = useForm({
     resolver: yupResolver(registerSchema)
@@ -18,8 +17,7 @@ const Register = () => {
   const onSubmit = (data) => {
     console.log(data);
     onRegisterSubmit(data)
-
-  }
+  };
 
   return (
     <section id="register-page" className="register">

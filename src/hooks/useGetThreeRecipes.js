@@ -1,24 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { recipeServiceFactory } from "../services/recipeService";
-
-
-const baseUrl = 'http://localhost:3030/data/recipes'
-const sort = '?sortBy=_createdOn%20desc';
-const selection = '?select=_id%2Cname%2CimageUrl%2Cdescription';
-
 
 const useGetThreeRecipes = (category) => {
 
-    const [threeRecipes, setThreeRecipes] = useState([]);
-    const recipeService = recipeServiceFactory()
+    const [threeRecipes, setThreeRecipes] = useState();
+    const [loading, setLoading] = useState(true);
+    //const recipeService = recipeServiceFactory()
+
+    const recipeService = useMemo(() => recipeServiceFactory(), [])
 
     useEffect(() => {
+        setLoading(true)
         recipeService.getThree()
             .then(res => {
+                setLoading(false)
                 setThreeRecipes(res)
             })
-    }, []);
+    }, [recipeService]);
 
-    return threeRecipes;
+    console.log('home', threeRecipes);
+
+    return { data: threeRecipes, loading };
 }
 export default useGetThreeRecipes;
