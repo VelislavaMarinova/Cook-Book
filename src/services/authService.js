@@ -12,7 +12,6 @@
 //     }
 // };
 
-import { useService } from "../hooks/useService";
 import { requestFactory } from "./requester"
 
 // const request=useService(requestFactory)
@@ -45,6 +44,6 @@ export const authServiceFactory = (token) => {
         return{
             login,
             register,
-            logout
+            logout,
         }
-}
+};
