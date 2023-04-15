@@ -1,12 +1,17 @@
 import './recypesByCategory.css'
 import {useGetByCategory} from "../../hooks/useGetByCategory";
 import RecipeCard from "../RecipeCard/RecipeCard";
+import Loading from '../loading/Loading';
 
 const RecypesByCategory = ({
     category
 }) => {
     console.log('category',category);
-   const recypesByCategory= useGetByCategory(category)
+   const {recypesByCategory,loading}= useGetByCategory(category)
+   if(loading){
+    return<Loading/>
+   }
+
     return (
         <section id="category" className="category">
             <h1 className='category__title'>All {category}</h1>
@@ -19,6 +24,6 @@ const RecypesByCategory = ({
             }
         </section>
     )
+};
 
-}
 export default RecypesByCategory;

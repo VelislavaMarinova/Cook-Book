@@ -14,16 +14,18 @@ const useGetAllRecipes = () => {
 
     useEffect(() => {
         setLoading(true)
+        try {
+            recipeService.getAll()
+                .then(res => {
+                    console.log(res);
+                    setRecipes(res)
+                    setLoading(false)
+                })
 
-        recipeService.getAll()
-            .then(res => {
-                console.log(res);
-                setRecipes(res)
-                setLoading(false)
-
-
-            })
-    }, [recipeService]);
+        } catch (error) {
+            throw new Error(error);
+        };
+    }, [recipeService])
 
     return { recipes, setRecipes, loading };
 }

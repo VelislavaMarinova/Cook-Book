@@ -4,28 +4,26 @@ import { recipeServiceFactory } from "../services/recipeService";
 
 
 
-const useSelectRecipe = (recipeId) => {
+const useGetOneRecipe = (recipeId) => {
 
-    const [selectedRecipe, setSelectedRecipe] = useState({});
+    const [oneRecipe, setOneRecipe] = useState({});
     const [loading, setLoading] = useState(true)
     const recipeService = useService(recipeServiceFactory);
     console.log(loading);
 
     useEffect(() => {
+        setLoading(true)
         try {
-             setLoading(true)
             recipeService.getOne(recipeId)
                 .then(result => {
-
-                  
-                    setSelectedRecipe(result);
+                    setOneRecipe(result);
                     setLoading(false)
                 })
-        } catch {
-
+        } catch(err) {
+            throw new Error(err);
         }
     }, [recipeId, recipeService]);
 
-    return { selectedRecipe,setSelectedRecipe, loading }
+    return { selectedRecipe: oneRecipe,setSelectedRecipe: setOneRecipe, loading }
 }
-export default useSelectRecipe;
+export default useGetOneRecipe;

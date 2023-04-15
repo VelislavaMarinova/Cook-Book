@@ -2,10 +2,15 @@ import './myRecipes.css'
 import { useAuthContext } from "../../contexts/AuthContext";
 import useGetMyRecipes from "../../hooks/useGetMyRecipes";
 import RecipeCartd from "../RecipeCard/RecipeCard";
+import Loading from '../loading/Loading';
 
 const MyRecipes = () => {
     const { userId } = useAuthContext();
-    const myRecipes = useGetMyRecipes(userId)
+    const {myRecipes,loading} = useGetMyRecipes(userId);
+
+    if(loading){
+        return<Loading/>
+    };
     
     return (
         <section id="myRecipes" className="myRecipes">
@@ -18,6 +23,6 @@ const MyRecipes = () => {
                 }
         </section>
     );
-}
+};
 
 export default MyRecipes;

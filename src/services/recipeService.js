@@ -40,10 +40,7 @@ export const recipeServiceFactory = (token, category,userId) => {
         getThree,
         getByCategory,
         getMyRecipes
-        // addComment,
-
+       
     };
-
-
-
 };
+
