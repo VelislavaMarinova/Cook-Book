@@ -1,0 +1,13 @@
+.notAuthorized{
+    margin-top: 100px;
+    text-align: center;
+    font-size: 2rem;
+}
+.notAuthorized__link{
+border-bottom: 1px solid transparent;
+font-weight: bold;
+transition: all .2s ease-in-out;
+}
+.notAuthorized__link:hover{
+    border-bottom: 3px solid #3f2212;
+}

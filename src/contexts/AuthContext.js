@@ -1,12 +1,8 @@
-import { createContext } from 'react';
-import { login, logout, register } from '../services/authService';
+import { createContext,useContext } from 'react';
 import { useState, } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../hooks/useLocalStorage';
-import { useService } from '../hooks/useService';
 import { authServiceFactory } from '../services/authService';
-import LoginSchema from '../components/validations/loginValidation';
-import * as yup from 'yup';
 
 export const AuthContext = createContext();
 
@@ -17,7 +13,6 @@ export const AuthProvider = ({
 }) => {
     const [auth, setAuth] = useLocalStorage('auth', {})
     const [err, setErr] = useState('')
-    // const authService = authServiceFactory(auth.accessToken);
     const authService = authServiceFactory(auth.accessToken)
     const navigate = useNavigate()
 
@@ -36,7 +31,6 @@ export const AuthProvider = ({
             } catch (error) {
                 setErr(error)
                 throw error
-                // alert('Incorrect Email or Password')
             }
         // }
     }
@@ -90,3 +84,8 @@ export const AuthProvider = ({
         </>
     )
 }
+export const useAuthContext = () => {
+    const context = useContext(AuthContext);
+
+    return context;
+};

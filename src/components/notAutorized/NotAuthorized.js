@@ -1,9 +1,10 @@
+import './notAuthorized.css'
 import { Link } from 'react-router-dom'
 
 const NotAuthorized = () => {
   return (
-    <div>
-      please <Link to="/login">login</Link> in order to see this page
+    <div className='notAuthorized'>
+      Please <Link className='notAuthorized__link' to="/login">login</Link> in order to see this page!
     </div>
   )
 }

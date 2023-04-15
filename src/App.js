@@ -11,8 +11,8 @@ import Main from './components/main/Main';
 import Login from './components/forms/Login';
 import Register from './components/forms/Register';
 import CreatePage from './components/forms/CreatePage';
-import EditPage from './components/forms/EditPage';
-import DetailsPage from './components/detailsPage/DetailsPage';
+// import EditPage from './components/forms/EditPage';
+import DetailsPage from './components/details/DetailsPage';
 import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
 import RouteProtected from './components/common/RouteProtected';
@@ -20,29 +20,7 @@ import RecypesByCategory from './components/categories/RecypesByCategory';
 import MyRecipes from './components/myRecipes/MyRecipes';
 import DeletePage from './components/forms/DeletePage';
 
-
-
-
-
 function App() {
-
-  // const recipeserviseAuth = useService(recipeServiceFactory)
-  // const [recipes, setRecipes] = useState([]);
-
-  // useEffect(() => {
-  //   recipeService.getAll()
-  //     .then(result => {
-  //       setRecipes(result)
-  //     })
-  // }, []);
-
-  // const localData = JSON.parse(localStorage.getItem('auth'));
-  // let token = ''
-  // if (localData) {
-  //   token = localData.accessToken;
-  // }
-  // const recipeService = recipeServiceFactory(token);//auth.accessToken
-
 
   return (
     <AuthProvider>
@@ -61,25 +39,36 @@ function App() {
               <Route path='/create' element={
                 <RouteProtected>
                   <CreatePage />
-                </RouteProtected>} />
-              <Route path="/recipes/:recipeId/edit" element={
+                </RouteProtected>}
+              />
+              {/* <Route path="/recipes/:recipeId/edit" element={
                 <RouteProtected>
-                  <EditPage />
-                </RouteProtected>} />
-                <Route path="/recipes/:recipeId/delete" element={<DeletePage />} />
+                  <Preload />
+                </RouteProtected>}
+              /> */}
+              <Route path="/recipes/:recipeId/delete" element={
+                <RouteProtected>
+                  <DeletePage />
+                </RouteProtected>}
+              />
 
+              <Route path="/myRecipes" element={
+                <RouteProtected>
+                  <MyRecipes />
+                </RouteProtected>}
+              />
 
               {/* <Route path="/create" element={<CreatePage onFormClose={onFormClose} />} /> */}
               <Route path="/catalog" element={<Catalog />} />
               <Route path="/catalog/main-dishes" element={<RecypesByCategory category='main-dishes' />} />
-              <Route path="/catalog/desserts" element={<RecypesByCategory category='desserts'/>} />
-              <Route path="/catalog/drinks" element={<RecypesByCategory category='drinks'/>} />
+              <Route path="/catalog/desserts" element={<RecypesByCategory category='desserts' />} />
+              <Route path="/catalog/drinks" element={<RecypesByCategory category='drinks' />} />
               <Route path="/catalog/salads" element={<RecypesByCategory category='salads' />} />
-              <Route path="/catalog/healthy-recipes" element={<RecypesByCategory category='healthy-recipes'/>} />
-              <Route path="/catalog/quick-recipes" element={<RecypesByCategory category='quick-recipes'/>} />
-              
+              <Route path="/catalog/healthy-recipes" element={<RecypesByCategory category='healthy-recipes' />} />
+              <Route path="/catalog/quick-recipes" element={<RecypesByCategory category='quick-recipes' />} />
+              <Route path="/catalog/soups" element={<RecypesByCategory category='soups' />} />
+
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
-              <Route path="/myRecipes" element={<MyRecipes />} />
             </Routes>
           </Main>
 

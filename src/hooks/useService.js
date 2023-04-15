@@ -1,10 +1,10 @@
 
-import { useContext, useMemo } from "react";
-import { AuthContext } from "../contexts/AuthContext";
+import {  useMemo } from "react";
+import {  useAuthContext } from "../contexts/AuthContext";
 
 export const useService = (serviceFactory) => {
 
-    const { token } = useContext(AuthContext);
+    const { token } = useAuthContext();
 
     console.log(token);
 

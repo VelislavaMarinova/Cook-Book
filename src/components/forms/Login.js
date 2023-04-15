@@ -1,14 +1,13 @@
 import "./forms.css"
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import {  useAuthContext } from "../../contexts/AuthContext";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import loginSchema from "../validations/loginValidation";
 
 const Login = () => {
 
-  const { onLoginSubmit, onFormClose, error } = useContext(AuthContext)
+  const { onLoginSubmit, onFormClose, error } = useAuthContext();
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(loginSchema)

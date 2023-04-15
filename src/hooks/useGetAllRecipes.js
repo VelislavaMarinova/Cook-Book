@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { recipeServiceFactory } from "../services/recipeService";
 
 
@@ -8,17 +8,23 @@ import { recipeServiceFactory } from "../services/recipeService";
 
 const useGetAllRecipes = () => {
     const [recipes, setRecipes] = useState([]);
-    const recipeService = recipeServiceFactory()
+    const [loading, setLoading] = useState(true)
+    //const recipeService = recipeServiceFactory()
+    const recipeService = useMemo(() => recipeServiceFactory(), [])
 
     useEffect(() => {
+        setLoading(true)
+
         recipeService.getAll()
             .then(res => {
                 console.log(res);
                 setRecipes(res)
+                setLoading(false)
+
+
             })
-    }, []);
+    }, [recipeService]);
 
-
-    return [recipes, setRecipes];
+    return { recipes, setRecipes, loading };
 }
 export default useGetAllRecipes;
