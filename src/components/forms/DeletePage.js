@@ -5,22 +5,18 @@ import { useAuthContext } from "../../contexts/AuthContext";
 import Loading from "../loading/Loading";
 import { recipeServiceFactory } from "../../services/recipeService";
 
-
-
-
 const DeletePage = () => {
     const { recipeId } = useParams();
-    console.log(recipeId, 'delete' );
     const { token } = useAuthContext();
     const { selectedRecipe, loading }= useGetOneRecipe(recipeId);
-    // console.log(`DeleteRecipe ${token}`);
     const recipeService = recipeServiceFactory(token);
     const { deleteRecipeFromState } = useDataContext()
     const navigate = useNavigate()
     
     if(loading){
-        return <Loading/>
-    }
+        return <Loading/>;
+    };
+
     const onDeleteClik = async (recipeId) => {
         
         await recipeService.deleteRecipe(recipeId);
@@ -31,7 +27,7 @@ const DeletePage = () => {
     }
 
     const onClose = () => {
-        navigate(`/catalog/${recipeId}`)
+        navigate(`/catalog/${recipeId}`);
     }
 
 
@@ -47,7 +43,7 @@ const DeletePage = () => {
                 </div>
             </fieldset>
         </section>
-    )
+    );
 };
 
-export default DeletePage
+export default DeletePage;

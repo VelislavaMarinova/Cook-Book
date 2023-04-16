@@ -1,6 +1,6 @@
 import "./forms.css"
 import { Link } from "react-router-dom";
-import {  useAuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import loginSchema from "../validations/loginValidation";
@@ -12,10 +12,9 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(loginSchema)
   });
-  // console.log(register("aaa"));
+
   const submitForm = (data) => {
-    // console.log(data);
-    onLoginSubmit(data)
+    onLoginSubmit(data);
   }
 
   return (
@@ -55,6 +54,7 @@ const Login = () => {
         </fieldset>
       </form>
     </section>
-  )
-}
+  );
+};
+
 export default Login;

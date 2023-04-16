@@ -9,7 +9,7 @@ const MyRecipes = () => {
     const {myRecipes,loading} = useGetMyRecipes(userId);
 
     if(loading){
-        return<Loading/>
+        return<Loading/>;
     };
     
     return (

@@ -16,7 +16,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    onRegisterSubmit(data)
+    onRegisterSubmit(data);
   };
 
   return (
@@ -89,6 +89,7 @@ const Register = () => {
         </fieldset>
       </form>
     </section>
-  )
+  );
 };
+
 export default Register;

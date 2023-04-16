@@ -174,7 +174,7 @@ const EditPage = ({
                 </fieldset>
             </form>
         </section>
-    )
+    );
 };
 
 export default EditPage;

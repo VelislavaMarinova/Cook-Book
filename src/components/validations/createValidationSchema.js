@@ -1,4 +1,5 @@
-import * as yup from 'yup'
+import * as yup from 'yup';
+
 const createValidationSchema = yup.object().shape({
     title:yup.string().required("Please enter title!"),
     author: yup.string().required("Please enter First Name!"),//readonly
@@ -12,6 +13,6 @@ const createValidationSchema = yup.object().shape({
     dificulty: yup.string().oneOf(['easy','medium','hard'],'Dificulty must be one of the following values: Easy, Medium, Hard!').required("Please choose dificulty!"),
     serves: yup.string().required("Please enter serves!"),
 
-  })
+  });
 
   export default createValidationSchema;
