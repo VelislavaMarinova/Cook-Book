@@ -28,7 +28,6 @@ function App() {
 
         <div id="container">
           <Header />
-
           <Main>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -57,8 +56,6 @@ function App() {
                   <MyRecipes />
                 </RouteProtected>}
               />
-
-              {/* <Route path="/create" element={<CreatePage onFormClose={onFormClose} />} /> */}
               <Route path="/catalog" element={<Catalog />} />
               <Route path="/catalog/main-dishes" element={<RecypesByCategory category='main-dishes' />} />
               <Route path="/catalog/desserts" element={<RecypesByCategory category='desserts' />} />
@@ -75,11 +72,9 @@ function App() {
           <Footer />
         </div>
       </DataProvider>
-
     </AuthProvider>
-
   );
-}
+};
 
 export default App;
 

@@ -4,13 +4,13 @@ import RecipeCartd from '../RecipeCard/RecipeCard';
 import useGetThreeRecipes from '../../hooks/useGetThreeRecipes';
 import Loading from '../loading/Loading';
 const Home = () => {
-    const { latestThreeRecipes,loading } = useGetThreeRecipes();
-console.log("home",latestThreeRecipes);
-    if(loading){
-        return<Loading/>
-    }
-    // const {recipes}=useDataContext();
-    // const latestThreeRecipes = recipes.slice(0,3)
+    const { latestThreeRecipes, loading } = useGetThreeRecipes();
+    console.log("home", latestThreeRecipes);
+
+    if (loading) {
+        return <Loading />;
+    };
+
     return (
         <section id="dashboard-page" className="dashboard">
             <h1>Latest Added Recipes</h1>
@@ -20,7 +20,8 @@ console.log("home",latestThreeRecipes);
                 </ul> :
                 <p className="no-recipes">No Recipes in database!</p>
             }
-        </section>)
+        </section>
+    );
 };
 
 export default Home;

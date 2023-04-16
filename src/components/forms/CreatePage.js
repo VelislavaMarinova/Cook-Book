@@ -164,4 +164,5 @@ const CreatePage = () => {
     </section>
   )
 };
+
 export default CreatePage;

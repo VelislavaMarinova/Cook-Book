@@ -8,15 +8,12 @@ const Header = () => {
 
   return (
     <header className="header">
-      {/* Navigation */}
       <nav className="navbar">
         <section className="navbar-dashboard">
           <div className='header__logo'>
             <Link to="/"><img src={logoImg} alt="tastyImg" /></Link>
           </div>
           <ul className="nav__elements">
-
-            {/* Guest users */}
             {!isAuthenticated && (
               <>
                 <li>
@@ -40,7 +37,7 @@ const Header = () => {
 
                 <li>
                   <Link to="/catalog">
-                    All Recipes
+                    Catalog
                   </Link>
                 </li>
                 <li>
@@ -61,11 +58,10 @@ const Header = () => {
               </>
             )}
           </ul>
-
         </section>
       </nav>
     </header>
-  )
+  );
 };
 
 export default Header;

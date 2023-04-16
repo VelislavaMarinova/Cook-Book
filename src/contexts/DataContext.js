@@ -60,7 +60,6 @@ export const DataProvider = ({
         onEditSubmit,
         onFormClose,
         deleteRecipeFromState,
-        // getGame,
     };
 
     return (

@@ -1,57 +1,4 @@
-// const request = async (method, token, url, data) => {
-//     const options = {};
-
-//     if (method !== 'GET') {
-//         options.method = method;
-
-//         if (data) {
-//             options.headers = {
-//                 'content-type': 'application/json',
-//             };
-
-//             options.body = JSON.stringify(data);
-//         }
-//     }
-
-//     if (token) {
-//         options.headers = {
-//             ...options.headers,
-//             'X-Authorization': token,
-//         };
-//     }
-
-//     const response = await fetch(url, options);
-
-//     if (response.status === 204) {
-//         return {};
-//     }
-
-//     const result = await response.json();
-
-//     if (!response.ok) {
-//         throw result;
-//     }
-
-//     return result;
-// };
-
-// export const requestFactory = (token) => {
-//     return {
-//         get: (url,data)=>request('GET',token,url,data),
-//         post: (url,data)=>request('POST',token,url,data),
-//         put: (url,data)=>request('PUT',token,url,data),
-//         patch: (url,data)=>request('PATCH',token,url,data),
-//         delete: (url,data)=>request('DELETE',token,url,data),
-//     }
-// };
-
-
-// import{clearUserData,getUserData}from '../util.js';
-
-
 const host = 'http://localhost:3030';
-// const { token } = useContext(AuthContext)
-
 
 async function request(url, options) {
     try {
@@ -59,7 +6,6 @@ async function request(url, options) {
 
         if (response.ok !== true) {
             if (response.status === 403) {
-            //    clearUserData("userData")
             };
 
             const error = await response.json();
@@ -74,15 +20,11 @@ async function request(url, options) {
         };
 
     } catch (err) {
-        //  alert(err.message);
-        throw err;
+        throw new Error(err);
     };
 }
 
 function createOptions(method = 'get', data, token) {
-    console.log({token});
-    console.log(`createOptions  ${token}`);
-    console.log();
     const options = {
         method,
         headers: {}
@@ -134,5 +76,5 @@ export const requestFactory = (token) => {
         post:post,
         put:put,
         del: del
-    }
+    };
 };

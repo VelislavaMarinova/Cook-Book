@@ -1,7 +1,6 @@
 import { useAuthContext } from "../../contexts/AuthContext"
 import { Link } from "react-router-dom";
 
-
 const DetailsInfo = ({
     data,
     setIsEditable,
@@ -39,18 +38,14 @@ const DetailsInfo = ({
                         {/* Edit/Delete buttons ( Only for creator of this book )  */}
                         {isOwner && (
                             <>
-                                <button className="button" onClick={()=>setIsEditable(true)}>Edit</button>
-                                {/* <Link className="button" to={`/recipes/${data._id}/edit`}>
-                                Edit
-                            </Link> */}
+                                <input type="submit" value="Edit" className="button" onClick={()=>setIsEditable(true)}/>
+                           
                                 <Link className="button" to={`/recipes/${data._id}/delete`}>
                                     Delete
                                 </Link>
                             </>
                         )}
 
-                        {/* Bonus */}
-                        {/* Like button ( Only for logged-in users, which is not creators of the current book ) */}
                         {loggedUserNotOwner && (
 
                             <a className="button" href="#">

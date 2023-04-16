@@ -6,7 +6,6 @@ import { authServiceFactory } from '../services/authService';
 
 export const AuthContext = createContext();
 
-// const AuthContext = createContext();
 
 export const AuthProvider = ({
     children
@@ -18,10 +17,6 @@ export const AuthProvider = ({
 
     const onLoginSubmit = async (data) => {
 
-        // const isValid = await LoginSchema.isValid(data);
-
-        // console.log(isValid);
-        // if (isValid) {
             try {
                 const result = await authService.login(data.email, data.password);
 
@@ -32,21 +27,12 @@ export const AuthProvider = ({
                 setErr(error)
                 throw error
             }
-        // }
     }
     const onRegisterSubmit = async (data) => {
-        //   console.log(data);
-        // const { confirmPass, ...registerData } = data;
-        // if (confirmPass !== registerData.password) {
-        //     alert('Password and Repaet Password don\'t match!');
-        //     return;
-        // }
+    
         try {
-            // console.log(data);
             const result = await authService.register(data.email, data.password, data.firstName, data.lastName)
-            // console.log(result);
             setAuth(result);
-            // console.log(auth);
             navigate('/catalog');
         } catch (error) {
             setErr(error);
