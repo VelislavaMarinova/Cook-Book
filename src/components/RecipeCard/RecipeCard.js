@@ -18,7 +18,7 @@ const RecipeCartd = ({
                 Details
             </Link>
         </li>
-    )
+    );
 };
 
 export default RecipeCartd;
