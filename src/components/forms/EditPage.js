@@ -62,7 +62,7 @@ console.log('setOneRecipe',setOneRecipe);
                                 <option value="soups">Soups</option>
                                 <option value="drinks">Drinks</option>
                                 <option value="desserts">Dessterts</option>
-                                <option value="quick">Quiqk Recipes</option>
+                                <option value="quick-recipes">Quiqk Recipes</option>
                                 <option value="healthy">Healthy Recipes</option>
                             </select>
                         </span>

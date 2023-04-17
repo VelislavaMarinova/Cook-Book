@@ -1,7 +1,7 @@
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
-import logoImg from './tasy.jpg';
+import logoImg from '../../assets/logo-img.jpg';
 
 const Header = () => {
   const { isAuthenticated, firstName, lastName } = useAuthContext();
