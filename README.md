@@ -25,17 +25,18 @@ npm start
 Open in browser:
 ```
 http://localhost:3000/
-
-## Install SoftUni Practise Server
 ```
+## Install SoftUni Practise Server
+
 ![softuni-practice-server](https://github.com/marvelannabell/Server-for-my-React-app);
-
+```
 npm install
+```
 
-Start server: node server.js
-
-
-
+Start server: 
+```
+node server.js
+```
 ## Basic dependencies
 * Use SoftUni practice server
 * Use React JS for front-end
