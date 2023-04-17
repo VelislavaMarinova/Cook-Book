@@ -6,7 +6,7 @@
 ---
 ---
 (Exam project) 
-The CookBook is an app where every user can create, edit and delete his own recipes, view recipec created by other users and can like recipes.
+The CookBook is an app where every user can create his own profile and can create, edit and delete his own recipes, view recipec created by other users and can like their recipes.
 ![CookBook-app](src/assets/intro-img.png)
 
 ## Install app
