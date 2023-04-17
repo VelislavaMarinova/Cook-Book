@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import useGetAllRecipes from '../hooks/useGetAllRecipes';
 import { recipeServiceFactory } from '../services/recipeService';
-import {  useAuthContext } from './AuthContext';
+import { useAuthContext } from './AuthContext';
 
 const DataContext = createContext();
 
@@ -14,7 +14,7 @@ export const DataProvider = ({
     const navigate = useNavigate();
     const { token } = useAuthContext();
     // console.log(`DataContext: ${token}`);
-    const {recipes, setRecipes,loading} = useGetAllRecipes();
+    const { recipes, setRecipes, loading } = useGetAllRecipes();
     const recipeService = recipeServiceFactory(token);
 
     const onFormClose = () => {
@@ -25,8 +25,8 @@ export const DataProvider = ({
         // console.log(data);
         const dataIngredints = data.ingredients.split("||")
         const dataMethods = data.method.split("||")
-        data.ingredients=dataIngredints;
-        data.method=dataMethods
+        data.ingredients = dataIngredints;
+        data.method = dataMethods
         // console.log(data);
         const newRecipe = await recipeService.create(data);
         // console.log(newRecipe);
@@ -38,20 +38,24 @@ export const DataProvider = ({
     };
 
     const onEditSubmit = async (data) => {
-         console.log("onEditSubmit",data);
+        //  console.log("onEditSubmit",data);
         const dataIngredints = data.ingredients.split("||")
         const dataMethods = data.method.split("||")
-        data.ingredients=dataIngredints;
-        data.method=dataMethods
-    
+        data.ingredients = dataIngredints;
+        data.method = dataMethods
+
         await recipeService.edit(data._id, data);
-        navigate(`/catalog/${data._id}`);
-        
     };
+
+    const onLikeRecipe = async (recipeId) => {
+        await recipeService.postLikeRecipe({"recipeId":recipeId})
+
+    }
 
     const deleteRecipeFromState = (recipeId) => {
         setRecipes(state => state.filter(x => x._id !== recipeId));
     };
+
 
     const contextValues = {
         recipes,
@@ -60,6 +64,7 @@ export const DataProvider = ({
         onEditSubmit,
         onFormClose,
         deleteRecipeFromState,
+        onLikeRecipe,
     };
 
     return (

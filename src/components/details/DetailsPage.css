@@ -46,3 +46,9 @@
 .recipe__step{
 	margin-bottom: 0.5rem;
 }
+
+.btn__like__disabled{
+	cursor: not-allowed;
+	background-color: grey;
+	pointer-events:none;
+}
