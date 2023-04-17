@@ -12,10 +12,7 @@ const DetailsInfo = ({
     const { isAuthenticated, userId, token } = useAuthContext();
     const { onLikeRecipe } = useDataContext();
     const { likes, setLikes, loading } = useGetAllLikesRecipes(data._id);
-    console.log(likes);
     const { isLiked, setIsliked } = useGetLikesForCurrentUser(token, userId, data._id);
-
-    console.log("isLiked", isLiked);
 
     const isOwner = userId === data._ownerId;
     const loggedUserNotOwner = isAuthenticated && !isOwner
@@ -25,7 +22,6 @@ const DetailsInfo = ({
     }
     if (!isLiked) {
         onClickLikeRecipe = () => {
-            console.log(data._id, 'data._id');
             onLikeRecipe(data._id);
             setIsliked(true);
             setLikes(likes + 1);

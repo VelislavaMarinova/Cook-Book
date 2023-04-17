@@ -4,7 +4,6 @@ import './RecipeCard.css'
 const RecipeCartd = ({
     recipe,
 }) => {
-    // console.log(recipe);
     return (
         <li className="recipeCard">
             <div className="recipeCard__info">

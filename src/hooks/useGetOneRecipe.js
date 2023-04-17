@@ -9,7 +9,6 @@ const useGetOneRecipe = (recipeId) => {
     const [oneRecipe, setOneRecipe] = useState({});
     const [loading, setLoading] = useState(true)
     const recipeService = useService(recipeServiceFactory);
-    console.log(loading);
 
     useEffect(() => {
         setLoading(true)

@@ -11,7 +11,6 @@ const EditPage = ({
     setOneRecipe,
 
 }) => {
-console.log('setOneRecipe',setOneRecipe);
     const { firstName, lastName } = useContext(AuthContext);
     const { onEditSubmit } = useDataContext();
 
@@ -20,7 +19,6 @@ console.log('setOneRecipe',setOneRecipe);
         resolver: yupResolver(createValidationSchema)
     })
     const onSubmit = (editedData) => {
-        console.log("submit", editedData._id)
         onEditSubmit(editedData, setIsEditable(false))
         setOneRecipe(editedData)
     }

@@ -6,7 +6,6 @@ import Loading from '../loading/Loading';
 const RecypesByCategory = ({
     category
 }) => {
-    console.log('category',category);
    const {recypesByCategory,loading}= useGetByCategory(category)
    if(loading){
     return<Loading/>

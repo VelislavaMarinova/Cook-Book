@@ -8,16 +8,12 @@ import Loading from '../loading/Loading';
 
 const DetailsPage = () => {
     const [isEditable, setIsEditable] = useState(false)
-    console.log(setIsEditable,"setIsEditable");
     const { recipeId } = useParams();
-    // console.log(recipeId);
     const {oneRecipe,setOneRecipe, loading } = useGetOneRecipe(recipeId);
-    console.log("before", oneRecipe, loading);
     if (loading) {
         return <Loading />
     }
     if (!isEditable) {
-        // console.log(isEditable, "detailPage");
         return <DetailsInfo data={oneRecipe} setIsEditable={setIsEditable} />
     }
     const recipeInfo = { ...oneRecipe }
@@ -27,7 +23,6 @@ const DetailsPage = () => {
     const method = recipeInfo.method.join('||');
     recipeInfo.method = method;
 
-    //console.log(recipeInfo);
     return <EditPage
         dataForEdit={recipeInfo}
         setIsEditable={setIsEditable}

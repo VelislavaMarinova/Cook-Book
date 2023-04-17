@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext'
 import { DataProvider } from './contexts/DataContext';
@@ -11,7 +11,6 @@ import Main from './components/main/Main';
 import Login from './components/forms/Login';
 import Register from './components/forms/Register';
 import CreatePage from './components/forms/CreatePage';
-// import EditPage from './components/forms/EditPage';
 import DetailsPage from './components/details/DetailsPage';
 import Catalog from './components/catalog/Catalog';
 import Logout from './components/forms/Logout';
@@ -40,17 +39,11 @@ function App() {
                   <CreatePage />
                 </RouteProtected>}
               />
-              {/* <Route path="/recipes/:recipeId/edit" element={
-                <RouteProtected>
-                  <Preload />
-                </RouteProtected>}
-              /> */}
               <Route path="/recipes/:recipeId/delete" element={
                 <RouteProtected>
                   <DeletePage />
                 </RouteProtected>}
               />
-
               <Route path="/myRecipes" element={
                 <RouteProtected>
                   <MyRecipes />
@@ -64,7 +57,6 @@ function App() {
               <Route path="/catalog/healthy-recipes" element={<RecypesByCategory category='healthy-recipes' />} />
               <Route path="/catalog/quick-recipes" element={<RecypesByCategory category='quick-recipes' />} />
               <Route path="/catalog/soups" element={<RecypesByCategory category='soups' />} />
-
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
             </Routes>
           </Main>

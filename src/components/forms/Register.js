@@ -15,7 +15,6 @@ const Register = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     onRegisterSubmit(data);
   };
 

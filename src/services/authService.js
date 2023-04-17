@@ -18,7 +18,7 @@ export const authServiceFactory = (token) => {
 
             return response;
         } catch (error) {
-            console.log(error);
+           throw new Error(error)
         }
     };
 
