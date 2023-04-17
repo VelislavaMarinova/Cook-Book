@@ -24,6 +24,6 @@ const useGetOneRecipe = (recipeId) => {
         }
     }, [recipeId, recipeService]);
 
-    return { selectedRecipe: oneRecipe,setSelectedRecipe: setOneRecipe, loading }
+    return { oneRecipe, setOneRecipe, loading }
 }
 export default useGetOneRecipe;

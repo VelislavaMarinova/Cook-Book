@@ -1,16 +1,36 @@
 import { useAuthContext } from "../../contexts/AuthContext"
 import { Link } from "react-router-dom";
+import useGetLikesForCurrentUser from "../../hooks/useGetLikesForCurrentUser";
+import { useDataContext } from "../../contexts/DataContext";
+import useGetAllLikesRecipes from "../../hooks/useGetAllLikesRecipe";
 
 const DetailsInfo = ({
     data,
     setIsEditable,
 }) => {
     setIsEditable(false)
-    console.log();
-    const { isAuthenticated, userId } = useAuthContext();
+    const { isAuthenticated, userId, token } = useAuthContext();
+    const { onLikeRecipe } = useDataContext();
+    const { likes, setLikes, loading } = useGetAllLikesRecipes(data._id);
+    console.log(likes);
+    const { isLiked, setIsliked } = useGetLikesForCurrentUser(token, userId, data._id);
+
+    console.log("isLiked", isLiked);
 
     const isOwner = userId === data._ownerId;
     const loggedUserNotOwner = isAuthenticated && !isOwner
+
+    let onClickLikeRecipe = () => {
+        return
+    }
+    if (!isLiked) {
+        onClickLikeRecipe = () => {
+            console.log(data._id, 'data._id');
+            onLikeRecipe(data._id);
+            setIsliked(true);
+            setLikes(likes + 1);
+        }
+    }
 
     return (
         <section id="details-page" className="details">
@@ -26,7 +46,7 @@ const DetailsInfo = ({
                         <img src={data.imageUrl} alt="food_img" />
                     </div>
                     <ul className='recipe__fetures'>
-                        <li><i className="fa-solid fa-heart"></i> Likes: 0</li>
+                        <li><i className="fa-solid fa-heart"></i> Likes: {!loading && likes}</li>
                         <li><i className="fa-solid fa-user"></i> Created by: {data.author}</li>
                         <li><i className="fa-sharp fa-solid fa-bowl-food"></i> Category: {data.category}</li>
                         <li><i className="fa-sharp fa-solid fa-kitchen-set"></i> Dificulty level: {data.dificulty}</li>
@@ -38,8 +58,8 @@ const DetailsInfo = ({
                         {/* Edit/Delete buttons ( Only for creator of this book )  */}
                         {isOwner && (
                             <>
-                                <input type="submit" value="Edit" className="button" onClick={()=>setIsEditable(true)}/>
-                           
+                                <input type="submit" value="Edit" className="button" onClick={() => setIsEditable(true)} />
+
                                 <Link className="button" to={`/recipes/${data._id}/delete`}>
                                     Delete
                                 </Link>
@@ -47,20 +67,17 @@ const DetailsInfo = ({
                         )}
 
                         {loggedUserNotOwner && (
-
-                            <a className="button" href="#">
-                                Like
-                            </a>
+                            // {isLiked && {className="btnLikeDisable"}}
+                            <>
+                                <button
+                                    className={`button ${isLiked && "btn__like__disabled"}`}
+                                    onClick={onClickLikeRecipe}>
+                                    Like
+                                </button>
+                                {isLiked && <p>You have alredy liked this recipe!</p>}
+                            </>
                         )}
-                        {/* ( for Guests and Users )  */}
 
-
-                        {/* <div className="likes">
-                            <img className="hearts" src="/images/heart.png" />
-                            <span id="total-likes">Likes: 0</span>
-                        </div> */}
-
-                        {/* Bonus */}
                     </div>
                 </div>
                 <div className="recipe__allIngredients">

@@ -4,18 +4,16 @@ import { useDataContext } from "../../contexts/DataContext";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup";
 import createValidationSchema from "../validations/createValidationSchema";
-import { useNavigate } from "react-router-dom";
 
 const EditPage = ({
     dataForEdit,
     setIsEditable,
+    setOneRecipe,
 
 }) => {
-    console.log(dataForEdit, "edit");
-    console.log("editData", dataForEdit);
+console.log('setOneRecipe',setOneRecipe);
     const { firstName, lastName } = useContext(AuthContext);
     const { onEditSubmit } = useDataContext();
-    const navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: dataForEdit,
@@ -24,8 +22,7 @@ const EditPage = ({
     const onSubmit = (editedData) => {
         console.log("submit", editedData._id)
         onEditSubmit(editedData, setIsEditable(false))
-        navigate(`/`)
-        //  setIsEditable(false);
+        setOneRecipe(editedData)
     }
     return (
         <section id="edit-page" className="edit">
@@ -65,12 +62,11 @@ const EditPage = ({
                                 <option value="soups">Soups</option>
                                 <option value="drinks">Drinks</option>
                                 <option value="desserts">Dessterts</option>
-                                <option value="quick">Quiqk Recipes</option>
+                                <option value="quick-recipes">Quiqk Recipes</option>
                                 <option value="healthy">Healthy Recipes</option>
                             </select>
                         </span>
                         {errors.category && <p className="register__errors">{errors.category.message}</p>}
-
                     </div>
                     <div className="edit__field">
                         <label className="edit__label" htmlFor="dificulty">Dificulty Level:</label>
@@ -96,7 +92,6 @@ const EditPage = ({
                             />
                         </span>
                         {errors.prepare && <p className="register__errors">{errors.prepare.message}</p>}
-
                     </div>
                     <div className="edit__field">
                         <label className="edit__label" htmlFor="cook">Cook time:</label>
@@ -107,7 +102,6 @@ const EditPage = ({
                             />
                         </span>
                         {errors.cook && <p className="register__errors">{errors.cook.message}</p>}
-
                     </div>
                     <div className="edit__field">
                         <label className="edit__label" htmlFor="serves">Serves:</label>
@@ -151,7 +145,6 @@ const EditPage = ({
                             />
                         </span>
                         {errors.imageUrl && <p className="register__errors">{errors.imageUrl.message}</p>}
-
                     </div>
                     <div className="edit__field">
                         <label className="edit__label" htmlFor="description">Method: use <span>"||"</span> to separate each method step!</label>

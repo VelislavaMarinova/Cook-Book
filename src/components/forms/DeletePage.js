@@ -8,7 +8,7 @@ import { recipeServiceFactory } from "../../services/recipeService";
 const DeletePage = () => {
     const { recipeId } = useParams();
     const { token } = useAuthContext();
-    const { selectedRecipe, loading }= useGetOneRecipe(recipeId);
+    const {  oneRecipe, loading }= useGetOneRecipe(recipeId);
     const recipeService = recipeServiceFactory(token);
     const { deleteRecipeFromState } = useDataContext()
     const navigate = useNavigate()
@@ -35,10 +35,10 @@ const DeletePage = () => {
         <section id="delete" className="deleteRecipe">
             <fieldset>
                 <legend className="deleteRecipe__legend">Delete Recipe</legend>
-                <p>Are you shure that you want to delete {selectedRecipe.title} recipe?</p>
+                <p>Are you shure that you want to delete {oneRecipe.title} recipe?</p>
 
                 <div className="login-buttons">
-                    <button className="delete__btn  button" type="submit" onClick={() => onDeleteClik(selectedRecipe._id)}>Delete</button>
+                    <button className="delete__btn  button" type="submit" onClick={() => onDeleteClik(oneRecipe._id)}>Delete</button>
                     <button className="close__btn  button" type="button" onClick={onClose}>Cancel</button>
                 </div>
             </fieldset>
