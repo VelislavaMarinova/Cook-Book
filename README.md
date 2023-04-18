@@ -1,6 +1,7 @@
 # Getting Started with CookBook - React App
 ---
 ---
+![Link-to-CookBook-React-App](https://cookbook-react-app-c4452.web.app/)
 ![CookBook-Tasty-Logo](src/assets/logo-img.jpg)
 
 ---
@@ -38,7 +39,8 @@ Start server:
 node server.js
 ```
 ## Basic dependencies
-* Use SoftUni practice server
+* Use SoftUni practice server as a database and REST api services
 * Use React JS for front-end
+* Use Firebase to deploy app 
 
 

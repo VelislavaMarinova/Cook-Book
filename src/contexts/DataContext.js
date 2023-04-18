@@ -29,7 +29,7 @@ export const DataProvider = ({
 
         setRecipes(state => [newRecipe, ...state,]);
 
-        navigate('/catalog');
+        navigate(`/catalog/${data.category}`)
     };
 
     const onEditSubmit = async (data) => {
