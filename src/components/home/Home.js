@@ -5,7 +5,6 @@ import useGetThreeRecipes from '../../hooks/useGetThreeRecipes';
 import Loading from '../loading/Loading';
 const Home = () => {
     const { latestThreeRecipes, loading } = useGetThreeRecipes();
-    console.log("home", latestThreeRecipes);
 
     if (loading) {
         return <Loading />;

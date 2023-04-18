@@ -7,8 +7,7 @@ import loginSchema from "../validations/loginValidation";
 
 const Login = () => {
 
-  const { onLoginSubmit, onFormClose, error } = useAuthContext();
-
+  const { onLoginSubmit, onFormClose, errorLogin} = useAuthContext();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(loginSchema)
   });
@@ -43,7 +42,7 @@ const Login = () => {
             </span>
             {errors.password && <p className="login__errors">{errors.password.message}</p>}
           </div>
-          {error ? <p className="login__errors">{error.message}</p> : null}
+          {errorLogin ? <p className="login__errors">{errorLogin.message}</p> : null}
           <div className="login-buttons">
             <input className="button submit" type="submit" value="Sign in" />
             <button className="button close" type="button" onClick={onFormClose}>Close</button>

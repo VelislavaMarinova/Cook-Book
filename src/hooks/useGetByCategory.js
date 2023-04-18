@@ -8,7 +8,6 @@ export const useGetByCategory = (category) => {
     const [loading,setLoading]=useState(true)
 
     const recipeService =useMemo(()=> recipeServiceFactory('', category, ""),[category])
-    // console.log(`recipeServiceFactory No token`);
 
     useEffect(() => {
         setLoading(true);

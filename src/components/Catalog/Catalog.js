@@ -5,8 +5,6 @@ import CategoryCard from './CategoryCard';
 import Loading from '../loading/Loading';
 import categoryGenerator from '../common/categoryGenerator';
 
-
-
 const Catalog = () => {
     const { recipes,loading } = useDataContext();
     if(loading){

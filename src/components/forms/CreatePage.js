@@ -4,9 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useAuthContext } from "../../contexts/AuthContext";
 import createValidationSchema from '../validations/createValidationSchema'
 import { useDataContext } from "../../contexts/DataContext";
+import { useNavigate } from "react-router-dom";
 
 const CreatePage = () => {
-
+const navigate=useNavigate()
   const { onCreateSubmit } = useDataContext();
   const { firstName, lastName, onFormClose } = useAuthContext();
 
@@ -16,6 +17,7 @@ const CreatePage = () => {
 
   const submitForm = (data) => {
     onCreateSubmit(data);
+    
   }
 
   return (

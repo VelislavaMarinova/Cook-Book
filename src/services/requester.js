@@ -1,4 +1,9 @@
-const host = 'http://localhost:3030';
+
+console.log(process.env.NODE_ENV);
+const host = process.env.NODE_ENV === "development" ?
+        'http://localhost:3030' :
+        'http://localhost:3030';//host deployed server
+
 
 async function request(url, options) {
     try {
@@ -15,7 +20,7 @@ async function request(url, options) {
         if (response.status === 204) {
             return response;
         } else {
-          
+
             return response.json();
         };
 
@@ -35,13 +40,6 @@ function createOptions(method = 'get', data, token) {
         options.body = JSON.stringify(data);
     };
 
-    // const localData = JSON.parse(localStorage.getItem('auth'));
-    // let token;
-    // console.log(localData);
-    // if (localData !== null) {
-    //   token = localData.accessToken;
-    // }
-   
     if (token != null) {
         console.log(`request ${token}`);
         options.headers['X-Authorization'] = token;
@@ -50,31 +48,29 @@ function createOptions(method = 'get', data, token) {
     return options;
 };
 
- async function get(url,token) {
+async function get(url, token) {
     return await request(url, createOptions(token));
 };
 
- async function post(url, data,token) {
-    return await request(url, createOptions('post', data,token));
+async function post(url, data, token) {
+    return await request(url, createOptions('post', data, token));
 };
 
- async function put(url, data,token) {
-    return await request(url, createOptions('put', data,token));
+async function put(url, data, token) {
+    return await request(url, createOptions('put', data, token));
 };
 
-async function del(url,token) {
-    console.log(`del ${token}`);
-    return await request(url, createOptions('delete',"",token));
+async function del(url, token) {
+    return await request(url, createOptions('delete', "", token));
 };
 
 
 export const requestFactory = (token) => {
 
-    console.log(`requestFactory  ${token}`);
     return {
         get: get,
-        post:post,
-        put:put,
+        post: post,
+        put: put,
         del: del
     };
 };

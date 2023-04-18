@@ -13,7 +13,6 @@ export const DataProvider = ({
 }) => {
     const navigate = useNavigate();
     const { token } = useAuthContext();
-    // console.log(`DataContext: ${token}`);
     const { recipes, setRecipes, loading } = useGetAllRecipes();
     const recipeService = recipeServiceFactory(token);
 
@@ -22,23 +21,18 @@ export const DataProvider = ({
     };
 
     const onCreateSubmit = async (data) => {
-        // console.log(data);
         const dataIngredints = data.ingredients.split("||")
         const dataMethods = data.method.split("||")
         data.ingredients = dataIngredints;
         data.method = dataMethods
-        // console.log(data);
         const newRecipe = await recipeService.create(data);
-        // console.log(newRecipe);
 
         setRecipes(state => [newRecipe, ...state,]);
-        // console.log(recipes);
 
-        navigate('/catalog');
+        navigate(`/catalog/${data.category}`)
     };
 
     const onEditSubmit = async (data) => {
-        //  console.log("onEditSubmit",data);
         const dataIngredints = data.ingredients.split("||")
         const dataMethods = data.method.split("||")
         data.ingredients = dataIngredints;

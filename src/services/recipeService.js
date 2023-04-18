@@ -17,7 +17,7 @@ export const recipeServiceFactory = (token, category,userId,recipeId) => {
 
     const getAll = () => request.get(`${baseUrl}${sort}${selection}`);
     const getThree = () => request.get(urlGetThree);
-    const getByCategory = () => request.get(urlGetByCategory);
+    const getByCategory = () => request.get(`${urlGetByCategory}`);
     const getMyRecipes = () => request.get(urlGetMyRecipes);
     
     const getOne = (recipeId) => request.get(`${baseUrl}/${recipeId}`);

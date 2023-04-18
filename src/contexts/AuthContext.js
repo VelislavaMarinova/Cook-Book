@@ -1,4 +1,4 @@
-import { createContext,useContext } from 'react';
+import { createContext, useContext } from 'react';
 import { useState, } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -11,32 +11,32 @@ export const AuthProvider = ({
     children
 }) => {
     const [auth, setAuth] = useLocalStorage('auth', {})
-    const [err, setErr] = useState('')
+    const [errLogin, setErrLogin] = useState('');
+    const [errRegister, setErrRegister] = useState('')
     const authService = authServiceFactory(auth.accessToken)
     const navigate = useNavigate()
 
     const onLoginSubmit = async (data) => {
 
-            try {
-                const result = await authService.login(data.email, data.password);
-
-                setAuth(result);
-
-                navigate('/catalog');
-            } catch (error) {
-                setErr(error)
-                throw error
-            }
+        try {
+            const result = await authService.login(data.email, data.password);
+            setAuth(result);
+            navigate('/catalog');
+        } catch (err) {
+            setErrLogin(err)
+            setErrRegister('')
+            throw new Error(err)
+        }
     }
     const onRegisterSubmit = async (data) => {
-    
         try {
             const result = await authService.register(data.email, data.password, data.firstName, data.lastName)
             setAuth(result);
             navigate('/catalog');
-        } catch (error) {
-            setErr(error);
-            throw error;
+        } catch (err) {
+            setErrRegister(err);
+            setErrLogin('');
+            throw new Error(err);
         }
     };
 
@@ -59,7 +59,8 @@ export const AuthProvider = ({
         token: auth.accessToken,
         userEmail: auth.email,
         isAuthenticated: !!auth.accessToken,
-        error: err,
+        errorLogin: errLogin,
+        errorRegister: errRegister,
     };
 
     return (
