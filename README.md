@@ -1,7 +1,7 @@
 # Getting Started with CookBook - React App
 ---
 ---
-![Link-to-CookBook-React-App](https://cookbook-react-app-c4452.web.app/)
+![Link-to-CookBook-React-App](https://cookbook-react-app-c4452.web.app)
 ![CookBook-Tasty-Logo](src/assets/logo-img.jpg)
 
 ---
