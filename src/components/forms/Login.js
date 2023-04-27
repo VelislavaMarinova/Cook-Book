@@ -7,11 +7,12 @@ import loginSchema from "../validations/loginValidation";
 
 const Login = () => {
 
-  const { onLoginSubmit, onFormClose, errorLogin} = useAuthContext();
+  const { onLoginSubmit, onFormClose, errorLogin, removeErrorRegister} = useAuthContext();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(loginSchema)
   });
 
+  removeErrorRegister()
   const submitForm = (data) => {
     onLoginSubmit(data);
   }

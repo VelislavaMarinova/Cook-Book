@@ -9,14 +9,23 @@ import Loading from '../loading/Loading';
 const DetailsPage = () => {
     const [isEditable, setIsEditable] = useState(false)
     const { recipeId } = useParams();
-    const {oneRecipe,setOneRecipe, loading } = useGetOneRecipe(recipeId);
+    const { oneRecipe, setOneRecipe, loading } = useGetOneRecipe(recipeId);
+    const startEditingHandler = () => {
+        setIsEditable(true)
+    }
+    const stopEditingHandler = () => {
+        setIsEditable(false)
+    }
+
     if (loading) {
         return <Loading />
     }
+
     if (!isEditable) {
-        return <DetailsInfo data={oneRecipe} setIsEditable={setIsEditable} />
+        return <DetailsInfo data={oneRecipe} onEdit={startEditingHandler} />
     }
     const recipeInfo = { ...oneRecipe }
+
 
     const ingredients = recipeInfo.ingredients.join('||');
     recipeInfo.ingredients = ingredients;
@@ -27,6 +36,7 @@ const DetailsPage = () => {
         dataForEdit={recipeInfo}
         setIsEditable={setIsEditable}
         setOneRecipe={setOneRecipe}
+        onCloseEdit={stopEditingHandler}
     />
 };
 

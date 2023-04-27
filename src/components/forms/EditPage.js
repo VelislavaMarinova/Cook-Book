@@ -9,6 +9,7 @@ const EditPage = ({
     dataForEdit,
     setIsEditable,
     setOneRecipe,
+    onCloseEdit,
 
 }) => {
     const { firstName, lastName } = useContext(AuthContext);
@@ -160,7 +161,7 @@ const EditPage = ({
                             className="button submit"
                             type="submit"
                         />
-                        <button className="button close" onClick={() => setIsEditable(false)}>Close</button>
+                        <button className="button close" onClick={onCloseEdit}>Close</button>
                     </div>
                 </fieldset>
             </form>

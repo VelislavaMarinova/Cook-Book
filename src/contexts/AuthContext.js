@@ -10,11 +10,18 @@ export const AuthContext = createContext();
 export const AuthProvider = ({
     children
 }) => {
-    const [auth, setAuth] = useLocalStorage('auth', {})
+    const [auth, setAuth] = useLocalStorage('auth', {});
     const [errLogin, setErrLogin] = useState('');
-    const [errRegister, setErrRegister] = useState('')
-    const authService = authServiceFactory(auth.accessToken)
-    const navigate = useNavigate()
+    const [errRegister, setErrRegister] = useState('');
+    const authService = authServiceFactory(auth.accessToken);
+    const navigate = useNavigate();
+
+    const removeErrorLogin=()=>{
+        setErrLogin('')
+    }
+    const removeErrorRegister=()=>{
+        setErrRegister('')
+    }
 
     const onLoginSubmit = async (data) => {
 
@@ -46,6 +53,8 @@ export const AuthProvider = ({
     };
     const onFormClose = () => {
         navigate('/');
+        setErrLogin('');
+        setErrRegister('')
     };
 
     let authContextData = {
@@ -60,7 +69,9 @@ export const AuthProvider = ({
         userEmail: auth.email,
         isAuthenticated: !!auth.accessToken,
         errorLogin: errLogin,
+        removeErrorLogin,
         errorRegister: errRegister,
+        removeErrorRegister,
     };
 
     return (
