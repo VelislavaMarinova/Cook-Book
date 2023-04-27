@@ -3,8 +3,12 @@ import './Home.css'
 import RecipeCartd from '../RecipeCard/RecipeCard';
 import useGetThreeRecipes from '../../hooks/useGetThreeRecipes';
 import Loading from '../loading/Loading';
+import { useAuthContext } from '../../contexts/AuthContext';
 const Home = () => {
     const { latestThreeRecipes, loading } = useGetThreeRecipes();
+    const{removeErrorLogin,removeErrorRegister}=useAuthContext();
+    removeErrorLogin();
+    removeErrorRegister();
 
     if (loading) {
         return <Loading />;

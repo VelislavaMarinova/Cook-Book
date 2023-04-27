@@ -8,10 +8,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import registerSchema from "../validations/registerValidation";
 
 const Register = () => {
-  const { onRegisterSubmit, onFormClose, errorRegister } = useAuthContext();
+  const { onRegisterSubmit, onFormClose, errorRegister,removeErrorLogin } = useAuthContext();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(registerSchema)
   });
+
+  removeErrorLogin();
 
   const onSubmit = (data) => {
     onRegisterSubmit(data);

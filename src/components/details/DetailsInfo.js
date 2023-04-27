@@ -6,9 +6,10 @@ import useGetAllLikesRecipes from "../../hooks/useGetAllLikesRecipe";
 
 const DetailsInfo = ({
     data,
-    setIsEditable,
+    onEdit,
+    onCloseEdit,
 }) => {
-    setIsEditable(false)
+    // setIsEditable(false)
     const { isAuthenticated, userId, token } = useAuthContext();
     const { onLikeRecipe } = useDataContext();
     const { likes, setLikes, loading } = useGetAllLikesRecipes(data._id);
@@ -54,7 +55,7 @@ const DetailsInfo = ({
                         {/* Edit/Delete buttons ( Only for creator of this book )  */}
                         {isOwner && (
                             <>
-                                <input type="submit" value="Edit" className="button" onClick={() => setIsEditable(true)} />
+                                <input type="submit" value="Edit" className="button" onClick={onEdit} />
 
                                 <Link className="button" to={`/recipes/${data._id}/delete`}>
                                     Delete
