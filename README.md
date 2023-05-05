@@ -1,4 +1,4 @@
-# Getting Started with CookBook - React App
+# Getting Started with Cook Book
 ---
 ---
 
@@ -10,7 +10,7 @@ https://cookbook-react-app-c4452.web.app
 ---
 
 The CookBook is an app where every user can create his own profile and can create, edit and delete his own recipes, view recipes created by other users and can like their recipes.
-![CookBook-app](src/assets/intro-img.png)
+![Cook Book](src/assets/intro-img.png)
 
 ## Install app
 
@@ -33,9 +33,6 @@ http://localhost:3000/
 
 ![softuni-practice-server](https://github.com/marvelannabell/Server-for-my-React-app);
 ```
-npm install
-```
-
 Start server: 
 ```
 node server.js
