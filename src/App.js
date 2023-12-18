@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext'
-import { DataProvider } from './contexts/DataContext';
+import { DataProvider, useDataContext } from './contexts/DataContext';
 
 
 import Home from './components/home/Home';
@@ -19,21 +19,20 @@ import RecypesByCategory from './components/categories/RecypesByCategory';
 import MyRecipes from './components/myRecipes/MyRecipes';
 import DeletePage from './components/forms/DeletePage';
 import PageNotFound from './components/notFound/NotFound';
+import useGetAllCategories from './hooks/useGetAllCategories';
+import Loading from './components/loading/Loading';
 
 function App() {
-  const categories = [
-    "main-dishes",
-    "desserts",
-    "drinks",
-    "salads",
-    "healthy-recipes",
-    "quick-recipes",
-    "soups"
-  ]
+
+  const { categories, loading } = useGetAllCategories();
+  if (loading) {
+    return <Loading />
+  }
 
   return (
     <AuthProvider>
       <DataProvider>
+
         <div id="container">
           <Header />
           <Main>
@@ -45,7 +44,7 @@ function App() {
 
               <Route path='/create' element={
                 <RouteProtected>
-                  <CreatePage />
+                  <CreatePage categories={categories} />
                 </RouteProtected>}
               />
               <Route path="/recipes/:recipeId/delete" element={
@@ -59,8 +58,8 @@ function App() {
                 </RouteProtected>}
               />
               <Route path="/catalog" element={<Catalog />} />
-              {categories.map(categry => <Route key = {categry} path={`/catalog/${categry}`} element={<RecypesByCategory category={categry} />} />)}
-              <Route path="/catalog/:recipeId" element={<DetailsPage />} />
+              {categories.map(categry => <Route key = {categry._id} path={`/catalog/${categry.value}`} element={<RecypesByCategory category={categry.value} />} />)}
+              <Route path="/catalog/:recipeId" element={<DetailsPage categories={categories}/>} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Main>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useGetAllRecipes from '../hooks/useGetAllRecipes';
 import { recipeServiceFactory } from '../services/recipeService';
 import { useAuthContext } from './AuthContext';
+import useGetAllCategories from '../hooks/useGetAllCategories';
 
 const DataContext = createContext();
 
@@ -14,6 +15,7 @@ export const DataProvider = ({
     const navigate = useNavigate();
     const { token } = useAuthContext();
     const { recipes, setRecipes, loading } = useGetAllRecipes();
+    const { categories, setCategories, loading: loadingCattegories } = useGetAllCategories();
     const recipeService = recipeServiceFactory(token);
 
     const onFormClose = () => {
@@ -53,6 +55,8 @@ export const DataProvider = ({
 
     const contextValues = {
         recipes,
+        categories,
+        loadingCattegories,
         loading,
         onCreateSubmit,
         onEditSubmit,

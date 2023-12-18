@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useDataContext } from "../../contexts/DataContext";
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import createValidationSchema from "../validations/createValidationSchema";
 
 const EditPage = ({
+    categories,
     dataForEdit,
     setIsEditable,
     setOneRecipe,
@@ -18,11 +19,11 @@ const EditPage = ({
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: dataForEdit,
         resolver: yupResolver(createValidationSchema)
-    })
+    });
     const onSubmit = (editedData) => {
-        onEditSubmit(editedData, setIsEditable(false))
-        setOneRecipe(editedData)
-    }
+        onEditSubmit(editedData, setIsEditable(false));
+        setOneRecipe(editedData);
+    };
     return (
         <section id="edit-page" className="edit">
             <form id="edit-form" className="edit__form" onSubmit={handleSubmit(onSubmit)}>
@@ -56,13 +57,7 @@ const EditPage = ({
                                 className="edit__select"
                                 placeholder="Choose category:"
                                 {...register('category')}>
-                                <option value="main-dishes">Main Dishes</option>
-                                <option value="salads">Salads</option>
-                                <option value="soups">Soups</option>
-                                <option value="drinks">Drinks</option>
-                                <option value="desserts">Dessterts</option>
-                                <option value="quick-recipes">Quiqk Recipes</option>
-                                <option value="healthy">Healthy Recipes</option>
+                                {categories?.map(category => <option key={category._id} value={category.value}>{category.name}</option>)}
                             </select>
                         </span>
                         {errors.category && <p className="register__errors">{errors.category.message}</p>}

@@ -7,7 +7,7 @@ import EditPage from '../forms/EditPage';
 import Loading from '../loading/Loading';
 import PageNotFound from '../notFound/NotFound';
 
-const DetailsPage = () => {
+const DetailsPage = ({ categories }) => {
     const [isEditable, setIsEditable] = useState(false)
     const { recipeId } = useParams();
     const { oneRecipe, setOneRecipe, loading, error } = useGetOneRecipe(recipeId);
@@ -18,8 +18,8 @@ const DetailsPage = () => {
     const stopEditingHandler = () => {
         setIsEditable(false)
     }
-    if(error){
-       return <PageNotFound/>
+    if (error) {
+        return <PageNotFound />
     }
 
     if (loading) {
@@ -38,6 +38,7 @@ const DetailsPage = () => {
     recipeInfo.method = method;
 
     return <EditPage
+        categories={categories}
         dataForEdit={recipeInfo}
         setIsEditable={setIsEditable}
         setOneRecipe={setOneRecipe}

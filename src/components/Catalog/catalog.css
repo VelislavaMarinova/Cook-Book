@@ -1,6 +1,7 @@
 .catalog{
     text-align: center;
 }
+
 .catalog__categories{
     display: flex;
     flex-wrap: wrap;

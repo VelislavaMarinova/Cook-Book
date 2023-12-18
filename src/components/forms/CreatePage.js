@@ -4,10 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useAuthContext } from "../../contexts/AuthContext";
 import createValidationSchema from '../validations/createValidationSchema'
 import { useDataContext } from "../../contexts/DataContext";
-import { useNavigate } from "react-router-dom";
 
-const CreatePage = () => {
-const navigate=useNavigate()
+const CreatePage = ({categories}) => {
   const { onCreateSubmit } = useDataContext();
   const { firstName, lastName, onFormClose } = useAuthContext();
 
@@ -56,13 +54,7 @@ const navigate=useNavigate()
                 {...register('category')}
               >
                 <option value="choose-category">Choose category:</option>
-                <option value="main-dishes">Main Dishes</option>
-                <option value="salads">Salads</option>
-                <option value="soups">Soups</option>
-                <option value="drinks">Drinks</option>
-                <option value="desserts">Dessterts</option>
-                <option value="quick-recipes">Quiqk Recipes</option>
-                <option value="healthy-recipes">Healthy Recipes</option>
+                 {categories?.map(category => <option key={category._id} value={category.value}>{category.name}</option>)}
               </select>
             </span>
             {errors.category && <p className="login__errors">{errors.category.message}</p>}

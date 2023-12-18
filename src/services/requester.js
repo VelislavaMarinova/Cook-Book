@@ -40,7 +40,6 @@ function createOptions(method = 'get', data, token) {
     };
 
     if (token != null) {
-        console.log(`request ${token}`);
         options.headers['X-Authorization'] = token;
     };
 

@@ -1,4 +1,4 @@
-import { useAuthContext } from "../../contexts/AuthContext"
+import { useAuthContext } from "../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import useGetLikesForCurrentUser from "../../hooks/useGetLikesForCurrentUser";
 import { useDataContext } from "../../contexts/DataContext";
@@ -9,7 +9,6 @@ const DetailsInfo = ({
     onEdit,
     onCloseEdit,
 }) => {
-    // setIsEditable(false)
     const { isAuthenticated, userId, token } = useAuthContext();
     const { onLikeRecipe } = useDataContext();
     const { likes, setLikes, loading } = useGetAllLikesRecipes(data._id);
@@ -52,7 +51,6 @@ const DetailsInfo = ({
                         <li><i className="fa-solid fa-utensils"></i> Serves: {data.serves}</li>
                     </ul>
                     <div className="actions">
-                        {/* Edit/Delete buttons ( Only for creator of this book )  */}
                         {isOwner && (
                             <>
                                 <input type="submit" value="Edit" className="button" onClick={onEdit} />
@@ -64,7 +62,6 @@ const DetailsInfo = ({
                         )}
 
                         {loggedUserNotOwner && (
-                            // {isLiked && {className="btnLikeDisable"}}
                             <>
                                 <button
                                     className={`button ${isLiked && "btn__like__disabled"}`}

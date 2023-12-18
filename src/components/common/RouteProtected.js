@@ -2,7 +2,7 @@ import NotAuthorized from '../notAutorized/NotAuthorized';
 import { useAuthContext } from '../../contexts/AuthContext';
 
 const RouteProtected = ({ children }) => {
-  const {isAuthenticated} = useAuthContext()
+  const {isAuthenticated} = useAuthContext();
 
   if(!isAuthenticated){
     return <NotAuthorized />
