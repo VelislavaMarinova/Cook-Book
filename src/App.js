@@ -20,6 +20,15 @@ import MyRecipes from './components/myRecipes/MyRecipes';
 import DeletePage from './components/forms/DeletePage';
 
 function App() {
+  const categories = [
+    "main-dishes",
+    "desserts",
+    "drinks",
+    "salads",
+    "healthy-recipes",
+    "quick-recipes",
+    "soups"
+  ]
 
   return (
     <AuthProvider>
@@ -50,13 +59,7 @@ function App() {
                 </RouteProtected>}
               />
               <Route path="/catalog" element={<Catalog />} />
-              <Route path="/catalog/main-dishes" element={<RecypesByCategory category='main-dishes' />} />
-              <Route path="/catalog/desserts" element={<RecypesByCategory category='desserts' />} />
-              <Route path="/catalog/drinks" element={<RecypesByCategory category='drinks' />} />
-              <Route path="/catalog/salads" element={<RecypesByCategory category='salads' />} />
-              <Route path="/catalog/healthy-recipes" element={<RecypesByCategory category='healthy-recipes' />} />
-              <Route path="/catalog/quick-recipes" element={<RecypesByCategory category='quick-recipes' />} />
-              <Route path="/catalog/soups" element={<RecypesByCategory category='soups' />} />
+              {categories.map(categry => <Route path={`/catalog/${categry}`} element={<RecypesByCategory category={categry} />} />)}
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
             </Routes>
           </Main>
