@@ -18,16 +18,27 @@ export const authServiceFactory = (token) => {
 
             return response;
         } catch (error) {
-           throw new Error(error)
+            throw new Error(error)
         }
     };
 
-   const register = (email, password,firstName,lastName) =>
-        request.post(registerUrl, { email, password, firstName,lastName});
+    const register = async (email, password, firstName, lastName) => {
 
-        return{
-            login,
-            register,
-            logout,
-        };
+        try {
+            const response = await request.post(registerUrl, { email, password, firstName, lastName });
+            if (response.toString() === "Error: A user with the same email already exists") {
+                throw new Error(response.toString())
+            }
+            return response;
+        } catch (error) {
+            return error;
+        }
+
+    };
+
+    return {
+        login,
+        register,
+        logout,
+    };
 };

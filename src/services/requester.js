@@ -1,5 +1,4 @@
 
-console.log(process.env.NODE_ENV);
 const host = process.env.NODE_ENV === "development" ?
         'http://localhost:3030' :
         'http://localhost:3030';//host deployed server
@@ -25,8 +24,7 @@ async function request(url, options) {
         };
 
     } catch (err) {
-        return(err)
-       
+        return(err);
     };
 }
 
@@ -65,8 +63,7 @@ async function del(url, token) {
     return await request(url, createOptions('delete', "", token));
 };
 
-
-export const requestFactory = (token) => {
+export const requestFactory = () => {
 
     return {
         get: get,

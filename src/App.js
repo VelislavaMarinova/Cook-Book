@@ -34,7 +34,6 @@ function App() {
   return (
     <AuthProvider>
       <DataProvider>
-
         <div id="container">
           <Header />
           <Main>

@@ -37,6 +37,9 @@ export const AuthProvider = ({
     const onRegisterSubmit = async (data) => {
         try {
             const result = await authService.register(data.email, data.password, data.firstName, data.lastName)
+            if(result.toString()==="Error: Error: A user with the same email already exists"){
+               throw new Error(result.toString().slice(6))
+            }
             setAuth(result);
             navigate('/catalog');
         } catch (err) {
