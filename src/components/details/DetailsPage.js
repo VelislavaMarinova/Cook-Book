@@ -5,16 +5,21 @@ import { useState } from 'react';
 import DetailsInfo from './DetailsInfo';
 import EditPage from '../forms/EditPage';
 import Loading from '../loading/Loading';
+import PageNotFound from '../notFound/NotFound';
 
 const DetailsPage = () => {
     const [isEditable, setIsEditable] = useState(false)
     const { recipeId } = useParams();
-    const { oneRecipe, setOneRecipe, loading } = useGetOneRecipe(recipeId);
+    const { oneRecipe, setOneRecipe, loading, error } = useGetOneRecipe(recipeId);
+
     const startEditingHandler = () => {
         setIsEditable(true)
     }
     const stopEditingHandler = () => {
         setIsEditable(false)
+    }
+    if(error){
+       return <PageNotFound/>
     }
 
     if (loading) {

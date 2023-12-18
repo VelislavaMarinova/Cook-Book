@@ -18,6 +18,7 @@ import RouteProtected from './components/common/RouteProtected';
 import RecypesByCategory from './components/categories/RecypesByCategory';
 import MyRecipes from './components/myRecipes/MyRecipes';
 import DeletePage from './components/forms/DeletePage';
+import PageNotFound from './components/notFound/NotFound';
 
 function App() {
   const categories = [
@@ -59,11 +60,11 @@ function App() {
                 </RouteProtected>}
               />
               <Route path="/catalog" element={<Catalog />} />
-              {categories.map(categry => <Route path={`/catalog/${categry}`} element={<RecypesByCategory category={categry} />} />)}
+              {categories.map(categry => <Route key = {categry} path={`/catalog/${categry}`} element={<RecypesByCategory category={categry} />} />)}
               <Route path="/catalog/:recipeId" element={<DetailsPage />} />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Main>
-
           <Footer />
         </div>
       </DataProvider>
