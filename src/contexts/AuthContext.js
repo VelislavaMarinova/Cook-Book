@@ -6,7 +6,6 @@ import { authServiceFactory } from '../services/authService';
 
 export const AuthContext = createContext();
 
-
 export const AuthProvider = ({
     children
 }) => {

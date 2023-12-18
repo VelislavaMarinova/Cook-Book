@@ -1,16 +1,16 @@
+import { loginUrl, logoutUrl, registerUrl } from "../utils/urlUtils";
 import { requestFactory } from "./requester"
 
 export const authServiceFactory = (token) => {
     const request = requestFactory(token);
-    const baseUrl = '/users';
 
     const login = (email, password) =>
-        request.post(`${baseUrl}/login`, { email, password });
+        request.post(loginUrl, { email, password });
 
 
     const logout = async (accessToken) => {
         try {
-            const response = await fetch(`${baseUrl}/logout`, {
+            const response = await fetch(logoutUrl, {
                 headers: {
                     'X-Authorization': accessToken
                 }
@@ -23,7 +23,7 @@ export const authServiceFactory = (token) => {
     };
 
    const register = (email, password,firstName,lastName) =>
-        request.post(`${baseUrl}/register`, { email, password, firstName,lastName});
+        request.post(registerUrl, { email, password, firstName,lastName});
 
         return{
             login,
