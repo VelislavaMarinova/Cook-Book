@@ -25,6 +25,7 @@ async function request(url, options) {
         };
 
     } catch (err) {
+        
         return(err);
     };
 }

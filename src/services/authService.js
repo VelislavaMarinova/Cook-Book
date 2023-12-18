@@ -7,11 +7,12 @@ export const authServiceFactory = (token) => {
     const login = async (email, password) => {
         try {
             const response = await request.post(loginUrl, { email, password });
-            if (response.toString() === "Error: Login or password don't match") {
-                throw new Error(response.toString());
+            if (response.message === "Login or password don't match") {
+                throw new Error(response.message);
             }
+            return response;
         } catch (error) {
-            return error;
+            return error.message;
         }
     }
 
@@ -33,12 +34,12 @@ export const authServiceFactory = (token) => {
 
         try {
             const response = await request.post(registerUrl, { email, password, firstName, lastName });
-            if (response.toString() === "Error: A user with the same email already exists") {
-                throw new Error(response.toString())
+            if (response.message) {
+                throw new Error(response.message)
             }
             return response;
         } catch (error) {
-            return error;
+            return error.message;
         }
 
     };

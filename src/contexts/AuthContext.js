@@ -26,8 +26,8 @@ export const AuthProvider = ({
 
         try {
             const result = await authService.login(data.email, data.password);
-            if (result.toString() === 'Error: Error: Login or password don\'t match') {
-                throw new Error(result.toString().slice(6))
+            if (result === 'Login or password don\'t match') {
+                throw new Error(result)
             }
             setAuth(result);
             navigate('/catalog');
@@ -35,14 +35,14 @@ export const AuthProvider = ({
         } catch (err) {
             setErrLogin(err)
             setErrRegister('')
-            throw new Error(err)
+            throw new Error(err);
         }
     }
     const onRegisterSubmit = async (data) => {
         try {
             const result = await authService.register(data.email, data.password, data.firstName, data.lastName)
-            if (result.toString() === "Error: Error: A user with the same email already exists") {
-                throw new Error(result.toString().slice(6))
+            if (result=== "A user with the same email already exists") {
+                throw new Error(result)
             }
             setAuth(result);
             navigate('/catalog');
