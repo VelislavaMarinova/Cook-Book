@@ -15,10 +15,10 @@ export const AuthProvider = ({
     const authService = authServiceFactory(auth.accessToken);
     const navigate = useNavigate();
 
-    const removeErrorLogin=()=>{
+    const removeErrorLogin = () => {
         setErrLogin('')
     }
-    const removeErrorRegister=()=>{
+    const removeErrorRegister = () => {
         setErrRegister('')
     }
 
@@ -26,8 +26,12 @@ export const AuthProvider = ({
 
         try {
             const result = await authService.login(data.email, data.password);
+            if (result.toString() === 'Error: Error: Login or password don\'t match') {
+                throw new Error(result.toString().slice(6))
+            }
             setAuth(result);
             navigate('/catalog');
+
         } catch (err) {
             setErrLogin(err)
             setErrRegister('')
@@ -37,8 +41,8 @@ export const AuthProvider = ({
     const onRegisterSubmit = async (data) => {
         try {
             const result = await authService.register(data.email, data.password, data.firstName, data.lastName)
-            if(result.toString()==="Error: Error: A user with the same email already exists"){
-               throw new Error(result.toString().slice(6))
+            if (result.toString() === "Error: Error: A user with the same email already exists") {
+                throw new Error(result.toString().slice(6))
             }
             setAuth(result);
             navigate('/catalog');

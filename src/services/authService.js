@@ -4,9 +4,16 @@ import { requestFactory } from "./requester"
 export const authServiceFactory = (token) => {
     const request = requestFactory(token);
 
-    const login = (email, password) =>
-        request.post(loginUrl, { email, password });
-
+    const login = async (email, password) => {
+        try {
+            const response = await request.post(loginUrl, { email, password });
+            if (response.toString() === "Error: Login or password don't match") {
+                throw new Error(response.toString());
+            }
+        } catch (error) {
+            return error;
+        }
+    }
 
     const logout = async (accessToken) => {
         try {

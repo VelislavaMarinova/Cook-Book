@@ -9,10 +9,11 @@ async function request(url, options) {
         const response = await fetch(host + url, options);
 
         if (response.ok !== true) {
+            const error = await response.json();
             if (response.status === 403) {
+                throw new Error(error.message);
             };
 
-            const error = await response.json();
             throw new Error(error.message);
         };
 

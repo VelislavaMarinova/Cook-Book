@@ -57,9 +57,13 @@ function App() {
                   <MyRecipes />
                 </RouteProtected>}
               />
-              <Route path="/catalog" element={<Catalog />} />
-              {categories.map(categry => <Route key = {categry._id} path={`/catalog/${categry.value}`} element={<RecypesByCategory category={categry.value} />} />)}
-              <Route path="/catalog/:recipeId" element={<DetailsPage categories={categories}/>} />
+              <Route path="/catalog" element={
+                <RouteProtected>
+                  <Catalog />
+                </RouteProtected>
+              } />
+              {categories.map(categry => <Route key={categry._id} path={`/catalog/${categry.value}`} element={<RecypesByCategory category={categry.value} />} />)}
+              <Route path="/catalog/:recipeId" element={<DetailsPage categories={categories} />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Main>
